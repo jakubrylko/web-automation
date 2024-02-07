@@ -11,9 +11,8 @@ import {
 
 import 'dotenv/config'
 
-const BASIC_AUTH = `${process.env.BASIC_AUTH_USERNAME}:${process.env.BASIC_AUTH_PASSWORD}`
-const EMAIL = process.env.EMAIL
-const PASSWORD = process.env.PASSWORD
+const { BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD, EMAIL, PASSWORD } = process.env
+const BASIC_AUTH = `${BASIC_AUTH_USERNAME}:${BASIC_AUTH_PASSWORD}`
 
 test.describe('iFrame task', () => {
   const NAME = 'JR Test'
