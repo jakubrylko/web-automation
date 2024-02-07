@@ -1,0 +1,24 @@
+{
+  "name": "web-automation",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Jakub Ryłko",
+  "scripts": {
+    "cy:run": "cypress run",
+    "cy:run:spec": "cypress run --spec",
+    "cy:open": "cypress open",
+    "pw:test": "playwright test --project=chromium",
+    "pw:test:ui": "playwright test --ui",
+    "pw:test:headed": "playwright test --headed --project=chromium",
+    "pw:report": "playwright show-report playwright/playwright-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.2",
+    "@types/node": "^20.11.16",
+    "cypress": "^13.6.4",
+    "cypress-plugin-api": "^2.11.1",
+    "dotenv": "^16.4.1",
+    "typescript": "^5.3.3",
+    "yarn": "^1.22.17"
+  }
+}

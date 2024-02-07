@@ -1,0 +1,6 @@
+export const MSG_WINDOW_BTN = '#messageWindowButton'
+export const PLAYGROUND_HEADER = '.playgound-header'
+export const TAB_BTN = '#tabButton'
+export const WINDOW_BODY = 'body'
+export const WINDOW_BTN = '#windowButton'
+export const WINDOW_HEADER = 'h1'
