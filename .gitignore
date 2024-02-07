@@ -2,8 +2,9 @@
 node_modules/
 
 # Playwright artifacts
-playwright/test-results/
 playwright/playwright-report/
+playwright/snapshots/
+playwright/test-results/
 playwright/playwright/.cache/
 
 # Env files
