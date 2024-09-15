@@ -1,4 +1,4 @@
-import { BrowserContext, Page, test } from '@playwright/test'
+import { BrowserContext, Page, expect, test } from '@playwright/test'
 import { ai } from '@zerostep/playwright'
 
 const { TEAMDECK_URL, TEAMDECK_USERNAME, TEAMDECK_PASSWORD, EMAIL, PASSWORD } =
@@ -28,6 +28,6 @@ test.describe('Teamdeck', () => {
       ],
       { page, test }
     )
-    await page.pause()
+    await expect(page.locator('canvas')).toBeVisible()
   })
 })
