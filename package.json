@@ -16,8 +16,9 @@
     "@faker-js/faker": "^9.0.0",
     "@playwright/test": "^1.41.2",
     "@types/node": "^20.11.16",
-    "cypress-plugin-api": "^2.11.1",
+    "@zerostep/playwright": "^0.1.5",
     "cypress": "^13.6.4",
+    "cypress-plugin-api": "^2.11.1",
     "dotenv": "^16.4.1",
     "typescript": "^5.3.3",
     "yarn": "^1.22.17"

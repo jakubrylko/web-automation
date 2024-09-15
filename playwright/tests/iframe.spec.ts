@@ -11,8 +11,7 @@ import {
 
 import 'dotenv/config'
 
-const { SAAS_URL, BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD, EMAIL, PASSWORD } =
-  process.env
+const { SAAS_URL, SAAS_USERNAME, SAAS_PASSWORD, EMAIL, PASSWORD } = process.env
 
 test.describe('iFrame task', () => {
   const NAME = 'JR Test'
@@ -23,8 +22,8 @@ test.describe('iFrame task', () => {
   test('Should fill card details in iframe', async ({ browser }) => {
     const context = await browser.newContext({
       httpCredentials: {
-        username: BASIC_AUTH_USERNAME!,
-        password: BASIC_AUTH_PASSWORD!
+        username: SAAS_USERNAME!,
+        password: SAAS_PASSWORD!
       }
     })
 

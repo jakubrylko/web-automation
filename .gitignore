@@ -9,3 +9,4 @@ playwright/playwright/.cache/
 
 # Env files
 .env
+zerostep.config.json
