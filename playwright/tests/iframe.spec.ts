@@ -6,13 +6,13 @@ import {
   SUBMIT_BTN,
   NAME_INPUT,
   TOAST_MSG,
-  TRASH_ICON,
+  TRASH_ICON
 } from '@common/selectors/iframe'
 
 import 'dotenv/config'
 
-const { BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD, EMAIL, PASSWORD } = process.env
-const BASIC_AUTH = `${BASIC_AUTH_USERNAME}:${BASIC_AUTH_PASSWORD}`
+const { SAAS_URL, BASIC_AUTH_USERNAME, BASIC_AUTH_PASSWORD, EMAIL, PASSWORD } =
+  process.env
 
 test.describe('iFrame task', () => {
   const NAME = 'JR Test'
@@ -20,9 +20,16 @@ test.describe('iFrame task', () => {
   const YEAR = '1030'
   const CVC = '123'
 
-  test('Should fill card details in iframe', async ({ page }) => {
-    await page.goto(`https://${BASIC_AUTH}@app.qa.saas.apptoku.com`)
-    await page.goto('https://app.qa.saas.apptoku.com')
+  test('Should fill card details in iframe', async ({ browser }) => {
+    const context = await browser.newContext({
+      httpCredentials: {
+        username: BASIC_AUTH_USERNAME!,
+        password: BASIC_AUTH_PASSWORD!
+      }
+    })
+
+    const page = await context.newPage()
+    await page.goto(SAAS_URL!)
 
     await page.locator(EMAIL_INPUT).fill(EMAIL!)
     await page.locator(PASSWORD_INPUT).fill(PASSWORD!)
