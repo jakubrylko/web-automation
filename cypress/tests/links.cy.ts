@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import { LINK } from '@common/selectors/links'
 
 describe('Practice form', () => {

@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 describe('Windows', () => {
   it('Should open new window and assert header', () => {
     cy.visit('https://demoqa.com')

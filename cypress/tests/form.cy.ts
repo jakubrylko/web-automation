@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 import {
   ADDRESS,
   CALENDAR_DAY,
@@ -19,7 +17,7 @@ import {
   STATE,
   SUBJECTS,
   SUBMIT,
-  YEAR_SELECT,
+  YEAR_SELECT
 } from '@common/selectors/form'
 
 describe('Practice form', () => {
