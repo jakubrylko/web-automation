@@ -1,29 +1,33 @@
-import { expect, test } from '@playwright/test'
+import { BrowserContext, Page, test } from '@playwright/test'
 import { ai } from '@zerostep/playwright'
 
 const { TEAMDECK_URL, TEAMDECK_USERNAME, TEAMDECK_PASSWORD, EMAIL, PASSWORD } =
   process.env
 
+let context: BrowserContext, page: Page
+
 test.describe('Teamdeck', () => {
-  test('Should login using AI', async ({ browser }) => {
-    const context = await browser.newContext({
+  test.beforeEach(async ({ browser }) => {
+    context = await browser.newContext({
       httpCredentials: {
         username: TEAMDECK_USERNAME!,
         password: TEAMDECK_PASSWORD!
       }
     })
 
-    const page = await context.newPage()
-    const aiArgs = { page, test }
+    page = await context.newPage()
     await page.goto(TEAMDECK_URL!)
+  })
 
+  test('Should login using AI', async () => {
     await ai(
       [
-        `Type ${EMAIL} in the email field`,
-        `Type ${PASSWORD} in the password field`,
-        'Click on the submit button'
+        `Type ${EMAIL} in the "Your email" field`,
+        `Type ${PASSWORD} in the "Password" field`,
+        'Click on the "Sign in" button'
       ],
-      aiArgs
+      { page, test }
     )
+    await page.pause()
   })
 })
