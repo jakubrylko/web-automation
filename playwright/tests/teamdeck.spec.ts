@@ -22,8 +22,8 @@ test.describe('Teamdeck', () => {
   test('Should login using AI', async () => {
     await ai(
       [
-        `Type ${EMAIL} in the "Your email" field`,
-        `Type ${PASSWORD} in the "Password" field`,
+        `Type ${EMAIL} in "Your email" field`,
+        `Type ${PASSWORD} in "Password" field`,
         'Click on the "Sign in" button'
       ],
       { page, test }
