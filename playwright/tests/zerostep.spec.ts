@@ -3,7 +3,6 @@ import { test } from 'playwright/support/my-test'
 import { ai } from '@zerostep/playwright'
 import { DELETE_BTN } from '@common/selectors/elements'
 import { SAMPLE_TEXT } from '@common/labels/windows'
-import { WINDOW_HEADER } from '@common/selectors/windows'
 
 test.describe('ZeroStep', () => {
   test.beforeEach(async ({ page }) => {
@@ -84,18 +83,18 @@ test.describe('ZeroStep', () => {
     await ai('Click on the first "Click me" button')
   })
 
-  test('Should display and assert new window', async ({ ai, context }) => {
-    await ai('Click on the "Alerts, Frame & Windows" button')
-    await ai('Click on the "Browser Windows" button')
+  test('Should display and assert new tab', async ({ page, context }) => {
+    let aiArgs = { page, test }
+    await ai('Click on the "Alerts, Frame & Windows" button', aiArgs)
+    await ai('Click on the "Browser Windows" button', aiArgs)
 
     const [newTab] = await Promise.all([
       context.waitForEvent('page'),
-      await ai('Click on the "New Tab" button')
+      await ai('Click on the "New Tab" button', aiArgs)
     ])
 
-    const headerText = await ai('Get h1 text')
-    console.log('🚀 headerText:', headerText)
-
-    await expect(newTab.locator(WINDOW_HEADER)).toHaveText(SAMPLE_TEXT)
+    aiArgs = { page: newTab, test }
+    const headerText = await ai('Get h1 text', aiArgs)
+    expect(headerText).toEqual(SAMPLE_TEXT)
   })
 })
