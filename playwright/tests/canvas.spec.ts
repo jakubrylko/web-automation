@@ -1,8 +1,5 @@
 import { BrowserContext, Page, expect, test } from '@playwright/test'
-import {
-  calculateCoordinateX,
-  calculateCoordinateY
-} from 'playwright/support/canvas'
+import { getBookingCoordinates } from 'playwright/support/canvas'
 
 const { TEAMDECK_URL, TEAMDECK_USERNAME, TEAMDECK_PASSWORD, EMAIL, PASSWORD } =
   process.env
@@ -28,12 +25,11 @@ test.describe('Canvas', () => {
   test('Should interact with canvas', async () => {
     await expect(page.locator('canvas')).toBeVisible()
 
-    const newBooking = { x: 430, y: 350 }
-    const newBookingX = await calculateCoordinateX(page, newBooking.x)
-    const newBookingY = await calculateCoordinateY(page, newBooking.y)
+    const booking = await getBookingCoordinates(page)
+    await page.mouse.move(booking.x, booking.y)
+    await page.waitForTimeout(1000)
+    await page.mouse.click(booking.x, booking.y)
 
-    await page.mouse.move(newBookingX, newBookingY)
-    await page.mouse.click(newBookingX, newBookingY)
     await expect(page.getByText('New booking')).toBeVisible()
   })
 })

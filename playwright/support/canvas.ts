@@ -1,11 +1,11 @@
 import { Page } from '@playwright/test'
 
-export const calculateCoordinateX = async (page: Page, coordinate: number) => {
+export const getBookingCoordinates = async (page: Page) => {
   const box = await page.locator('canvas').boundingBox()
-  return box!.x + (coordinate - 42)
+  return { x: box!.x + 268, y: box!.y + 128 }
 }
 
-export const calculateCoordinateY = async (page: Page, coordinate: number) => {
-  const box = await page.locator('canvas').boundingBox()
-  return box!.y + (coordinate - 220)
-}
+// x  /  y
+// 42 / 220   => canvas 0, 0
+// 310 / 348    => 352 / 394    x diff: 42 for booking (column)
+// 268 / 128 =>
