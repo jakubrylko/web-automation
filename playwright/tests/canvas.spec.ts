@@ -20,12 +20,12 @@ test.describe('Canvas', () => {
 
     page = await context.newPage()
     await page.goto(TEAMDECK_URL!)
-  })
-
-  test('Should interact with canvas', async () => {
     await page.locator('[type="email"]').fill(EMAIL!)
     await page.locator('[type="password"]').fill(PASSWORD!)
     await page.locator('[type="submit"]').click()
+  })
+
+  test('Should interact with canvas', async () => {
     await expect(page.locator('canvas')).toBeVisible()
 
     const newBooking = { x: 430, y: 350 }
