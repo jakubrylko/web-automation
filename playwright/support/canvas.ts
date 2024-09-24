@@ -1,11 +1,24 @@
 import { Page } from '@playwright/test'
+import { formatDate, parseDate } from 'common/helpers/dates'
 
-export const getBookingCoordinates = async (page: Page) => {
-  const box = await page.locator('canvas').boundingBox()
-  return { x: box!.x + 268, y: box!.y + 128 }
+const getFirstCanvasDate = () => {
+  const today = new Date()
+  today.setDate(today.getDate() - 3)
+
+  return formatDate(today)
 }
 
-// x  /  y
-// 42 / 220   => canvas 0, 0
-// 310 / 348    => 352 / 394    x diff: 42 for booking (column)
-// 268 / 128 =>
+const calculateDateDiff = (dateStr: string) => {
+  const firstDate = parseDate(getFirstCanvasDate())
+  const secondDate = parseDate(dateStr)
+  const diffTime = secondDate.getTime() - firstDate.getTime()
+
+  return Math.round(diffTime / (1000 * 60 * 60 * 24))
+}
+
+export const getBookingCoordinates = async (page: Page, dateStr: string) => {
+  const box = await page.locator('canvas').boundingBox()
+  const dateDiff = calculateDateDiff(dateStr)
+
+  return { x: box!.x + 268 + 40 * dateDiff, y: box!.y + 128 }
+}

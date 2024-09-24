@@ -1,4 +1,5 @@
 import { BrowserContext, Page, expect, test } from '@playwright/test'
+import exp from 'constants'
 import { getBookingCoordinates } from 'playwright/support/canvas'
 
 const { TEAMDECK_URL, TEAMDECK_USERNAME, TEAMDECK_PASSWORD, EMAIL, PASSWORD } =
@@ -23,13 +24,17 @@ test.describe('Canvas', () => {
   })
 
   test('Should interact with canvas', async () => {
-    await expect(page.locator('canvas')).toBeVisible()
+    const bookingDate = '24.09.2024'
 
-    const booking = await getBookingCoordinates(page)
+    const booking = await getBookingCoordinates(page, bookingDate)
     await page.mouse.move(booking.x, booking.y)
     await page.waitForTimeout(1000)
     await page.mouse.click(booking.x, booking.y)
 
     await expect(page.getByText('New booking')).toBeVisible()
+    await page.locator('.md-datepicker-button').first().click()
+    await expect(
+      page.locator('.md-calendar-date[aria-selected="true"] > *')
+    ).toHaveText(bookingDate.split('.')[0])
   })
 })
