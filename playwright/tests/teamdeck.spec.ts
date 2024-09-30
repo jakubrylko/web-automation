@@ -6,7 +6,7 @@ const { TEAMDECK_URL, TEAMDECK_USERNAME, TEAMDECK_PASSWORD, EMAIL, PASSWORD } =
 
 let context: BrowserContext, page: Page
 
-test.describe('Basic auth', () => {
+test.describe('Teamdeck login', () => {
   test.beforeEach(async ({ browser }) => {
     context = await browser.newContext({
       httpCredentials: {
