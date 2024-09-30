@@ -46,10 +46,12 @@ test.describe('ZeroStep', () => {
     const initialNumOfRows = await page.locator(DELETE_BTN).count()
 
     await ai('Click on the "Add" button')
-    await ai([
-      'Fill registration form with the valid data',
-      'Click on the "Submit button"'
-    ])
+    // await ai([
+    //   'Fill registration form with the valid data',
+    //   'Click on the "Submit" button'
+    // ])
+    await ai(['Fill registration form with the valid data'])
+    await ai(['Click on the "Submit" button'])
 
     const updatedNumOfRows = await page.locator(DELETE_BTN).count()
     expect(updatedNumOfRows).toBeGreaterThan(initialNumOfRows)
