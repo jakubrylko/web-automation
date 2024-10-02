@@ -1,6 +1,6 @@
 describe('Windows', () => {
   it('Should open new window and assert header', () => {
-    cy.visit('https://demoqa.com')
+    cy.visit('/')
 
     cy.contains('Alerts, Frame & Windows').click()
     cy.contains('Browser Windows').click()
@@ -11,7 +11,7 @@ describe('Windows', () => {
       cy.get('@New window').should('be.calledOnce')
     })
 
-    cy.visit('https://demoqa.com/sample')
+    cy.visit('/sample')
     cy.get('h1').contains('This is a sample page')
   })
 })

@@ -20,9 +20,7 @@ import {
 
 test.describe('Practice form', () => {
   test('Should fill and submit practice form', async ({ page }) => {
-    await page.goto('https://demoqa.com')
-    await page.getByLabel('Consent', { exact: true }).click()
-
+    await page.goto('/')
     await page.getByText('Forms').click()
     await page.getByText('Practice Form').click()
 

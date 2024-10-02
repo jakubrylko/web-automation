@@ -1,7 +1,6 @@
 import { defineConfig } from 'cypress'
-import dotenv from 'dotenv'
 
-dotenv.config()
+require('dotenv').config()
 
 export default defineConfig({
   e2e: {
@@ -9,6 +8,7 @@ export default defineConfig({
       Object.assign(config.env, process.env)
       return config
     },
+    baseUrl: 'https://demoqa.com',
     viewportWidth: 1920,
     viewportHeight: 1080,
     chromeWebSecurity: false,

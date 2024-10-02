@@ -3,9 +3,7 @@ import { expect, test } from '@playwright/test'
 
 test.describe('Links', () => {
   test('Should count and assert all links', async ({ page }) => {
-    await page.goto('https://demoqa.com')
-    await page.getByLabel('Consent', { exact: true }).click()
-
+    await page.goto('/')
     await page.getByText('Elements').click()
     await page.getByText('Links', { exact: true }).click()
 

@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 test.describe('Alerts', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://demoqa.com')
+    await page.goto('/')
   })
 
   test('Should display and assert alert after 5s', async ({ page }) => {

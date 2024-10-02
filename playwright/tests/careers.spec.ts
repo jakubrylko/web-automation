@@ -6,7 +6,7 @@ import {
 } from 'playwright/support/tech-stack'
 
 test.describe('Apptension careers', () => {
-  test('Should return and assert tech stack count', async ({ page }) => {
+  test('Should assert tech stack count', async ({ page }) => {
     await page.goto(process.env.APPTENSION_URL!)
     await closeCookieModal(page)
     await clickOnMenuTab(page, 'Careers')

@@ -16,6 +16,7 @@ export default defineConfig({
   ],
 
   use: {
+    baseURL: 'https://demoqa.com',
     trace: 'on'
   },
 

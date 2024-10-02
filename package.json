@@ -19,6 +19,7 @@
     "@zerostep/playwright": "^0.1.5",
     "cypress": "13.14.2",
     "cypress-plugin-api": "^2.11.1",
+    "dayjs": "^1.11.13",
     "dotenv": "^16.4.1",
     "typescript": "^5.3.3",
     "yarn": "^1.22.17"

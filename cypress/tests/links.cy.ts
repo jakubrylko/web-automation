@@ -2,7 +2,7 @@ import { LINK } from '@common/selectors/links'
 
 describe('Practice form', () => {
   it('Should fill and submit practice form', () => {
-    cy.visit('https://demoqa.com')
+    cy.visit('/')
 
     cy.contains('Elements').click()
     cy.contains('Links').click()

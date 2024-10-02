@@ -22,7 +22,7 @@ import {
 
 describe('Practice form', () => {
   it('Should fill and submit practice form', () => {
-    cy.visit('https://demoqa.com')
+    cy.visit('/')
 
     cy.contains('Forms').click()
     cy.contains('Practice Form').click()

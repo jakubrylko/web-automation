@@ -9,8 +9,6 @@ import {
   TRASH_ICON
 } from '@common/selectors/iframe'
 
-import 'dotenv/config'
-
 const { SAAS_URL, SAAS_USERNAME, SAAS_PASSWORD, EMAIL, PASSWORD } = process.env
 
 test.describe('iFrame task', () => {

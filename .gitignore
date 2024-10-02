@@ -1,12 +1,15 @@
 # Node modules
 node_modules/
 
+# Cypress artifacts
+cypress/downloads
+cypress/screenshots
+
 # Playwright artifacts
 playwright/playwright-report/
 playwright/snapshots/
 playwright/test-results/
 playwright/playwright/.cache/
 
-# Env files
+# Envs
 .env
-zerostep.config.json

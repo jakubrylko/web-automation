@@ -8,7 +8,7 @@ test.describe('Visual testing', () => {
   })
 
   test('Should compare homepage of DemoQA', async ({ page }) => {
-    await page.goto('https://demoqa.com')
+    await page.goto('/')
     await page.getByLabel('Consent', { exact: true }).click()
     await expect(page).toHaveScreenshot('homepage.png')
   })

@@ -1,10 +1,9 @@
-import { test, expect } from '@playwright/test'
+import { expect } from '@playwright/test'
+import { test } from 'playwright/support/my-test'
 import { faker } from '@faker-js/faker'
 import { STRIPE_IFRAME } from '@common/selectors/iframe'
 
-const { firstName, lastName, fullName } = faker.person
-const { streetAddress, zipCode, city } = faker.location
-const { email } = faker.internet
+const { person, location, internet } = faker
 
 const cardNumber = '4242424242424242'
 const cardExpiry = '1030'
@@ -18,22 +17,20 @@ test.describe('Bimber Distillery', () => {
     test(`${i} Should make a submission for a product`, async ({ page }) => {
       await page.goto(process.env.BALLOT_URL!)
 
-      await page.locator('[data-path="firstname"]').fill(firstName())
-      await page.locator('[data-path="lastname"]').fill(lastName())
-      await page.locator('[data-path="email"]').fill(email())
+      await page.getByDataPath('firstname').fill(person.firstName())
+      await page.getByDataPath('lastname').fill(person.lastName())
+      await page.getByDataPath('email').fill(internet.email())
 
-      await page
-        .locator('[data-path="billingAddressLine1"]')
-        .fill(streetAddress())
-      await page.locator('[data-path="billingAddressZipCode"]').fill(zipCode())
-      await page.locator('[data-path="billingAddressCity"]').fill(city())
-      await page.locator('[data-path="billingAddressCountry"]').fill('Poland')
-      await page.locator('[data-path="shippingSameAsBilling"]').click()
+      await page.getByDataPath('billingAddressLine1').fill(location.streetAddress())
+      await page.getByDataPath('billingAddressZipCode').fill(location.zipCode())
+      await page.getByDataPath('billingAddressCity').fill(location.city())
+      await page.getByDataPath('billingAddressCountry').fill('Poland')
+      await page.getByDataPath('shippingSameAsBilling').click()
 
-      const numOfProducts = await page.locator('[type="radio"]').count()
+      const numOfProducts = await page.getByType('radio').count()
       const randomProduct = Math.floor(Math.random() * numOfProducts)
-      await page.locator('[type="radio"]').nth(randomProduct).click()
-      await page.locator('[type="submit"]').click()
+      await page.getByType('radio').nth(randomProduct).click()
+      await page.getByType('submit').click()
 
       await page
         .frameLocator(STRIPE_IFRAME)
@@ -47,7 +44,7 @@ test.describe('Bimber Distillery', () => {
       await page
         .frameLocator(STRIPE_IFRAME)
         .locator('#billingName')
-        .fill(fullName())
+        .fill(person.fullName())
       await page
         .frameLocator(STRIPE_IFRAME)
         .getByTestId('hosted-payment-submit-button')
