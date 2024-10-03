@@ -6,7 +6,7 @@ import { SAMPLE_TEXT } from '@common/labels/windows'
 
 test.describe('ZeroStep', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://demoqa.com')
+    await page.goto('/')
   })
 
   test('Should fill text fields', async ({ page }) => {
@@ -65,7 +65,7 @@ test.describe('ZeroStep', () => {
     const numOfLinks = await ai('Get number of all links')
     expect(numOfLinks).toEqual('9')
 
-    let textArr = []
+    const textArr = []
     for (let i = 0; i < Number(numOfLinks); i++) {
       const linkText = await ai(`Get text of link at index ${i}`)
       textArr.push(linkText)
@@ -78,7 +78,7 @@ test.describe('ZeroStep', () => {
     await ai('Click on the "Alerts" button')
 
     page.on('dialog', async (alert) => {
-      console.log('🚀 alert:', alert.message())
+      console.log('🚀 Alert:', alert.message())
       expect(alert.message()).toEqual('You clicked a button')
       await alert.dismiss()
     })

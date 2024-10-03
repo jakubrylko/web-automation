@@ -2,17 +2,23 @@
   "name": "web-automation",
   "version": "1.0.0",
   "license": "MIT",
+  "type": "module",
   "author": "Jakub Ryłko",
   "scripts": {
-    "cy:run": "cypress run",
-    "cy:run:spec": "cypress run --spec",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "prepare": "husky",
+    "type:check": "tsc && :",
     "cy:open": "cypress open",
-    "pw:test": "playwright test --project=chromium",
-    "pw:test:ui": "playwright test --ui",
+    "cy:run:spec": "cypress run --spec",
+    "cy:run": "cypress run",
+    "pw:report": "playwright show-report playwright/playwright-report",
     "pw:test:headed": "playwright test --headed --project=chromium",
-    "pw:report": "playwright show-report playwright/playwright-report"
+    "pw:test:ui": "playwright test --ui",
+    "pw:test": "playwright test --project=chromium"
   },
   "devDependencies": {
+    "@eslint/js": "^9.11.1",
     "@faker-js/faker": "^9.0.0",
     "@playwright/test": "^1.47.2",
     "@types/node": "^20.11.16",
@@ -21,7 +27,14 @@
     "cypress-plugin-api": "^2.11.1",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.1",
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.10.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
     "typescript": "^5.3.3",
+    "typescript-eslint": "^8.8.0",
     "yarn": "^1.22.17"
   }
 }

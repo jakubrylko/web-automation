@@ -1,4 +1,3 @@
-import { expect, test } from '@playwright/test'
 import {
   FIRST_NAME,
   LAST_NAME,
@@ -10,13 +9,14 @@ import {
   SUBJECTS,
   FIRST_SUBJECT,
   ADDRESS,
-  FIRST_STATE,
   STATE,
+  FIRST_STATE,
   CITY,
   FIRST_CITY,
   SUBMIT,
-  CLOSE,
+  CLOSE
 } from '@common/selectors/form'
+import { expect, test } from '@playwright/test'
 
 test.describe('Practice form', () => {
   test('Should fill and submit practice form', async ({ page }) => {
