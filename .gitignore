@@ -1,6 +1,9 @@
 # Node modules
 node_modules/
 
+# Envs
+.env
+
 # Cypress artifacts
 cypress/downloads
 cypress/screenshots
@@ -10,6 +13,3 @@ playwright/playwright-report/
 playwright/snapshots/
 playwright/test-results/
 playwright/playwright/.cache/
-
-# Envs
-.env
