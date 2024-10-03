@@ -6,7 +6,7 @@ const expectedTechCounts = {
   Frontend: 6,
   Backend: 5,
   Infrastructure: 4,
-  Design: 5,
+  Design: 5
 }
 
 const getDepartmentTechCount = async (page: Page, department: Department) => {
