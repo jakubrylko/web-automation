@@ -21,7 +21,9 @@ test.describe('Bimber Distillery', () => {
       await page.getByDataPath('lastname').fill(person.lastName())
       await page.getByDataPath('email').fill(internet.email())
 
-      await page.getByDataPath('billingAddressLine1').fill(location.streetAddress())
+      await page
+        .getByDataPath('billingAddressLine1')
+        .fill(location.streetAddress())
       await page.getByDataPath('billingAddressZipCode').fill(location.zipCode())
       await page.getByDataPath('billingAddressCity').fill(location.city())
       await page.getByDataPath('billingAddressCountry').fill('Poland')
