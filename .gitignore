@@ -1,5 +1,5 @@
 # Node modules
-node_modules/
+node_modules
 
 # Envs
 .env
@@ -9,7 +9,7 @@ cypress/downloads
 cypress/screenshots
 
 # Playwright artifacts
-playwright/playwright-report/
-playwright/snapshots/
-playwright/test-results/
-playwright/playwright/.cache/
+playwright/playwright-report
+playwright/snapshots
+playwright/test-results
+playwright/playwright/.cache
