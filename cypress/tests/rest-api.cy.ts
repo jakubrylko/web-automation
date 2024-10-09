@@ -1,4 +1,4 @@
-import { newBooking } from '@common/api/booking'
+import { newBooking } from 'common/booking'
 
 const { env } = Cypress
 

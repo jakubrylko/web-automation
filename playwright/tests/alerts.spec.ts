@@ -1,20 +1,35 @@
-import { expect, test } from '@playwright/test'
+import { test } from '@playwright/test'
+import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
+import { AlertsAssertion } from 'playwright/pages/DemoQA/Alerts/Alerts.assertion'
+import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
 
 test.describe('Alerts', () => {
+  let Home: HomePage
+  let LeftPanel: LeftPanelPage
+  let Alerts: AlertsAssertion
+
   test.beforeEach(async ({ page }) => {
+    Home = new HomePage(page)
+    LeftPanel = new LeftPanelPage(page)
+    Alerts = new AlertsAssertion(page)
+
     await page.goto('/')
+    await Home.clickOnCard('Alerts, Frame & Windows')
+    await LeftPanel.clickOnMenuItem('Alerts', { exact: true })
   })
 
-  test('Should display and assert alert after 5s', async ({ page }) => {
-    await page.getByText('Alerts, Frame & Windows').click()
-    await page.getByText('Alerts', { exact: true }).click()
+  test.afterEach(async () => {
+    await Alerts.dismissAlert()
+  })
 
-    page.on('dialog', async (alert) => {
-      expect(alert.message()).toEqual('This alert appeared after 5 seconds')
-      await alert.dismiss()
-    })
+  test('Should assert alert message', async () => {
+    await Alerts.alertButton.click()
+    await Alerts.assertAlertMessage('You clicked a button')
+  })
 
-    await page.getByText('Click me').nth(1).click()
-    await page.waitForTimeout(5100)
+  test('Should assert alert message with timer', async ({ page }) => {
+    await Alerts.timerAlertButton.click()
+    await page.waitForTimeout(5000)
+    await Alerts.assertAlertMessage('This alert appeared after 5 seconds')
   })
 })

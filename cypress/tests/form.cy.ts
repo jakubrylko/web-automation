@@ -18,7 +18,7 @@ import {
   SUBJECTS,
   SUBMIT,
   YEAR_SELECT
-} from '@common/selectors/form'
+} from 'common/selectors/form'
 
 describe('Practice form', () => {
   it('Should fill and submit practice form', () => {

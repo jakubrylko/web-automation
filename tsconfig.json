@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-      "@common/*": ["common/*"]
-    },
     "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,5 +11,5 @@
     "target": "ES6",
     "types": ["cypress-plugin-api", "node"]
   },
-  "include": ["cypress", "playwright", "types/*.d.ts"]
+  "include": ["cypress", "playwright", "types"]
 }

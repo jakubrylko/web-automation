@@ -7,7 +7,7 @@ export default defineConfig({
   snapshotDir: './playwright/snapshots',
 
   timeout: 30000,
-  expect: { timeout: 5000, toHaveScreenshot: { maxDiffPixels: 100 } },
+  expect: { timeout: 5000, toHaveScreenshot: { threshold: 0.01 } },
 
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -28,21 +28,21 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        viewport: { width: 1920, height: 1080 }
+        viewport: { width: 1920, height: 1240 }
       }
     },
     {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
-        viewport: { width: 1920, height: 1080 }
+        viewport: { width: 1920, height: 1240 }
       }
     },
     {
       name: 'webkit',
       use: {
         ...devices['Desktop Safari'],
-        viewport: { width: 1920, height: 1080 }
+        viewport: { width: 1920, height: 1240 }
       }
     },
     {

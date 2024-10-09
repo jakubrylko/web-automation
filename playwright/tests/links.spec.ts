@@ -1,18 +1,17 @@
-import { LINK } from '@common/selectors/links'
-import { expect, test } from '@playwright/test'
+import { test } from '@playwright/test'
+import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
+import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
+import { LinksAssertion } from 'playwright/pages/DemoQA/Links/Links.assertion'
 
 test.describe('Links', () => {
   test('Should count and assert all links', async ({ page }) => {
+    const Home = new HomePage(page)
+    const LeftPanel = new LeftPanelPage(page)
+    const Links = new LinksAssertion(page)
+
     await page.goto('/')
-    await page.getByText('Elements').click()
-    await page.getByText('Links', { exact: true }).click()
-
-    const linkLocator = page.locator(LINK)
-    const numOfLinks = await linkLocator.count()
-
-    for (let i = 0; i < numOfLinks; i++) {
-      await expect(linkLocator.nth(i)).toBeVisible()
-      await expect(linkLocator.nth(i)).toHaveAttribute('href')
-    }
+    await Home.clickOnCard('Elements')
+    await LeftPanel.clickOnMenuItem('Links', { exact: true })
+    await Links.assertLinks()
   })
 })

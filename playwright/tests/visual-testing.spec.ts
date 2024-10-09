@@ -1,15 +1,21 @@
-import { expect, test } from '@playwright/test'
+import { test } from '@playwright/test'
+import { Utilities } from 'playwright/shared/Utilities'
 
 test.describe('Visual testing', () => {
+  let Utils: Utilities
+
+  test.beforeAll(async ({ page }) => {
+    Utils = new Utilities(page)
+  })
+
   test('Should compare random pictures', async ({ page }) => {
     await page.goto('https://randomwordgenerator.com/picture.php')
-    await page.getByLabel('I understand', { exact: true }).click()
-    await expect(page).toHaveScreenshot('random.png')
+    await page.getByLabel('I understand').click()
+    await Utils.compareScreenshots('random.png')
   })
 
   test('Should compare homepage of DemoQA', async ({ page }) => {
     await page.goto('/')
-    await page.getByLabel('Consent', { exact: true }).click()
-    await expect(page).toHaveScreenshot('homepage.png')
+    await Utils.compareScreenshots('homepage.png')
   })
 })

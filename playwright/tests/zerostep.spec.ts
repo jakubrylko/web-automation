@@ -1,49 +1,50 @@
 import { expect } from '@playwright/test'
 import { test } from 'playwright/support/my-test'
 import { ai } from '@zerostep/playwright'
-import { DELETE_BTN } from '@common/selectors/elements'
-import { SAMPLE_TEXT } from '@common/labels/windows'
+import { SAMPLE_TEXT } from 'common'
+import { TextBoxAssertion } from 'playwright/pages/DemoQA/TextBox/TextBox.assertion'
+import { TablesPage } from 'playwright/pages/DemoQA/Tables/Tables.page'
+import { LinksAssertion } from 'playwright/pages/DemoQA/Links/Links.assertion'
+import { AlertsAssertion } from 'playwright/pages/DemoQA/Alerts/Alerts.assertion'
 
 test.describe('ZeroStep', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
   })
 
-  test('Should fill text fields', async ({ page }) => {
+  test.only('Should fill text fields', async ({ page }) => {
+    const TextBox = new TextBoxAssertion(page)
     const aiArgs = { page, test }
 
     await ai('Click on the "Elements" button', aiArgs)
     await ai('Click on the "Text Box" button', aiArgs)
     await ai('Fill the form with realistic data', aiArgs)
 
-    const outputElement = page.locator('.border > p')
-    const numOfOutputElements = await outputElement.count()
-    expect(numOfOutputElements).toEqual(4)
-
-    for (let i = 0; i < numOfOutputElements; i++) {
-      const elementText = await outputElement.nth(i).textContent()
-      expect(elementText?.trim()).toBeTruthy()
-    }
+    await TextBox.assertOutputData({ count: 4 })
   })
 
   test('Should delete all records form the table', async ({ page, ai }) => {
+    const Tables = new TablesPage(page)
+
     await ai('Click on the "Elements" button')
     await ai('Click on the "Web Tables" button')
 
-    const initialNumOfRows = await page.locator(DELETE_BTN).count()
+    const initialNumOfRows = await Tables.countRows()
 
     // await ai('Delete all records from the table')
     await ai('Delete first record from the table')
 
-    const updatedNumOfRows = await page.locator(DELETE_BTN).count()
+    const updatedNumOfRows = await Tables.countRows()
     expect(initialNumOfRows).toBeGreaterThan(updatedNumOfRows)
   })
 
   test('Should add new record to the table', async ({ page, ai }) => {
+    const Tables = new TablesPage(page)
+
     await ai('Click on the "Elements" button')
     await ai('Click on the "Web Tables" button')
 
-    const initialNumOfRows = await page.locator(DELETE_BTN).count()
+    const initialNumOfRows = await Tables.countRows()
     await ai('Click on the "Add" button')
 
     // await ai([
@@ -54,36 +55,35 @@ test.describe('ZeroStep', () => {
     await ai('Fill registration form with the valid data')
     await ai('Click on the "Submit" button')
 
-    const updatedNumOfRows = await page.locator(DELETE_BTN).count()
+    const updatedNumOfRows = await Tables.countRows()
     expect(updatedNumOfRows).toBeGreaterThan(initialNumOfRows)
   })
 
-  test('Should count all links on the page', async ({ ai }) => {
+  test('Should count all links on the page', async ({ page, ai }) => {
+    const { link } = new LinksAssertion(page)
+
     await ai('Click on the "Elements" button')
     await ai('Click on the "Links" button')
 
-    const numOfLinks = await ai('Get number of all links')
-    expect(numOfLinks).toEqual('9')
+    const numOfLinks = await ai(`Get number of all ${link}`)
+    const textArr = await Promise.all(
+      Array.from({ length: Number(numOfLinks) }, (_, i) =>
+        ai(`Get text of ${link} at index ${i}`)
+      )
+    )
 
-    const textArr = []
-    for (let i = 0; i < Number(numOfLinks); i++) {
-      const linkText = await ai(`Get text of link at index ${i}`)
-      textArr.push(linkText)
-    }
     console.log(textArr)
   })
 
   test('Should display and assert alert', async ({ page, ai }) => {
+    const Alerts = new AlertsAssertion(page)
+
     await ai('Click on the "Alerts, Frame & Windows" button')
     await ai('Click on the "Alerts" button')
-
-    page.on('dialog', async (alert) => {
-      console.log('🚀 Alert:', alert.message())
-      expect(alert.message()).toEqual('You clicked a button')
-      await alert.dismiss()
-    })
-
     await ai('Click on the first "Click me" button')
+
+    Alerts.assertAlertMessage('You clicked a button')
+    Alerts.dismissAlert()
   })
 
   test('Should display and assert new tab', async ({ page, context }) => {

@@ -1,38 +1,45 @@
-import { BrowserContext, Page, expect, test } from '@playwright/test'
-import { getCookies, sendLoginRequest } from 'playwright/support/teamdeck'
+import { BrowserContext, Page, test } from '@playwright/test'
+import { TeamdeckAPIPage } from 'playwright/api/Teamdeck/Teamdeck.api.page'
+import { HomeSelectors } from 'playwright/pages/Teamdeck/Homepage/Home.selectors'
+import { LoginPage } from 'playwright/pages/Teamdeck/Login/Login.page'
 
 const { TEAMDECK_URL, TEAMDECK_USERNAME, TEAMDECK_PASSWORD, EMAIL, PASSWORD } =
   process.env
 
-let context: BrowserContext, page: Page
+const BASIC_AUTH = {
+  httpCredentials: {
+    username: TEAMDECK_USERNAME!,
+    password: TEAMDECK_PASSWORD!
+  }
+}
 
 test.describe('Teamdeck login', () => {
-  test.beforeEach(async ({ browser }) => {
-    context = await browser.newContext({
-      httpCredentials: {
-        username: TEAMDECK_USERNAME!,
-        password: TEAMDECK_PASSWORD!
-      }
-    })
+  let context: BrowserContext
+  let page: Page
+  let Home: HomeSelectors
+
+  test.beforeAll(async ({ browser }) => {
+    context = await browser.newContext(BASIC_AUTH)
+    page = await context.newPage()
+    Home = new HomeSelectors(page)
   })
 
   test('Should login to the app with basic auth', async () => {
-    page = await context.newPage()
-    await page.goto(TEAMDECK_URL!)
+    const Login = new LoginPage(page)
 
-    await page.locator('[type="email"]').fill(EMAIL!)
-    await page.locator('[type="password"]').fill(PASSWORD!)
-    await page.locator('[type="submit"]').click()
-    await expect(page.locator('canvas')).toBeVisible()
+    await page.goto(TEAMDECK_URL!)
+    await Login.signIn({ email: EMAIL!, password: PASSWORD! })
+    await Home.assert.shouldBeVisible(Home.canvas)
   })
 
-  test('Should login to the app with cookies', async ({ request }) => {
-    const response = await sendLoginRequest(request)
-    const cookies = await getCookies(response)
+  test('Should login to the app using cookies', async ({ request }) => {
+    const TeamdeckAPI = new TeamdeckAPIPage(request)
+
+    const response = await TeamdeckAPI.login()
+    const cookies = await TeamdeckAPI.getCookies(response)
     await context.addCookies(cookies)
 
-    page = await context.newPage()
     await page.goto(TEAMDECK_URL!)
-    await expect(page.locator('organization-list')).toBeVisible()
+    await Home.assert.shouldBeVisible(Home.organizationList)
   })
 })

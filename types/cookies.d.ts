@@ -1,1 +1,1 @@
-type SameSite = 'Strict' | 'Lax' | 'None' | undefined
+type SameSite = 'Strict' | 'Lax' | 'None'

@@ -1,4 +1,4 @@
-import { LINK } from '@common/selectors/links'
+import { LINK } from 'common/selectors/links'
 
 describe('Practice form', () => {
   it('Should fill and submit practice form', () => {

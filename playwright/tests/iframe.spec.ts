@@ -1,51 +1,47 @@
-import { test, expect } from '@playwright/test'
-import { fillStripeField } from 'playwright/support/iframe'
-import {
-  EMAIL_INPUT,
-  PASSWORD_INPUT,
-  SUBMIT_BTN,
-  NAME_INPUT,
-  TOAST_MSG,
-  TRASH_ICON
-} from '@common/selectors/iframe'
+import { test } from '@playwright/test'
+import { LoginSelectors } from 'playwright/pages/Boilerplate/Login/Login.selectors'
+import { PaymentsAssertion } from 'playwright/pages/Boilerplate/Payments/Payments.assertion'
+import { HomeAssertion } from 'playwright/pages/Boilerplate/Homepage/Home.assertion'
+import { cardDetails } from 'common'
 
 const { SAAS_URL, SAAS_USERNAME, SAAS_PASSWORD, EMAIL, PASSWORD } = process.env
 
-test.describe('iFrame task', () => {
-  const NAME = 'JR Test'
-  const CARD_NUMBER = '4242424242424242'
-  const YEAR = '1030'
-  const CVC = '123'
+const BASIC_AUTH = {
+  httpCredentials: {
+    username: SAAS_USERNAME!,
+    password: SAAS_PASSWORD!
+  }
+}
 
+const { cardOwner, cardNumber, cardExpiry, cardCvc } = cardDetails
+
+test.describe('SaaS Boilerplate', () => {
   test('Should fill card details in iframe', async ({ browser }) => {
-    const context = await browser.newContext({
-      httpCredentials: {
-        username: SAAS_USERNAME!,
-        password: SAAS_PASSWORD!
-      }
-    })
-
+    const context = await browser.newContext(BASIC_AUTH)
     const page = await context.newPage()
+
+    const Login = new LoginSelectors(page)
+    const Home = new HomeAssertion(page)
+    const Payments = new PaymentsAssertion(page)
+
     await page.goto(SAAS_URL!)
+    await Login.email.fill(EMAIL!)
+    await Login.password.fill(PASSWORD!)
+    await Login.loginButton.click()
 
-    await page.locator(EMAIL_INPUT).fill(EMAIL!)
-    await page.locator(PASSWORD_INPUT).fill(PASSWORD!)
-    await page.locator(SUBMIT_BTN).click()
+    await Home.clickOnNavigationItem('Payments')
 
-    await page.getByText('Payments').first().click()
-    await page.getByText('$5').click({ force: true })
-    await page.locator(NAME_INPUT).fill(NAME)
+    await Payments.selectPaymentAmount('5')
+    await Payments.cardOwner.fill(cardOwner)
+    await Payments.cardNumber.fill(cardNumber)
+    await Payments.cardExpiry.fill(cardExpiry)
+    await Payments.cardCvc.fill(cardCvc)
+    await Payments.submitButton.click()
 
-    await fillStripeField(page, 0, CARD_NUMBER)
-    await fillStripeField(page, 1, YEAR)
-    await fillStripeField(page, 2, CVC)
-    await page.getByText('Pay 5 USD').click()
+    await Home.assertToastMessage()
+    await Home.clickOnMenuTile('Payments')
 
-    await expect(page.getByTestId(TOAST_MSG)).toBeVisible()
-    await expect(page.getByTestId(TOAST_MSG)).toBeHidden()
-
-    await page.getByText('Payments').first().click()
-    await expect(page.getByText(NAME)).toBeVisible()
-    await page.locator(TRASH_ICON).click({ force: true })
+    await Payments.assertAddedCard({ cardOwner })
+    await Payments.removeSavedCard({ cardOwner })
   })
 })
