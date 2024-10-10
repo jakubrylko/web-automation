@@ -12,7 +12,7 @@ export default defineConfig({
     viewportHeight: 1080,
     chromeWebSecurity: false,
     watchForFileChanges: true,
-    specPattern: 'cypress/tests/**/*.cy.{js,jsx,ts,tsx}',
-    supportFile: 'cypress/support/e2e.{js,jsx,ts,tsx}'
+    specPattern: 'cypress/tests/**/*.cy.{js,ts}',
+    supportFile: 'cypress/support/e2e.{js,ts}'
   }
 })
