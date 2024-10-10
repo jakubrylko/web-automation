@@ -24,7 +24,7 @@ test.describe('Windows', () => {
     await Windows.assertBrowserWindowsHeader()
   })
 
-  test('Should open and assert new tab', async () => {
+  test('Should open new tab', async () => {
     const { tabButton } = Windows
 
     const newTab = await Windows.openNewWindow(tabButton)
@@ -33,7 +33,7 @@ test.describe('Windows', () => {
     await Windows.assertNewWindowHeader(newTab, { text: SAMPLE_TEXT })
   })
 
-  test('Should open and assert new window', async () => {
+  test('Should open new window', async () => {
     const { windowButton } = Windows
 
     const newWindow = await Windows.openNewWindow(windowButton)
@@ -42,7 +42,7 @@ test.describe('Windows', () => {
     await Windows.assertNewWindowHeader(newWindow, { text: SAMPLE_TEXT })
   })
 
-  test('Should open and assert new message window', async () => {
+  test('Should open new message window', async () => {
     const { msgWindowButton } = Windows
 
     const newMsgWindow = await Windows.openNewWindow(msgWindowButton)

@@ -4,7 +4,7 @@ import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
 import { LinksAssertion } from 'playwright/pages/DemoQA/Links/Links.assertion'
 
 test.describe('Links', () => {
-  test('Should count and assert all links', async ({ page }) => {
+  test('Should assert all links', async ({ page }) => {
     const Home = new HomePage(page)
     const LeftPanel = new LeftPanelPage(page)
     const Links = new LinksAssertion(page)

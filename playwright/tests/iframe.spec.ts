@@ -15,7 +15,7 @@ const BASIC_AUTH = {
 
 const { cardOwner, cardNumber, cardExpiry, cardCvc } = cardDetails
 
-test.describe('SaaS Boilerplate', () => {
+test.describe('Saas Boilerplate', () => {
   test('Should fill card details in iframe', async ({ browser }) => {
     const context = await browser.newContext(BASIC_AUTH)
     const page = await context.newPage()

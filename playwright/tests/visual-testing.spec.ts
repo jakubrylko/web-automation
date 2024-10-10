@@ -14,7 +14,7 @@ test.describe('Visual testing', () => {
     await Utils.compareScreenshots('random.png')
   })
 
-  test('Should compare homepage of DemoQA', async ({ page }) => {
+  test('Should compare DemoQA homepage', async ({ page }) => {
     await page.goto('/')
     await Utils.compareScreenshots('homepage.png')
   })

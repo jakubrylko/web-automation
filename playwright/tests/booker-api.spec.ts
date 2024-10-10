@@ -9,7 +9,7 @@ test.describe('Restful Booker API', () => {
     BookerAPI = new BookerAPIAssertion(request)
   })
 
-  test('Should get bookings list', async () => {
+  test('Should get a bookings list', async () => {
     const response = await BookerAPI.getBookings()
     BookerAPI.utils.statusShouldBeOk(response)
   })

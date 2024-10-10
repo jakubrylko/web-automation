@@ -7,7 +7,7 @@ import { TablesPage } from 'playwright/pages/DemoQA/Tables/Tables.page'
 import { LinksAssertion } from 'playwright/pages/DemoQA/Links/Links.assertion'
 import { AlertsAssertion } from 'playwright/pages/DemoQA/Alerts/Alerts.assertion'
 
-test.describe('ZeroStep', () => {
+test.describe('ZeroStep AI', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/')
   })
@@ -75,7 +75,7 @@ test.describe('ZeroStep', () => {
     console.log(textArr)
   })
 
-  test('Should display and assert alert', async ({ page, ai }) => {
+  test('Should display alert', async ({ page, ai }) => {
     const Alerts = new AlertsAssertion(page)
 
     await ai('Click on the "Alerts, Frame & Windows" button')
@@ -86,7 +86,7 @@ test.describe('ZeroStep', () => {
     Alerts.dismissAlert()
   })
 
-  test('Should display and assert new tab', async ({ page, context }) => {
+  test('Should display new tab', async ({ page, context }) => {
     let aiArgs = { page, test }
     await ai('Click on the "Alerts, Frame & Windows" button', aiArgs)
     await ai('Click on the "Browser Windows" button', aiArgs)
