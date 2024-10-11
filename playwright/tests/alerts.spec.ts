@@ -14,7 +14,7 @@ test.describe('Alerts', () => {
     Alerts = new AlertsAssertion(page)
 
     await page.goto('/')
-    await Home.clickOnCard('Alerts, Frame & Windows')
+    await Home.clickOnMenuCard('Alerts, Frame & Windows')
     await LeftPanel.clickOnMenuItem('Alerts', { exact: true })
   })
 

@@ -1,17 +1,17 @@
+import { SAMPLE_TEXT } from 'common'
+import * as Home from 'cypress/screens/DemoQA/Homepage'
+import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
+import * as Windows from 'cypress/screens/DemoQA/Windows'
+
 describe('Windows', () => {
   it('Should open new window and assert header', () => {
     cy.visit('/')
+    Home.clickOnMenuCard('Alerts, Frame & Windows')
+    LeftPanel.clickOnMenuItem('Browser Windows')
 
-    cy.contains('Alerts, Frame & Windows').click()
-    cy.contains('Browser Windows').click()
-
-    cy.window().then(($win) => {
-      cy.stub($win, 'open').as('New window')
-      cy.get('#windowButton').click()
-      cy.get('@New window').should('be.calledOnce')
-    })
-
-    cy.visit('/sample')
-    cy.get('h1').contains('This is a sample page')
+    Windows.stubWindow({ alias: 'newWindow' })
+    Windows.windowButton().click()
+    Windows.assertWindowWasCalled({ alias: 'newWindow' })
+    Windows.assertNewWindowHeader({ text: SAMPLE_TEXT })
   })
 })

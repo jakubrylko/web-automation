@@ -1,5 +1,8 @@
 import { Page, expect } from '@playwright/test'
 import { PracticeFormSelectors } from './PracticeForm.selectors'
+import { faker } from '@faker-js/faker'
+
+const { int } = faker.number
 
 export class PracticeFormPage extends PracticeFormSelectors {
   constructor(page: Page) {
@@ -15,10 +18,11 @@ export class PracticeFormPage extends PracticeFormSelectors {
     await this.dateOfBirth.click()
     await this.monthSelect.selectOption({ label: month })
     await this.yearSelect.selectOption({ label: year })
-    await this.page.getByText(day, { exact: true }).click()
+    await this.page.locator(`[aria-label*="${month} ${day}"]`).nth(0).click()
+
     await expect(this.dateOfBirth).toHaveAttribute(
       'value',
-      `${day} ${month} ${year}`
+      `${day.padStart(2, '0')} ${month.slice(0, 3)} ${year}`
     )
   }
 
@@ -34,13 +38,17 @@ export class PracticeFormPage extends PracticeFormSelectors {
     }
   }
 
-  async selectFirstState() {
+  async selectRandomState() {
     await this.stateSelect.click()
-    await this.firstState.click()
+    const numOfStates = await this.stateOption.count()
+    const randomState = int({ min: 1, max: numOfStates - 1 })
+    await this.stateOption.nth(randomState).click()
   }
 
-  async selectFirstCity() {
+  async selectRandomCity() {
     await this.citySelect.click()
-    await this.firstCity.click()
+    const numOfCities = await this.cityOption.count()
+    const randomState = int({ min: 1, max: numOfCities - 1 })
+    await this.cityOption.nth(randomState).click()
   }
 }

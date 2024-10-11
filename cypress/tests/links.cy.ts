@@ -1,20 +1,14 @@
-import { LINK } from 'common/selectors/links'
+import * as Home from 'cypress/screens/DemoQA/Homepage'
+import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
+import * as Links from 'cypress/screens/DemoQA/Links'
 
 describe('Practice form', () => {
   it('Should fill and submit practice form', () => {
     cy.visit('/')
+    Home.clickOnMenuCard('Elements')
+    LeftPanel.clickOnMenuItem('Links')
 
-    cy.contains('Elements').click()
-    cy.contains('Links').click()
-
-    cy.get(LINK)
-      .its('length')
-      .then((numOfLinks) => {
-        cy.log(`Number of links: ${numOfLinks}`)
-      })
-
-    cy.get(LINK).each(($link) => {
-      cy.wrap($link).should('be.visible').and('have.attr', 'href')
-    })
+    Links.countLinks()
+    Links.assertLinks()
   })
 })

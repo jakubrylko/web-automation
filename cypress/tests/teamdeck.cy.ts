@@ -1,3 +1,5 @@
+import * as Home from 'cypress/screens/Teamdeck/Homepage'
+
 const { env } = Cypress
 
 const BASIC_AUTH = {
@@ -7,9 +9,9 @@ const BASIC_AUTH = {
   }
 }
 
-describe('Basic auth', () => {
+describe('Teamdeck login', () => {
   it('Should login to the app with basic auth', () => {
     cy.visit(env('TEAMDECK_URL'), BASIC_AUTH)
-    cy.get('#usercom-launcher-dot-frame').should('be.visible')
+    Home.userWidget().shouldBeVisible()
   })
 })

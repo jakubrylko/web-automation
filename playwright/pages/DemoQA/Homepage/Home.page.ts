@@ -6,7 +6,7 @@ export class HomePage extends BaseClass {
     super(page)
   }
 
-  async clickOnCard(card: string) {
+  async clickOnMenuCard(card: string) {
     await this.page.getByText(card).click()
   }
 }

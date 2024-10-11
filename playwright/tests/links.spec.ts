@@ -10,7 +10,7 @@ test.describe('Links', () => {
     const Links = new LinksAssertion(page)
 
     await page.goto('/')
-    await Home.clickOnCard('Elements')
+    await Home.clickOnMenuCard('Elements')
     await LeftPanel.clickOnMenuItem('Links', { exact: true })
     await Links.assertLinks()
   })

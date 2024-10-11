@@ -15,7 +15,7 @@ test.describe('Windows', () => {
     Windows = new WindowsAssertion(page)
 
     await page.goto('/')
-    await Home.clickOnCard('Alerts, Frame & Windows')
+    await Home.clickOnMenuCard('Alerts, Frame & Windows')
     await LeftPanel.clickOnMenuItem('Browser Windows')
   })
 

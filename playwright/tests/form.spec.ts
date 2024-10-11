@@ -10,7 +10,7 @@ test.describe('Practice form', () => {
     const PracticeForm = new PracticeFormAssertion(page)
 
     await page.goto('/')
-    await Home.clickOnCard('Forms')
+    await Home.clickOnMenuCard('Forms')
     await LeftPanel.clickOnMenuItem('Practice Form')
 
     await PracticeForm.firstName.fill('John')
@@ -19,15 +19,15 @@ test.describe('Practice form', () => {
     await PracticeForm.mobileNumber.fill('0123456789')
 
     await PracticeForm.selectGender('Male')
-    await PracticeForm.selectDateOfBirth('15', 'May', '1990')
+    await PracticeForm.selectDateOfBirth('1', 'August', '1990')
 
     await PracticeForm.selectSubject('Computer')
     await PracticeForm.assertSubject('Computer Science')
     await PracticeForm.selectHobbies(['Sports', 'Music'])
 
     await PracticeForm.currentAddress.fill('Gorecka 1,\nPoznan,\nPoland')
-    await PracticeForm.selectFirstState()
-    await PracticeForm.selectFirstCity()
+    await PracticeForm.selectRandomState()
+    await PracticeForm.selectRandomCity()
 
     await PracticeForm.submitButton.click()
     await PracticeForm.assertSubmissionTitle('Thanks for submitting the form')
