@@ -1,7 +1,7 @@
 import { APIRequestContext } from '@playwright/test'
 import { BaseClass } from '../BaseClass.api'
 
-const { BOOKER_URL } = process.env
+const baseUrl = process.env.BOOKER_URL
 
 export class BookerAPIPage extends BaseClass {
   constructor(request: APIRequestContext) {
@@ -9,10 +9,10 @@ export class BookerAPIPage extends BaseClass {
   }
 
   async getBookings() {
-    return await this.utils.sendGet(`${BOOKER_URL}/booking`)
+    return await this.utils.sendGet(`${baseUrl}/booking`)
   }
 
   async createBooking(data: object) {
-    return await this.utils.sendPost(`${BOOKER_URL}/booking`, data)
+    return await this.utils.sendPost(`${baseUrl}/booking`, data)
   }
 }
