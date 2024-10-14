@@ -17,6 +17,7 @@
     "cy:run:spec": "cypress run --spec",
     "cy:run": "cypress run",
     "pw:report": "playwright show-report playwright/playwright-report",
+    "pw:report:clean": "rm -rf playwright/playwright-report",
     "pw:test:headed": "playwright test --headed --project=chromium",
     "pw:test:ui": "playwright test --ui",
     "pw:test": "playwright test --project=chromium"
