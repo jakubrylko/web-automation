@@ -5,7 +5,7 @@ import tseslint from 'typescript-eslint'
 export default [
   { files: ['**/*.{js,ts}'] },
   { languageOptions: { globals: globals.browser } },
-  { ignores: ['playwright/playwright-report', 'allure'] },
+  { ignores: ['allure', 'playwright/playwright-report'] },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended
 ]
