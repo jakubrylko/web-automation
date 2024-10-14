@@ -3,7 +3,7 @@ import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
 import * as Links from 'cypress/screens/DemoQA/Links'
 
 describe('Practice form', () => {
-  it('Should fill and submit practice form', () => {
+  it('Should assert all links', () => {
     cy.visit('/')
     Home.clickOnMenuCard('Elements')
     LeftPanel.clickOnMenuItem('Links')

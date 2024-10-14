@@ -4,6 +4,9 @@ node_modules
 # Envs
 .env
 
+# Allure artifacts
+allure
+
 # Cypress artifacts
 cypress/downloads
 cypress/screenshots

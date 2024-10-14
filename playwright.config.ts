@@ -15,7 +15,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   reporter: [
-    ['html', { open: 'never', outputFolder: './playwright/playwright-report' }]
+    ['allure-playwright', { resultsDir: 'allure/allure-results/playwright' }],
+    ['html', { open: 'never', outputFolder: 'playwright/playwright-report' }]
   ],
 
   use: {

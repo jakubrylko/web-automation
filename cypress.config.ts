@@ -1,9 +1,13 @@
+import { allureCypress } from 'allure-cypress/reporter'
 import { defineConfig } from 'cypress'
 import 'dotenv/config'
 
 export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+      allureCypress(on, config, {
+        resultsDir: 'allure/allure-results/cypress'
+      })
       Object.assign(config.env, process.env)
       return config
     },
