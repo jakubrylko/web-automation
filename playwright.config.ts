@@ -2,9 +2,9 @@ import { defineConfig, devices } from '@playwright/test'
 import 'dotenv/config'
 
 export default defineConfig({
-  testDir: './playwright/tests',
-  outputDir: './playwright/test-results',
-  snapshotDir: './playwright/snapshots',
+  testDir: 'playwright/tests',
+  outputDir: 'playwright/test-results',
+  snapshotDir: 'playwright/snapshots',
 
   timeout: 30000,
   expect: { timeout: 5000, toHaveScreenshot: { threshold: 0.01 } },
