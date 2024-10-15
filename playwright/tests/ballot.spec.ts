@@ -12,7 +12,7 @@ const numOfExecutions = 1
 
 test.describe('Bimber Distillery', () => {
   for (let i = 0; i < numOfExecutions; i++) {
-    test(`[${i + 1}] Should make a submission for a product`, async ({
+    test(`[${i + 1}]  Should make a submission for a product`, async ({
       page
     }) => {
       const Ballot = new BallotPage(page)
