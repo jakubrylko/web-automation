@@ -6,7 +6,6 @@ on:
 
 jobs:
   setup:
-    name: Base setup
     uses: ./.github/workflows/common.yaml
 
   types:
@@ -14,7 +13,5 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
       - name: Validate types
         run: yarn type:check
