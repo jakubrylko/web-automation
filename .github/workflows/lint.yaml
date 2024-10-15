@@ -5,13 +5,11 @@ on:
   pull_request:
 
 jobs:
-  setup:
-    uses: ./.github/workflows/common.yaml
-
   lint:
     name: Lint & Prettier
     runs-on: ubuntu-latest
-    needs: setup
     steps:
+      - name: Base setup
+        uses: ./.github/workflows/common.yaml
       - name: Format code
         run: yarn format && yarn lint
