@@ -1,0 +1,15 @@
+name: Types validation
+run-name: Validating types on ${{ github.head_ref }}
+
+on:
+  pull_request:
+
+jobs:
+  types:
+    name: Types validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Base setup
+        uses: ./.github/workflows/common.yaml
+      - name: Validate types
+        run: yarn type:check

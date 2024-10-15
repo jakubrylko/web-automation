@@ -9,7 +9,7 @@
     "allure:generate": "allure generate allure/allure-results -o allure/allure-report",
     "allure:pw": "allure serve allure/allure-results/playwright",
     "allure:pw:clean": "rm -rf allure/allure-results/playwright",
-    "format": "prettier --write .",
+    "format": "prettier --write . --log-level error",
     "lint": "eslint .",
     "prepare": "husky",
     "type:check": "tsc && :",
