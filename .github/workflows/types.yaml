@@ -1,5 +1,5 @@
-name: Lint & Prettier
-run-name: Linting on ${{ github.head_ref }}
+name: Types validation
+run-name: Validating types on ${{ github.head_ref }}
 
 on:
   pull_request:
@@ -9,12 +9,12 @@ jobs:
     name: Base setup
     uses: ./.github/workflows/common.yaml
 
-  lint:
-    name: Lint & Prettier
+  types:
+    name: Types validation
     runs-on: ubuntu-latest
     needs: setup
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Format code
-        run: yarn format && yarn lint
+      - name: Validate types
+        run: yarn type:check
