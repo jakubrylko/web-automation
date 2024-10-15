@@ -9,11 +9,9 @@ jobs:
     name: Types validation
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-      # - name: Base setup
-      #   uses: ./.github/workflows/common.yaml
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
