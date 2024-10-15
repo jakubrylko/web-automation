@@ -1,2 +1,2 @@
-sh ./scripts/protect-main.sh
+sh ./scripts/block-main.sh
 yarn lint-staged
