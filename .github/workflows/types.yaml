@@ -11,7 +11,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Base setup
-        uses: ./.github/workflows/common.yaml
+      # - name: Base setup
+      #   uses: ./.github/workflows/common.yaml
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
       - name: Validate types
         run: yarn type:check
