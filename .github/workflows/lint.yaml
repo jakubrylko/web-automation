@@ -9,7 +9,13 @@ jobs:
     name: Lint & Prettier
     runs-on: ubuntu-latest
     steps:
-      - name: Base setup
-        uses: ./.github/workflows/common.yaml
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
       - name: Format code
         run: yarn format && yarn lint
