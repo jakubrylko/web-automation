@@ -20,7 +20,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!CI,
   retries: CI ? 1 : 0,
-  workers: CI ? 1 : undefined,
+  workers: CI ? 5 : undefined,
 
   reporter: [
     ['allure-playwright', { resultsDir: 'allure/allure-results/playwright' }],
