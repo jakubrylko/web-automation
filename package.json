@@ -1,9 +1,9 @@
 {
   "name": "web-automation",
-  "version": "1.0.0",
   "license": "MIT",
   "author": "Jakub Ryłko",
-  "homepage": "https://jakubrylko.github.io/web-automation",
+  "gh-pages": "https://jakubrylko.github.io/web-automation",
+  "repository": "https://github.com/jakubrylko/web-automation",
   "scripts": {
     "allure:cy": "allure serve allure/allure-results/cypress",
     "allure:cy:clean": "rm -rf allure/allure-results/cypress",
