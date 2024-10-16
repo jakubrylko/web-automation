@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test'
-import { BaseClass } from 'playwright/pages/BaseClass'
+import { BaseClass } from 'playwright/shared/BaseClass'
 
 export class AlertsSelectors extends BaseClass {
   readonly alertButton: Locator

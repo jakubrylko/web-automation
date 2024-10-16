@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 export default defineConfig({
   testDir: 'playwright/tests',
-  outputDir: 'playwright/test-results',
+  outputDir: 'playwright/traces',
   snapshotDir: 'playwright/snapshots',
 
   timeout: 30000,
@@ -11,12 +11,12 @@ export default defineConfig({
 
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : undefined,
 
   reporter: [
     ['allure-playwright', { resultsDir: 'allure/allure-results/playwright' }],
-    ['html', { open: 'never', outputFolder: 'playwright/playwright-report' }]
+    ['html', { open: 'never', outputFolder: 'playwright/report' }]
   ],
 
   use: {

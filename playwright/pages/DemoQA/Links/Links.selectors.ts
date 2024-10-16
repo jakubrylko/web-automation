@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test'
-import { BaseClass } from 'playwright/pages/BaseClass'
+import { BaseClass } from 'playwright/shared/BaseClass'
 
 export class LinksSelectors extends BaseClass {
   readonly link: Locator

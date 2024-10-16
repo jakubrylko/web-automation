@@ -12,10 +12,15 @@ export default defineConfig({
       return config
     },
     baseUrl: 'https://demoqa.com',
-    viewportWidth: 1920,
-    viewportHeight: 1080,
+
     chromeWebSecurity: false,
+    defaultCommandTimeout: 4000,
+    pageLoadTimeout: 60000,
+    retries: { runMode: 0, openMode: 0 },
+    viewportHeight: 1080,
+    viewportWidth: 1920,
     watchForFileChanges: false,
+
     specPattern: 'cypress/tests/**/*.cy.{js,ts}',
     supportFile: 'cypress/support/e2e.{js,ts}'
   }
