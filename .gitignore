@@ -9,10 +9,10 @@ allure
 
 # Cypress artifacts
 cypress/downloads
+cypress/report
 cypress/screenshots
 
 # Playwright artifacts
-playwright/playwright-report
+playwright/report
 playwright/snapshots
-playwright/test-results
-playwright/playwright/.cache
+playwright/traces

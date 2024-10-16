@@ -1,5 +1,5 @@
 import { Page } from '@playwright/test'
-import { BaseClass } from 'playwright/pages/BaseClass'
+import { BaseClass } from 'playwright/shared/BaseClass'
 
 export class LeftPanelPage extends BaseClass {
   constructor(page: Page) {

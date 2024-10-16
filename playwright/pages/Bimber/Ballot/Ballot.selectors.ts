@@ -1,5 +1,5 @@
 import { Locator, Page } from '@playwright/test'
-import { BaseClass } from '../../BaseClass'
+import { BaseClass } from '../../../shared/BaseClass'
 
 export class BallotSelectors extends BaseClass {
   readonly billingAddress: Locator
