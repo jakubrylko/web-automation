@@ -44,7 +44,7 @@ jobs:
       - name: Install Playwright browsers
         run: yarn playwright install --with-deps
       - name: Run Playwright tests
-        run: DEVICE=$device npx playwright test DemoQA --project=$browser
+        run: DEVICE=$device yarn playwright test demoqa --project=$browser
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
