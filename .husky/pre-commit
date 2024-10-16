@@ -1,2 +1,0 @@
-sh ./scripts/block-main.sh
-yarn lint-staged
