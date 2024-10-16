@@ -1,5 +1,5 @@
 name: Playwright tests
-run-name: ${{ github.event_name == 'pull_request' && format('Testing on {0}', github.head_ref) || 'Testing on main' }}
+run-name: Testing on ${{ github.head_ref }}
 
 on:
   pull_request:
