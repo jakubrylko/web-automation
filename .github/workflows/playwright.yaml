@@ -46,13 +46,14 @@ jobs:
         run: yarn playwright install --with-deps
       - name: Run Playwright tests
         run: DEVICE=$device yarn playwright test demoqa --project=$browser
-      - uses: actions/upload-artifact@v4
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
           path: playwright/report/
           retention-days: 30
-      - name: Deploy report
+      - name: Deploy report to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
