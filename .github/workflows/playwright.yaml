@@ -1,0 +1,59 @@
+name: Playwright tests
+run-name: Testing main branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      device:
+        description: Device
+        required: true
+        default: 'MacBook'
+        type: 'choice'
+        options:
+          - 'MacBook'
+          - 'iPad'
+          - 'iPhone'
+      browser:
+        description: Browser
+        required: true
+        default: 'Chromium'
+        type: 'choice'
+        options:
+          - 'Chromium'
+          - 'Firefox'
+          - 'Webkit'
+
+jobs:
+  playwright:
+    name: Playwright tests
+    runs-on: ubuntu-latest
+    env:
+      device: ${{ inputs.device || 'MacBook' }}
+      browser: ${{ inputs.browser || 'Chromium' }}
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright browsers
+        run: yarn playwright install --with-deps
+      - name: Run Playwright tests
+        run: DEVICE=$device npx playwright test DemoQA --project=$browser
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright/report/
+          retention-days: 30
+      - name: Deploy report
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: playwright-report
