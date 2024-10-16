@@ -1,5 +1,13 @@
-import { defineConfig, devices } from '@playwright/test'
+import { defineConfig, devices, ViewportSize } from '@playwright/test'
 import 'dotenv/config'
+
+const { CI, DEVICE } = process.env
+
+const viewport: Record<string, ViewportSize> = {
+  MacBook: { width: 1536, height: 900 },
+  iPad: { width: 810, height: 1080 },
+  iPhone: { width: 393, height: 852 }
+}
 
 export default defineConfig({
   testDir: 'playwright/tests',
@@ -10,9 +18,9 @@ export default defineConfig({
   expect: { timeout: 5000, toHaveScreenshot: { threshold: 0.01 } },
 
   fullyParallel: true,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  forbidOnly: !!CI,
+  retries: CI ? 1 : 0,
+  workers: CI ? 1 : undefined,
 
   reporter: [
     ['allure-playwright', { resultsDir: 'allure/allure-results/playwright' }],
@@ -26,29 +34,25 @@ export default defineConfig({
 
   projects: [
     {
-      name: 'chromium',
+      name: 'Chromium',
       use: {
         ...devices['Desktop Chrome'],
-        viewport: { width: 1920, height: 1080 }
+        viewport: viewport[DEVICE ?? 'MacBook']
       }
     },
     {
-      name: 'firefox',
+      name: 'Firefox',
       use: {
         ...devices['Desktop Firefox'],
-        viewport: { width: 1920, height: 1080 }
+        viewport: viewport[DEVICE ?? 'MacBook']
       }
     },
     {
-      name: 'webkit',
+      name: 'Webkit',
       use: {
         ...devices['Desktop Safari'],
-        viewport: { width: 1920, height: 1080 }
+        viewport: viewport[DEVICE ?? 'MacBook']
       }
-    },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] }
     }
   ]
 })
