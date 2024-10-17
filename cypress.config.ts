@@ -11,11 +11,13 @@ export default defineConfig({
       allureCypress(on, config, {
         resultsDir: 'allure/allure-results/cypress'
       })
+
       Object.assign(config.env, process.env)
       return config
     },
-    baseUrl: 'https://demoqa.com',
 
+    baseUrl: 'https://demoqa.com',
+    video: CI ? true : false,
     chromeWebSecurity: false,
     defaultCommandTimeout: 4000,
     pageLoadTimeout: 60000,
