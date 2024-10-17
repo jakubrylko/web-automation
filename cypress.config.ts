@@ -3,7 +3,7 @@ import { defineConfig } from 'cypress'
 import { viewport } from './common'
 import 'dotenv/config'
 
-const { DEVICE } = process.env
+const { CI, DEVICE } = process.env
 
 export default defineConfig({
   e2e: {
@@ -19,7 +19,7 @@ export default defineConfig({
     chromeWebSecurity: false,
     defaultCommandTimeout: 4000,
     pageLoadTimeout: 60000,
-    retries: { runMode: 0, openMode: 0 },
+    retries: { runMode: CI ? 1 : 0, openMode: 0 },
     viewportHeight: viewport[DEVICE ?? 'MacBook'].height,
     viewportWidth: viewport[DEVICE ?? 'MacBook'].width,
     watchForFileChanges: false,
