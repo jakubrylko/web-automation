@@ -7,6 +7,6 @@ export class LeftPanelPage extends BaseClass {
   }
 
   async clickOnMenuItem(item: string) {
-    await this.page.locator('.btn', { hasText: item }).click()
+    await this.page.getByText(item, { exact: true }).click()
   }
 }
