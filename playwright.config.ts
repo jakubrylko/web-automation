@@ -29,21 +29,21 @@ export default defineConfig({
 
   projects: [
     {
-      name: 'Chromium',
+      name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
         viewport: viewport[DEVICE ?? 'MacBook']
       }
     },
     {
-      name: 'Firefox',
+      name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
         viewport: viewport[DEVICE ?? 'MacBook']
       }
     },
     {
-      name: 'Webkit',
+      name: 'webkit',
       use: {
         ...devices['Desktop Safari'],
         viewport: viewport[DEVICE ?? 'MacBook']

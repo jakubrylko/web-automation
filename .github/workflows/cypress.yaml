@@ -20,12 +20,12 @@ on:
       browser:
         description: Browser
         required: true
-        default: 'Chrome'
+        default: 'chrome'
         type: 'choice'
         options:
-          - 'Chrome'
-          - 'Firefox'
-          - 'Edge'
+          - 'chrome'
+          - 'firefox'
+          - 'edge'
 
 jobs:
   cypress:
