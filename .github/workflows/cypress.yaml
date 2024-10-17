@@ -42,4 +42,11 @@ jobs:
         with:
           browser: ${{ env.browser.toLowerCase }}
           env: DEVICE=${{ env.device }}
-          spec: 'cypress/tests/DemoQA/*.cy.ts'
+          spec: 'cypress/tests/demoqa/*.cy.ts'
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos/
+          retention-days: 15
