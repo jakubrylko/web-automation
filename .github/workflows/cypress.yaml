@@ -24,8 +24,9 @@ on:
         type: 'choice'
         options:
           - 'chrome'
-          - 'firefox'
           - 'edge'
+          - 'electron'
+          - 'firefox'
 
 jobs:
   cypress:
