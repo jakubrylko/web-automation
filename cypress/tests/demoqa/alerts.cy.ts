@@ -1,0 +1,49 @@
+import * as Home from 'cypress/screens/DemoQA/Homepage'
+import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
+import * as Alerts from 'cypress/screens/DemoQA/Alerts'
+
+describe('Alerts', () => {
+  beforeEach(() => {
+    cy.visit('/')
+    Home.clickOnMenuCard('Alerts, Frame & Windows')
+    LeftPanel.clickOnMenuItem('Alerts')
+  })
+
+  it('Should display alert', () => {
+    Alerts.alertButton().click()
+    Alerts.assertAlert('You clicked a button')
+  })
+
+  it('Should display alert with timer', () => {
+    let startTime: number
+
+    Alerts.stubAlert()
+    Alerts.timerAlertButton()
+      .click()
+      .then(() => {
+        startTime = Date.now()
+      })
+
+    Alerts.assertAlertWasCalledWith('This alert appeared after 5 seconds').then(
+      () => {
+        const alertTime = Date.now() - startTime
+        expect(alertTime).to.be.within(4900, 5100)
+      }
+    )
+  })
+
+  it('Should display confirm box', () => {
+    Alerts.confirmBoxButton().click()
+    Alerts.assertConfirmBox('Do you confirm action?')
+    Alerts.handleConfirmBox('Approve')
+    Alerts.assertConfirmBoxResult('You selected Ok')
+  })
+
+  it('Should display prompt box', () => {
+    const text = 'Testing'
+
+    Alerts.stubPromptBox(text)
+    Alerts.promptBoxButton().click()
+    Alerts.assertPromptBoxResult(text)
+  })
+})

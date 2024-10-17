@@ -15,7 +15,7 @@ test.describe('Alerts', () => {
 
     await page.goto('/')
     await Home.clickOnMenuCard('Alerts, Frame & Windows')
-    await LeftPanel.clickOnMenuItem('Alerts', { exact: true })
+    await LeftPanel.clickOnMenuItem('Alerts')
   })
 
   test.afterEach(async () => {

@@ -13,3 +13,11 @@ Cypress.Commands.add(
     cy.wrap(subject).should('be.checked')
   }
 )
+
+Cypress.Commands.add(
+  'shouldHaveText',
+  { prevSubject: 'element' },
+  (subject, text) => {
+    cy.wrap(subject).should('have.text', text)
+  }
+)

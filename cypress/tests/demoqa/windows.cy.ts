@@ -9,9 +9,9 @@ describe('Windows', () => {
     Home.clickOnMenuCard('Alerts, Frame & Windows')
     LeftPanel.clickOnMenuItem('Browser Windows')
 
-    Windows.stubWindow({ alias: 'newWindow' })
+    Windows.stubWindow()
     Windows.windowButton().click()
-    Windows.assertWindowWasCalled({ alias: 'newWindow' })
+    Windows.assertWindowWasCalled()
     Windows.assertNewWindowHeader({ text: SAMPLE_TEXT })
   })
 })
