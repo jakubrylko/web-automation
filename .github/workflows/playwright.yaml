@@ -50,13 +50,6 @@ jobs:
         run: yarn playwright test demoqa --project=${{ env.BROWSER }}
         env:
           DEVICE: ${{ inputs.device || 'MacBook' }}
-      - name: Upload traces
-        uses: actions/upload-artifact@v4
-        if: ${{ !cancelled() }}
-        with:
-          name: playwright-traces
-          path: playwright/traces/
-          retention-days: 15
       - name: Upload report
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
