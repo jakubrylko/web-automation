@@ -33,19 +33,21 @@ jobs:
     runs-on: ubuntu-latest
     env:
       device: ${{ inputs.device || 'MacBook' }}
-      browser: ${{ inputs.browser || 'Chrome' }}
+      browser: ${{ inputs.browser.toLowerCase || 'chrome' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run Cypress tests
-        uses: cypress-io/github-action@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          browser: ${{ env.browser.toLowerCase }}
-          env: DEVICE=${{ env.device }}
-          spec: 'cypress/tests/demoqa/*.cy.ts'
-      - name: Upload artifacts
+          node-version: '20'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Run Cypress tests
+        run: DEVICE=$device yarn cypress run --spec cypress/tests/demoqa --browser=$browser
+      - name: Upload videos
         uses: actions/upload-artifact@v4
-        if: always()
+        if: ${{ !cancelled() }}
         with:
           name: cypress-videos
           path: cypress/videos/
