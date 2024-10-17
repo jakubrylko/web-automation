@@ -47,7 +47,7 @@ jobs:
         run: DEVICE=$device yarn cypress run --spec cypress/tests/demoqa --browser=$browser
       - name: Upload videos
         uses: actions/upload-artifact@v4
-        if: always()
+        if: ${{ !cancelled() }}
         with:
           name: cypress-videos
           path: cypress/videos/
