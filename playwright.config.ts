@@ -1,13 +1,8 @@
-import { defineConfig, devices, ViewportSize } from '@playwright/test'
+import { defineConfig, devices } from '@playwright/test'
+import { viewport } from './common'
 import 'dotenv/config'
 
 const { CI, DEVICE } = process.env
-
-const viewport: Record<string, ViewportSize> = {
-  MacBook: { width: 1536, height: 900 },
-  iPad: { width: 810, height: 1080 },
-  iPhone: { width: 393, height: 852 }
-}
 
 export default defineConfig({
   testDir: 'playwright/tests',
