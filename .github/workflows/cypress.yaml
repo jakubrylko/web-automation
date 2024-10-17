@@ -39,4 +39,4 @@ jobs:
         with:
           browser: ${{ env.browser.toLowerCase }}
           env: DEVICE=${{ env.device }}
-          spec: cypress/tests/demoqa/*.cy.ts
+          spec: cypress/tests/demoqa/**/*.cy.ts
