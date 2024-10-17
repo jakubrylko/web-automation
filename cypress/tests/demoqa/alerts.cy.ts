@@ -11,7 +11,7 @@ describe('Alerts', () => {
 
   it('Should display alert', () => {
     Alerts.alertButton().click()
-    Alerts.assertAlert('You clicked a button')
+    Alerts.assertAlertText('You clicked a button', { window: 'alert' })
   })
 
   it('Should display alert with timer', () => {
@@ -33,10 +33,12 @@ describe('Alerts', () => {
   })
 
   it('Should display confirm box', () => {
+    const window = 'confirm'
+
     Alerts.confirmBoxButton().click()
-    Alerts.assertConfirmBox('Do you confirm action?')
+    Alerts.assertAlertText('Do you confirm action?', { window })
     Alerts.handleConfirmBox('Approve')
-    Alerts.assertConfirmBoxResult('You selected Ok')
+    Alerts.assertAlertResult('You selected Ok', { window })
   })
 
   it('Should display prompt box', () => {
@@ -44,6 +46,6 @@ describe('Alerts', () => {
 
     Alerts.stubPromptBox(text)
     Alerts.promptBoxButton().click()
-    Alerts.assertPromptBoxResult(text)
+    Alerts.assertAlertResult(`You entered ${text}`, { window: 'prompt' })
   })
 })
