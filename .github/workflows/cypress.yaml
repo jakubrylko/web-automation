@@ -30,13 +30,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       device: ${{ inputs.device || 'MacBook' }}
-      browser: ${{ inputs.browser || 'Chromium' }}
+      browser: ${{ inputs.browser || 'Chrome' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          browser: $browser
-          env: DEVICE=$device
+          browser: ${{ env.browser }}
+          env: DEVICE=${{ env.device }}
           spec: cypress/tests/demoqa/*.cy.ts
