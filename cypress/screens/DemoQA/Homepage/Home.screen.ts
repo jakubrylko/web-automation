@@ -1,3 +1,3 @@
 export const clickOnMenuCard = (card: string) => {
-  cy.contains(card).click()
+  cy.get('.card').contains(card).click()
 }

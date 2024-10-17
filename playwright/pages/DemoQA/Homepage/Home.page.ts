@@ -7,6 +7,6 @@ export class HomePage extends BaseClass {
   }
 
   async clickOnMenuCard(card: string) {
-    await this.page.getByText(card).click()
+    await this.page.locator('.card', { hasText: card }).click()
   }
 }

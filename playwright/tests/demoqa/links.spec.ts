@@ -11,7 +11,7 @@ test.describe('Links', () => {
 
     await page.goto('/')
     await Home.clickOnMenuCard('Elements')
-    await LeftPanel.clickOnMenuItem('Links', { exact: true })
+    await LeftPanel.clickOnMenuItem('Links')
     await Links.assertLinks()
   })
 })

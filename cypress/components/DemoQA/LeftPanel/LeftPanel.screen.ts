@@ -1,3 +1,3 @@
 export const clickOnMenuItem = (item: string) => {
-  cy.contains(item).click()
+  cy.get('.btn').contains(item).click()
 }

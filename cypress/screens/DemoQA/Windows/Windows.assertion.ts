@@ -1,5 +1,5 @@
-export const assertWindowWasCalled = ({ alias }: { alias: string }) => {
-  cy.get(`@${alias}`).should('be.calledOnce')
+export const assertWindowWasCalled = () => {
+  cy.get('@window').should('be.calledOnce')
 }
 
 export const assertNewWindowHeader = ({ text }: { text: string }) => {

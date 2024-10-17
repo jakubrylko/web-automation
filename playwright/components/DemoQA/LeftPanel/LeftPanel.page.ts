@@ -6,7 +6,7 @@ export class LeftPanelPage extends BaseClass {
     super(page)
   }
 
-  async clickOnMenuItem(item: string, { exact = false } = {}) {
-    await this.page.getByText(item, { exact }).click()
+  async clickOnMenuItem(item: string) {
+    await this.page.getByText(item, { exact: true }).click()
   }
 }
