@@ -20,12 +20,12 @@ on:
       browser:
         description: Browser
         required: true
-        default: 'Chromium'
+        default: 'chromium'
         type: 'choice'
         options:
-          - 'Chromium'
-          - 'Firefox'
-          - 'Webkit'
+          - 'chromium'
+          - 'firefox'
+          - 'webkit'
 
 jobs:
   playwright:
