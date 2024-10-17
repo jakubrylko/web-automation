@@ -32,8 +32,7 @@ jobs:
     name: Playwright tests
     runs-on: ubuntu-latest
     env:
-      device: ${{ inputs.device || 'MacBook' }}
-      browser: ${{ inputs.browser || 'Chromium' }}
+      BROWSER: ${{ inputs.browser || 'Chromium' }}
     permissions:
       contents: write
     steps:
@@ -48,9 +47,9 @@ jobs:
       - name: Install Playwright browsers
         run: yarn playwright install --with-deps
       - name: Run Playwright tests
-        run: yarn playwright test demoqa --project=${{ env.browser }}
+        run: yarn playwright test demoqa --project=${{ env.BROWSER }}
         env:
-          DEVICE: ${{ env.device }}
+          DEVICE: ${{ inputs.device || 'MacBook' }}
       - name: Upload traces
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
