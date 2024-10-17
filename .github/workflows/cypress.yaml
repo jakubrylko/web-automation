@@ -37,9 +37,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: 'cypress'
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           browser: ${{ env.browser.toLowerCase }}
           env: DEVICE=${{ env.device }}
-          spec: '/cypress/tests/demoqa/*.cy.ts'
+          spec: 'tests/demoqa/*.cy.ts'
