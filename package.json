@@ -16,6 +16,7 @@
     "type:check": "tsc && :",
     "cy:open": "cypress open",
     "cy:report:clean": "rm -rf cypress/report",
+    "cy:run:headed:spec": "cypress run --headed --spec",
     "cy:run:spec": "cypress run --spec",
     "cy:run": "cypress run",
     "pw:report": "playwright show-report playwright/report",
