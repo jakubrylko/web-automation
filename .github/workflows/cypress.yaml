@@ -37,6 +37,6 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          browser: ${{ env.browser }}
+          browser: ${{ env.browser.toLowerCase }}
           env: DEVICE=${{ env.device }}
           spec: cypress/tests/demoqa/*.cy.ts
