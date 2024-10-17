@@ -3,6 +3,8 @@ run-name: ${{ github.event_name == 'pull_request' && format('Testing on {0}', gi
 
 on:
   pull_request:
+    paths:
+      - 'cypress/**'
   workflow_dispatch:
     inputs:
       device:
@@ -34,9 +36,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          path: '.'
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           browser: ${{ env.browser.toLowerCase }}
           env: DEVICE=${{ env.device }}
-          spec: cypress/tests/demoqa/**/*.cy.ts
+          spec: cypress/tests/demoqa/*.cy.ts

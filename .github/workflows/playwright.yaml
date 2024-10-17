@@ -3,6 +3,8 @@ run-name: ${{ github.event_name == 'pull_request' && format('Testing on {0}', gi
 
 on:
   pull_request:
+    paths:
+      - 'playwright/**'
   workflow_dispatch:
     inputs:
       device:
