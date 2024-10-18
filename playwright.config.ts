@@ -19,7 +19,8 @@ export default defineConfig({
 
   reporter: [
     ['allure-playwright', { resultsDir: 'allure/allure-results/playwright' }],
-    ['html', { open: 'never', outputFolder: 'playwright/report' }]
+    ['html', { open: 'never', outputFolder: 'playwright/report' }],
+    ['list']
   ],
 
   use: {

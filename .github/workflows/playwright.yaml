@@ -6,6 +6,7 @@ on:
     paths:
       - .github/workflows/playwright.yaml
       - playwright/**
+      - playwright.config.ts
   workflow_dispatch:
     inputs:
       device:
@@ -32,7 +33,7 @@ jobs:
     name: Playwright tests
     runs-on: ubuntu-latest
     env:
-      BROWSER: ${{ inputs.browser || 'Chromium' }}
+      BROWSER: ${{ inputs.browser || 'chromium' }}
     permissions:
       contents: write
     steps:
