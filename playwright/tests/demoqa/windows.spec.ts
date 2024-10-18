@@ -1,4 +1,4 @@
-import { SAMPLE_TEXT, MESSAGE_TEXT } from 'common'
+import { SAMPLE_PAGE, MESSAGE_TEXT } from 'common'
 import { test } from '@playwright/test'
 import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
 import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
@@ -30,7 +30,7 @@ test.describe('Windows', () => {
     const newTab = await Windows.openNewWindow(tabButton)
     await newTab.waitForLoadState()
 
-    await Windows.assertNewWindowHeader(newTab, { text: SAMPLE_TEXT })
+    await Windows.assertNewWindowHeader(newTab, { text: SAMPLE_PAGE })
   })
 
   test('Should open new window', async () => {
@@ -39,7 +39,7 @@ test.describe('Windows', () => {
     const newWindow = await Windows.openNewWindow(windowButton)
     await newWindow.waitForLoadState()
 
-    await Windows.assertNewWindowHeader(newWindow, { text: SAMPLE_TEXT })
+    await Windows.assertNewWindowHeader(newWindow, { text: SAMPLE_PAGE })
   })
 
   test('Should open new message window', async () => {
