@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test'
 import { test } from 'playwright/support/my-test'
 import { ai } from '@zerostep/playwright'
-import { SAMPLE_TEXT } from 'common'
+import { SAMPLE_PAGE } from 'common'
 import { TextBoxAssertion } from 'playwright/pages/DemoQA/TextBox/TextBox.assertion'
 import { TablesPage } from 'playwright/pages/DemoQA/Tables/Tables.page'
 import { LinksAssertion } from 'playwright/pages/DemoQA/Links/Links.assertion'
@@ -98,6 +98,6 @@ test.describe('ZeroStep AI', () => {
 
     aiArgs = { page: newTab, test }
     const headerText = await ai('Get h1 text', aiArgs)
-    expect(headerText).toEqual(SAMPLE_TEXT)
+    expect(headerText).toEqual(SAMPLE_PAGE)
   })
 })
