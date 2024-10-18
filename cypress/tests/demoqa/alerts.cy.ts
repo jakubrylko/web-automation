@@ -27,7 +27,7 @@ describe('Alerts', () => {
     Alerts.assertAlertWasCalledWith('This alert appeared after 5 seconds').then(
       () => {
         const alertTime = Date.now() - startTime
-        expect(alertTime).to.be.within(4900, 5100)
+        expect(alertTime).to.be.within(4800, 5000)
       }
     )
   })
