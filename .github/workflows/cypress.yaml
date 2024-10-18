@@ -6,6 +6,7 @@ on:
     paths:
       - .github/workflows/cypress.yaml
       - cypress/**
+      - cypress.config.ts
   workflow_dispatch:
     inputs:
       device:
