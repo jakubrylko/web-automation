@@ -46,7 +46,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Install Playwright browsers
-        run: yarn playwright install --with-deps --silent
+        run: yarn playwright install --with-deps
       - name: Run Playwright tests
         run: yarn playwright test demoqa --project=${{ env.BROWSER }}
         env:
