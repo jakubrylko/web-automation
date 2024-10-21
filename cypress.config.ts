@@ -26,7 +26,7 @@ export default defineConfig({
     viewportWidth: viewport[DEVICE ?? 'MacBook'].width,
     watchForFileChanges: false,
 
-    specPattern: 'cypress/tests/**/*.cy.{js,ts}',
-    supportFile: 'cypress/support/e2e.{js,ts}'
+    specPattern: 'cypress/tests/**/*.cy.ts',
+    supportFile: 'cypress/support/e2e.ts'
   }
 })
