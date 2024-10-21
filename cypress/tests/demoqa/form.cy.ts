@@ -8,24 +8,29 @@ describe('Practice form', () => {
     Home.clickOnMenuCard('Form')
     LeftPanel.clickOnMenuItem('Practice Form')
 
-    PracticeForm.firstName().type('John')
-    PracticeForm.lastName().type('Doe')
-    PracticeForm.emailAddress().type('test@example.com')
-    PracticeForm.mobileNumber().type('0123456789')
+    cy.fixture('form-data').then((data) => {
+      PracticeForm.firstName().type(data.firstName)
+      PracticeForm.lastName().type(data.lastName)
+      PracticeForm.emailAddress().type(data.email)
+      PracticeForm.mobileNumber().type(data.mobile)
 
-    PracticeForm.selectGender('Male')
-    PracticeForm.selectDateOfBirth('1', 'August', '1990')
+      PracticeForm.selectGender(data.gender)
+      const { day, month, year } = data.dateOfBirth
+      PracticeForm.selectDateOfBirth(day, month, year)
 
-    PracticeForm.selectSubject('Computer')
-    PracticeForm.assertSubject('Computer Science')
-    PracticeForm.selectHobbies(['Sports', 'Music'])
+      PracticeForm.selectSubject(data.subject)
+      PracticeForm.selectHobbies(data.hobbies)
+      PracticeForm.currentAddress().type(data.address)
+    })
 
-    PracticeForm.currentAddress().type('Gorecka 1,\nPoznan,\nPoland')
+    const filePath = 'cypress/fixtures/form-data.json'
+    PracticeForm.chooseFileButton().selectFile(filePath)
     PracticeForm.selectRandomState()
     PracticeForm.selectRandomCity()
 
     PracticeForm.submitButton().click()
     PracticeForm.assertSubmissionTitle('Thanks for submitting the form')
+    PracticeForm.createCsvFile()
     PracticeForm.closeButton().click()
   })
 })

@@ -1,5 +1,5 @@
 import { test } from '@playwright/test'
-import { newBooking } from 'common'
+import { newBooking } from 'common/test-data'
 import { BookerAPIAssertion } from 'playwright/api/Booker/Booker.api.assertion'
 
 test.describe('Restful Booker API', () => {

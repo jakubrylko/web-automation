@@ -1,6 +1,6 @@
 import { allureCypress } from 'allure-cypress/reporter'
 import { defineConfig } from 'cypress'
-import { viewport } from './common'
+import { viewport } from './common/helpers'
 import 'dotenv/config'
 
 const { CI, DEVICE } = process.env
@@ -26,6 +26,7 @@ export default defineConfig({
     viewportWidth: viewport[DEVICE ?? 'MacBook'].width,
     watchForFileChanges: false,
 
+    fixturesFolder: 'cypress/fixtures',
     specPattern: 'cypress/tests/**/*.cy.ts',
     supportFile: 'cypress/support/e2e.ts'
   }
