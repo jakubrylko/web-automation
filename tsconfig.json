@@ -4,12 +4,12 @@
     "baseUrl": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "commonjs",
+    "module": "CommonJS",
     "noEmit": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ES6",
     "types": ["cypress-plugin-api", "node"]
   },
-  "include": ["common", "cypress", "playwright", "types"]
+  "include": ["common", "cypress", "playwright", "types", "**/*.config.ts"]
 }

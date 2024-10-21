@@ -1,12 +1,12 @@
 import { faker } from '@faker-js/faker'
 import dayjs from 'dayjs'
 
-const { date, person, commerce, datatype } = faker
+const { commerce, datatype, date, helpers, person } = faker
 
 const checkinDate = date.soon({ days: 30 })
 const checkoutDate = date.soon({ days: 30, refDate: checkinDate })
 
-const additionalNeeds = faker.helpers.arrayElement([
+const additionalNeeds = helpers.arrayElement([
   'Breakfast',
   'Lunch',
   'Dinner',

@@ -1,9 +1,7 @@
 import './commands'
+import './hooks'
+import '/common/helpers'
 import 'allure-cypress'
 import 'cypress-plugin-api'
-
-beforeEach(() => {
-  cy.intercept({ resourceType: /xhr|fetch/ }, { log: true })
-})
 
 Cypress.on('uncaught:exception', () => false)

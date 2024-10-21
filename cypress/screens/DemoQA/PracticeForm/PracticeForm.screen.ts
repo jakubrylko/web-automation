@@ -24,6 +24,7 @@ export const selectDateOfBirth = (day: string, month: string, year: string) => {
 export const selectSubject = (subject: string) => {
   Selectors.subjectsInput().type(subject)
   Selectors.firstSubject().click()
+  cy.contains(subject).shouldBeVisible()
 }
 
 export const selectHobbies = (hobbies: Hobby | Hobby[]) => {
@@ -54,5 +55,33 @@ export const selectRandomCity = () => {
     .then((numOfCities) => {
       const randomCity = int({ min: 1, max: numOfCities - 1 })
       Selectors.cityOption().eq(randomCity).click()
+    })
+}
+
+export const createCsvFile = () => {
+  Selectors.formTable()
+    .find('tr')
+    .then((rows) => {
+      // Creating an array from table rows
+      const data: [string, string][] = Array.from(rows).map((row) => {
+        const [key, value] = Array.from(row.children).map(
+          (cell) => cell.textContent?.trim().removeNewlines() || ''
+        )
+
+        // Formatting answers
+        const formattedValue =
+          key === 'Date of Birth'
+            ? value.replaceCommas(' ')
+            : key === 'Hobbies'
+              ? value.replaceCommas(' &')
+              : key === 'Address'
+                ? value.replaceCommas(';')
+                : value
+
+        return [key, formattedValue]
+      })
+
+      const csvContent = data.map((row) => row.join(',')).join('\n')
+      cy.writeFile('cypress/downloads/answers.csv', csvContent)
     })
 }

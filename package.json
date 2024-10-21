@@ -14,8 +14,8 @@
     "allure:generate": "allure generate allure/allure-results -o allure/allure-report",
     "allure:pw": "allure serve allure/allure-results/playwright",
     "allure:pw:clean": "rm -rf allure/allure-results/playwright",
-    "cy:logs:off": "sed -i '' 's/log: true/log: false/' cypress/support/e2e.ts",
-    "cy:logs:on": "sed -i '' 's/log: false/log: true/' cypress/support/e2e.ts",
+    "cy:logs:off": "sed -i '' 's/log: true/log: false/' cypress/support/hooks.ts",
+    "cy:logs:on": "sed -i '' 's/log: false/log: true/' cypress/support/hooks.ts",
     "cy:open": "cypress open",
     "cy:report:clean": "rm -rf cypress/report",
     "cy:run:headed:spec": "cypress run --headed --spec",
@@ -30,7 +30,7 @@
   "dependencies": {
     "@playwright/test": "^1.47.2",
     "cypress": "13.15.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.6.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",
@@ -42,8 +42,8 @@
     "cypress-plugin-api": "^2.11.1",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.1",
-    "eslint-config-prettier": "^9.1.0",
     "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
     "globals": "^15.10.0",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",

@@ -1,8 +1,10 @@
 import { defineConfig, devices } from '@playwright/test'
-import { viewport } from './common'
+import { DeviceType, viewport } from 'common/helpers'
 import 'dotenv/config'
 
 const { CI, DEVICE } = process.env
+
+const device = (DEVICE ?? 'MacBook') as DeviceType
 
 export default defineConfig({
   testDir: 'playwright/tests',
@@ -33,21 +35,21 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        viewport: viewport[DEVICE ?? 'MacBook']
+        viewport: viewport[device]
       }
     },
     {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
-        viewport: viewport[DEVICE ?? 'MacBook']
+        viewport: viewport[device]
       }
     },
     {
       name: 'webkit',
       use: {
         ...devices['Desktop Safari'],
-        viewport: viewport[DEVICE ?? 'MacBook']
+        viewport: viewport[device]
       }
     }
   ]

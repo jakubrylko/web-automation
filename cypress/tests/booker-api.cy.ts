@@ -1,4 +1,4 @@
-import { newBooking } from 'common'
+import { newBooking } from 'common/test-data'
 import { statusShouldBeOk } from 'cypress/api/utilities'
 import * as BookerAPI from 'cypress/api/Booker'
 
