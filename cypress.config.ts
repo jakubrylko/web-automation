@@ -1,9 +1,11 @@
 import { allureCypress } from 'allure-cypress/reporter'
 import { defineConfig } from 'cypress'
-import { viewport } from './common/helpers'
+import { DeviceType, viewport } from './common/helpers'
 import 'dotenv/config'
 
 const { CI, DEVICE } = process.env
+
+const device = (DEVICE ?? 'MacBook') as DeviceType
 
 export default defineConfig({
   e2e: {
@@ -22,8 +24,8 @@ export default defineConfig({
     defaultCommandTimeout: 4000,
     pageLoadTimeout: 60000,
     retries: { runMode: CI ? 1 : 0, openMode: 0 },
-    viewportHeight: viewport[DEVICE ?? 'MacBook'].height,
-    viewportWidth: viewport[DEVICE ?? 'MacBook'].width,
+    viewportHeight: viewport[device].height,
+    viewportWidth: viewport[device].width,
     watchForFileChanges: false,
 
     fixturesFolder: 'cypress/fixtures',
