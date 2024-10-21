@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test'
-import { viewport } from './common'
+import { viewport } from './common/helpers'
 import 'dotenv/config'
 
 const { CI, DEVICE } = process.env
