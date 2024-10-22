@@ -61,9 +61,9 @@ export const selectRandomCity = () => {
 export const createCsvFromTable = () => {
   Selectors.formTable()
     .find('tr')
-    .then((rows) => {
+    .then(($rows) => {
       // Creating an array from table rows
-      const data: [string, string][] = Array.from(rows).map((row) => {
+      const data: [string, string][] = Array.from($rows).map((row) => {
         const [key, value] = Array.from(row.children).map(
           (cell) => cell.textContent?.trim().removeNewlines() || ''
         )
