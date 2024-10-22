@@ -58,7 +58,7 @@ export const selectRandomCity = () => {
     })
 }
 
-export const createCsvFile = () => {
+export const createCsvFromTable = () => {
   Selectors.formTable()
     .find('tr')
     .then((rows) => {
@@ -72,11 +72,9 @@ export const createCsvFile = () => {
         const formattedValue =
           key === 'Date of Birth'
             ? value.replaceCommas(' ')
-            : key === 'Hobbies'
-              ? value.replaceCommas(' &')
-              : key === 'Address'
-                ? value.replaceCommas(';')
-                : value
+            : key === 'Hobbies' || key === 'Address'
+              ? `"${value}"`
+              : value
 
         return [key, formattedValue]
       })
