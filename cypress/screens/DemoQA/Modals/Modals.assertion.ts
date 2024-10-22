@@ -6,6 +6,6 @@ export const assert = (modal: Modal) => {
   const closeButton =
     modal === 'Small Modal'
       ? Selectors.closeSmallModal()
-      : Selectors.largeModalButton()
+      : Selectors.closeLargeModal()
   closeButton.shouldBeVisible()
 }
