@@ -79,6 +79,7 @@ export const createCsvFromTable = () => {
         return [key, formattedValue]
       })
 
+      // Formatting content to CSV string
       const csvContent = data.map((row) => row.join(',')).join('\n')
       cy.writeFile('cypress/downloads/answers.csv', csvContent)
     })

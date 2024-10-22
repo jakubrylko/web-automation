@@ -10,7 +10,7 @@ describe('Frames', () => {
     LeftPanel.clickOnMenuItem('Frames')
   })
 
-  it('Should assert large frame', () => {
+  it('Should access large frame content', () => {
     cy.wait(100)
     Frames.largeFrame().then(($frame) => {
       const header = $frame.contents().find('h1')
@@ -18,7 +18,7 @@ describe('Frames', () => {
     })
   })
 
-  it('Should assert small frame', () => {
+  it('Should access small frame content', () => {
     Frames.smallFrame()
       .its('0.contentDocument.body')
       .should('not.be.empty')
