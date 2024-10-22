@@ -58,25 +58,23 @@ export const selectRandomCity = () => {
     })
 }
 
-export const createCsvFile = () => {
+export const createCsvFromTable = () => {
   Selectors.formTable()
     .find('tr')
-    .then((rows) => {
+    .then(($rows) => {
       // Creating an array from table rows
-      const data: [string, string][] = Array.from(rows).map((row) => {
+      const data: [string, string][] = Array.from($rows).map((row) => {
         const [key, value] = Array.from(row.children).map(
-          (cell) => cell.textContent?.trim().removeNewlines() || ''
+          (cell) => cell.textContent?.trim().removeChars('\n') || ''
         )
 
         // Formatting answers
         const formattedValue =
           key === 'Date of Birth'
-            ? value.replaceCommas(' ')
-            : key === 'Hobbies'
-              ? value.replaceCommas(' &')
-              : key === 'Address'
-                ? value.replaceCommas(';')
-                : value
+            ? value.removeChars(',')
+            : key === 'Hobbies' || key === 'Address'
+              ? `"${value}"`
+              : value
 
         return [key, formattedValue]
       })

@@ -19,11 +19,11 @@ export default defineConfig({
     },
 
     baseUrl: 'https://demoqa.com',
-    video: CI ? true : false,
     chromeWebSecurity: false,
     defaultCommandTimeout: 4000,
     pageLoadTimeout: 60000,
     retries: { runMode: CI ? 1 : 0, openMode: 0 },
+    video: CI ? true : false,
     viewportHeight: viewport[device].height,
     viewportWidth: viewport[device].width,
     watchForFileChanges: false,

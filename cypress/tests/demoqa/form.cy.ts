@@ -30,7 +30,7 @@ describe('Practice form', () => {
 
     PracticeForm.submitButton().click()
     PracticeForm.assertSubmissionTitle('Thanks for submitting the form')
-    PracticeForm.createCsvFile()
+    PracticeForm.createCsvFromTable()
     PracticeForm.closeButton().click()
   })
 })
