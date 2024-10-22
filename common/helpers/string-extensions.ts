@@ -1,9 +1,6 @@
 export {}
 
-String.prototype.removeNewlines = function (): string {
-  return this.replace(/\n/g, ' ')
-}
-
-String.prototype.replaceCommas = function (value: string): string {
-  return this.replace(/,/g, value)
+String.prototype.removeChars = function (char: string): string {
+  const regexp = new RegExp(char, 'g')
+  return this.replace(regexp, ' ')
 }

@@ -65,13 +65,13 @@ export const createCsvFromTable = () => {
       // Creating an array from table rows
       const data: [string, string][] = Array.from($rows).map((row) => {
         const [key, value] = Array.from(row.children).map(
-          (cell) => cell.textContent?.trim().removeNewlines() || ''
+          (cell) => cell.textContent?.trim().removeChars('\n') || ''
         )
 
         // Formatting answers
         const formattedValue =
           key === 'Date of Birth'
-            ? value.replaceCommas(' ')
+            ? value.removeChars(',')
             : key === 'Hobbies' || key === 'Address'
               ? `"${value}"`
               : value
