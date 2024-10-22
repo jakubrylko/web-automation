@@ -2,7 +2,7 @@ import * as Home from 'cypress/screens/DemoQA/Homepage'
 import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
 import * as Modals from 'cypress/screens/DemoQA/Modals'
 
-describe('Frames', () => {
+describe('Modals', () => {
   beforeEach(() => {
     cy.visit('/')
     Home.clickOnMenuCard('Alerts, Frame & Windows')
