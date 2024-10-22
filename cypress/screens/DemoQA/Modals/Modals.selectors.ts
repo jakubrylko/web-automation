@@ -1,0 +1,7 @@
+export const closeLargeModal = () => cy.get('#closeLargeModal')
+export const closeSmallModal = () => cy.get('#closeSmallModal')
+export const largeModalButton = () => cy.get('#showLargeModal')
+export const modalBody = () => cy.get('.modal-body')
+export const modalContent = () => cy.get('.modal-content')
+export const modalTitle = () => cy.get('.modal-title')
+export const smallModalButton = () => cy.get('#showSmallModal')
