@@ -12,7 +12,7 @@ test.describe('ZeroStep AI', () => {
     await page.goto('/')
   })
 
-  test.only('Should fill text fields', async ({ page }) => {
+  test('Should fill text fields', async ({ page }) => {
     const TextBox = new TextBoxAssertion(page)
     const aiArgs = { page, test }
 
