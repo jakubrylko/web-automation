@@ -1,0 +1,19 @@
+# Node modules
+node_modules
+
+# Envs
+.env
+
+# Allure artifacts
+allure
+
+# Cypress artifacts
+cypress/downloads
+cypress/report
+cypress/screenshots
+cypress/videos
+
+# Playwright artifacts
+playwright/report
+playwright/snapshots
+playwright/traces

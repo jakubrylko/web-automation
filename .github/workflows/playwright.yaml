@@ -1,0 +1,66 @@
+name: Playwright tests
+run-name: ${{ github.event_name == 'pull_request' && format('Testing on {0}', github.head_ref) || 'Testing on main' }}
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/playwright.yaml
+      - playwright/**
+      - playwright.config.ts
+  workflow_dispatch:
+    inputs:
+      device:
+        description: Device
+        required: true
+        default: 'MacBook'
+        type: 'choice'
+        options:
+          - 'MacBook'
+          - 'iPad'
+          - 'iPhone'
+      browser:
+        description: Browser
+        required: true
+        default: 'chromium'
+        type: 'choice'
+        options:
+          - 'chromium'
+          - 'firefox'
+          - 'webkit'
+
+jobs:
+  playwright:
+    name: Playwright tests
+    runs-on: ubuntu-latest
+    env:
+      BROWSER: ${{ inputs.browser || 'chromium' }}
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Install Playwright browsers
+        run: yarn playwright install --with-deps
+      - name: Run Playwright tests
+        run: yarn playwright test demoqa --project=${{ env.BROWSER }}
+        env:
+          DEVICE: ${{ inputs.device || 'MacBook' }}
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright/report/
+          retention-days: 15
+      - name: Deploy report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: playwright/report

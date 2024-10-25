@@ -1,0 +1,15 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@example.com",
+  "mobile": "1234567890",
+  "gender": "Male",
+  "dateOfBirth": {
+    "day": "1",
+    "month": "August",
+    "year": "1990"
+  },
+  "subject": "Computer Science",
+  "hobbies": ["Sports", "Music"],
+  "address": "Gorecka 1,\nPoznan,\nPoland"
+}

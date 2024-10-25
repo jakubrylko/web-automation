@@ -1,0 +1,21 @@
+name: Types validation
+run-name: Validating types on ${{ github.head_ref }}
+
+on:
+  pull_request:
+
+jobs:
+  types:
+    name: Types validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Validate types
+        run: yarn type:check

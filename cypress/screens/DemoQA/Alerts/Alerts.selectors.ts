@@ -1,0 +1,6 @@
+export const alertButton = () => cy.get('#alertButton')
+export const confirmBoxButton = () => cy.get('#confirmButton')
+export const confirmResult = () => cy.get('#confirmResult')
+export const promptBoxButton = () => cy.get('#promtButton')
+export const promptResult = () => cy.get('#promptResult')
+export const timerAlertButton = () => cy.get('#timerAlertButton')
