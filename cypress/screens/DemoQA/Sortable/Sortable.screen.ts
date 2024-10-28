@@ -1,6 +1,6 @@
 import * as Selectors from './Sortable.selectors'
 
-const getItemTexts = () => {
+const getItemsText = () => {
   const textArr: string[] = []
   return Selectors.listItem()
     .each(($element) => {
@@ -14,7 +14,7 @@ export const sortListInAscendingOrder = ({
 }: {
   firstItem: SortableItem
 }) => {
-  getItemTexts().then((textArr) => {
+  getItemsText().then((textArr) => {
     const firstItemIndex = textArr.indexOf(firstItem)
     for (let i = firstItemIndex; i < textArr.length; i++) {
       Selectors.listItem().last().trigger('mousedown', { which: 1 })
@@ -28,7 +28,7 @@ export const sortListInDescendingOrder = ({
 }: {
   firstItem: SortableItem
 }) => {
-  getItemTexts().then((textArr) => {
+  getItemsText().then((textArr) => {
     const firstItemIndex = textArr.indexOf(firstItem)
 
     // Splitting the items into two arrays

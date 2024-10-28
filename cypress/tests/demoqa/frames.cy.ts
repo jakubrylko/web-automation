@@ -11,7 +11,7 @@ describe('Frames', () => {
   })
 
   it('Should access large frame content', () => {
-    cy.wait(100)
+    cy.wait(250)
     Frames.largeFrame().then(($frame) => {
       const header = $frame.contents().find('h1')
       expect(header).have.text(SAMPLE_PAGE)

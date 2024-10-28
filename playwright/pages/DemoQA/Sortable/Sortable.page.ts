@@ -6,7 +6,7 @@ export class SortablePage extends SortableSelectors {
     super(page)
   }
 
-  async getItemTexts() {
+  async getItemsText() {
     const textArr: string[] = []
     const numOfItems = await this.gridItem.count()
     for (let i = 0; i < numOfItems; i++) {
@@ -17,7 +17,7 @@ export class SortablePage extends SortableSelectors {
   }
 
   async sortListInAscendingOrder({ firstItem }: { firstItem: SortableItem }) {
-    const textArr = await this.getItemTexts()
+    const textArr = await this.getItemsText()
     const firstItemIndex = textArr.indexOf(firstItem)
 
     for (let i = firstItemIndex; i < textArr.length; i++) {
@@ -26,7 +26,7 @@ export class SortablePage extends SortableSelectors {
   }
 
   async sortListInDescendingOrder({ firstItem }: { firstItem: SortableItem }) {
-    const textArr = await this.getItemTexts()
+    const textArr = await this.getItemsText()
     const firstItemIndex = textArr.indexOf(firstItem)
 
     // Splitting the items into two arrays
