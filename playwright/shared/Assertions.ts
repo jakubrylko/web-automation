@@ -25,12 +25,21 @@ export class Assertions {
 
   async shouldHaveAttribute(
     elements: Elements,
-    { attr, index = 0 }: { attr: string; index?: number }
+    { attr, value, index = 0 }: { attr: string; value?: string; index?: number }
   ) {
     if (Array.isArray(elements)) {
       for (const element of elements) {
-        await expect(element).toHaveAttribute(attr)
+        if (value) {
+          await expect(element).toHaveAttribute(attr, value)
+        } else {
+          await expect(element).toHaveAttribute(attr)
+        }
       }
+      return
+    }
+
+    if (value) {
+      await expect(elements.nth(index)).toHaveAttribute(attr, value)
     } else {
       await expect(elements.nth(index)).toHaveAttribute(attr)
     }
