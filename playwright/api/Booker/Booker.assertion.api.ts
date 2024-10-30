@@ -1,5 +1,5 @@
 import { APIRequestContext, APIResponse, expect } from '@playwright/test'
-import { BookerAPIPage } from './Booker.api.page'
+import { BookerAPIPage } from './Booker.api'
 
 export class BookerAPIAssertion extends BookerAPIPage {
   constructor(request: APIRequestContext) {

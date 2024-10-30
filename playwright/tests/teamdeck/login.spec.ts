@@ -1,5 +1,5 @@
 import { BrowserContext, Page, test } from '@playwright/test'
-import { TeamdeckAPIPage } from 'playwright/api/Teamdeck/Teamdeck.api.page'
+import { TeamdeckAPIPage } from 'playwright/api/Teamdeck/Teamdeck.api'
 import { HomeSelectors } from 'playwright/pages/Teamdeck/Homepage/Home.selectors'
 import { LoginPage } from 'playwright/pages/Teamdeck/Login/Login.page'
 

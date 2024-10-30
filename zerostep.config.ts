@@ -1,7 +1,7 @@
 import 'dotenv/config'
 
 export default {
-  TOKEN: process.env.TOKEN
+  TOKEN: process.env.ZEROSTEP_TOKEN
 }
 
 // App: https://app.zerostep.com
