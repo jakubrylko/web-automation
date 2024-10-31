@@ -20,9 +20,7 @@ describe('Alerts', () => {
     Alerts.stubAlert()
     Alerts.timerAlertButton()
       .click()
-      .then(() => {
-        startTime = Date.now()
-      })
+      .then(() => (startTime = Date.now()))
 
     Alerts.assertAlertWasCalledWith('This alert appeared after 5 seconds').then(
       () => {

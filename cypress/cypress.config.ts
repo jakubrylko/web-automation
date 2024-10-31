@@ -30,6 +30,7 @@ export default defineConfig({
     viewportWidth: viewport[device].width,
     watchForFileChanges: false,
 
+    downloadsFolder: 'downloads',
     fixturesFolder: 'fixtures',
     screenshotsFolder: 'screenshots',
     specPattern: 'tests/**/*.cy.ts',

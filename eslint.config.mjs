@@ -6,7 +6,17 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
 
-  { files: ['**/*.{js,ts}'] },
-  { languageOptions: { globals: globals.browser } },
-  { ignores: ['allure', 'playwright/report'] }
+  {
+    files: ['**/*.{js,ts}'],
+    languageOptions: { globals: globals.browser }
+  },
+  {
+    files: ['cypress/api/**'],
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off'
+    }
+  },
+  {
+    ignores: ['allure', 'playwright/report']
+  }
 ]
