@@ -1,4 +1,4 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["../playwright", "../common/types"]
+  "include": ["../common/types", "../playwright"]
 }
