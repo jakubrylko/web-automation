@@ -31,7 +31,9 @@ export default defineConfig({
     watchForFileChanges: false,
 
     fixturesFolder: 'fixtures',
+    screenshotsFolder: 'screenshots',
     specPattern: 'tests/**/*.cy.ts',
-    supportFile: 'support/e2e.ts'
+    supportFile: 'support/e2e.ts',
+    videosFolder: 'videos'
   }
 })
