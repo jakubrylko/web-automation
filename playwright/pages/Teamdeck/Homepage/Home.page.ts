@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test'
-import { HomeSelectors } from './Home.selectors'
 import dayjs from 'dayjs'
+import { HomeSelectors } from './Home.selectors'
 
 export class HomePage extends HomeSelectors {
   constructor(page: Page) {

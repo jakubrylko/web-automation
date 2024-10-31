@@ -9,7 +9,11 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES6",
-    "types": ["cypress-plugin-api", "node"]
+    "types": ["node"],
+    "paths": {
+      "@allure-results/*": ["allure/allure-results/*"],
+      "@common/*": ["common/*"]
+    }
   },
-  "include": ["common", "cypress", "playwright", "types", "**/*.config.ts"]
+  "include": ["common/**/*"]
 }

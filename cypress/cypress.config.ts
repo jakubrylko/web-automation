@@ -1,7 +1,9 @@
+import { DeviceType, viewport } from '@common/helpers'
 import { allureCypress } from 'allure-cypress/reporter'
 import { defineConfig } from 'cypress'
-import { DeviceType, viewport } from './common/helpers'
-import 'dotenv/config'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: '../.env' })
 
 const { CI, DEVICE } = process.env
 
@@ -11,7 +13,7 @@ export default defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       allureCypress(on, config, {
-        resultsDir: 'allure/allure-results/cypress'
+        resultsDir: '../allure/allure-results/cypress'
       })
 
       Object.assign(config.env, process.env)
@@ -28,8 +30,8 @@ export default defineConfig({
     viewportWidth: viewport[device].width,
     watchForFileChanges: false,
 
-    fixturesFolder: 'cypress/fixtures',
-    specPattern: 'cypress/tests/**/*.cy.ts',
-    supportFile: 'cypress/support/e2e.ts'
+    fixturesFolder: 'fixtures',
+    specPattern: 'tests/**/*.cy.ts',
+    supportFile: 'support/e2e.ts'
   }
 })

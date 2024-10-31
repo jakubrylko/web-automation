@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test'
-import { Selectors } from 'playwright/shared/Selectors'
 import { Assertions } from 'playwright/shared/Assertions'
+import { Selectors } from 'playwright/shared/Selectors'
 import { Utilities } from 'playwright/shared/Utilities'
 
 export class BaseClass {

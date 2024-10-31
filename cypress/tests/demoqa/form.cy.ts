@@ -1,5 +1,5 @@
-import * as Home from 'cypress/screens/DemoQA/Homepage'
 import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
+import * as Home from 'cypress/screens/DemoQA/Homepage'
 import * as PracticeForm from 'cypress/screens/DemoQA/PracticeForm'
 
 describe('Practice form', () => {
@@ -23,7 +23,7 @@ describe('Practice form', () => {
       PracticeForm.currentAddress().type(data.address)
     })
 
-    const filePath = 'cypress/fixtures/form-data.json'
+    const filePath = 'fixtures/form-data.json'
     PracticeForm.chooseFileButton().selectFile(filePath)
     PracticeForm.selectRandomState()
     PracticeForm.selectRandomCity()

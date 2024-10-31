@@ -1,8 +1,8 @@
+import { cardDetails } from '@common/test-data'
 import { test } from '@playwright/test'
+import { HomeAssertion } from 'playwright/pages/Boilerplate/Homepage/Home.assertion'
 import { LoginSelectors } from 'playwright/pages/Boilerplate/Login/Login.selectors'
 import { PaymentsAssertion } from 'playwright/pages/Boilerplate/Payments/Payments.assertion'
-import { HomeAssertion } from 'playwright/pages/Boilerplate/Homepage/Home.assertion'
-import { cardDetails } from 'common/test-data'
 
 const { SAAS_URL, SAAS_USERNAME, SAAS_PASSWORD, EMAIL, PASSWORD } = process.env
 

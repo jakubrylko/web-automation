@@ -1,5 +1,5 @@
-import * as Home from 'cypress/screens/DemoQA/Homepage'
 import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
+import * as Home from 'cypress/screens/DemoQA/Homepage'
 import * as Sortable from 'cypress/screens/DemoQA/Sortable'
 
 describe('Sortable', () => {

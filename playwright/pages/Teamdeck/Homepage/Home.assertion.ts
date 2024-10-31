@@ -1,6 +1,6 @@
-import { HomePage } from './Home.page'
 import { expect, Page } from '@playwright/test'
 import dayjs from 'dayjs'
+import { HomePage } from './Home.page'
 
 export class HomeAssertion extends HomePage {
   constructor(page: Page) {

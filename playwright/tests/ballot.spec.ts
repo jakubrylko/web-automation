@@ -1,8 +1,8 @@
-import { test } from 'playwright/support'
+import { cardDetails } from '@common/test-data'
 import { faker } from '@faker-js/faker'
 import { BallotPage } from 'playwright/pages/Bimber/Ballot/Ballot.page'
 import { StripeAssertion } from 'playwright/pages/Bimber/Stripe/Stripe.assertion'
-import { cardDetails } from 'common/test-data'
+import { test } from 'playwright/support'
 
 const { person, location, internet } = faker
 const { cardOwner, cardNumber, cardExpiry, cardCvc } = cardDetails

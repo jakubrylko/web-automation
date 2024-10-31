@@ -1,5 +1,3 @@
-import 'dotenv/config'
-
 export default {
   TOKEN: process.env.ZEROSTEP_TOKEN
 }
