@@ -4,5 +4,5 @@
     "module": "Node16",
     "types": ["cypress-plugin-api", "cypress"]
   },
-  "include": ["../common/types", "../cypress"]
+  "include": ["../common/types/*.d.ts", "../cypress"]
 }

@@ -4,6 +4,8 @@ type Hobby = 'Sports' | 'Reading' | 'Music'
 
 type ItemOrder = 'ascending' | 'descending'
 
+type Modal = 'Small Modal' | 'Large Modal'
+
 type SortableItem =
   | 'One'
   | 'Two'
@@ -16,7 +18,5 @@ type SortableItem =
   | 'Nine'
 
 type SortableTab = 'List' | 'Grid'
-
-type Modal = 'Small Modal' | 'Large Modal'
 
 type Windows = { window: 'alert' | 'confirm' | 'prompt' }

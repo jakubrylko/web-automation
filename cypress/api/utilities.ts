@@ -11,3 +11,20 @@ export const sendGet = (url: string) => {
 export const sendPost = (url: string, body?: object) => {
   return cy.api({ method: 'POST', url, body })
 }
+
+export const sendGraphQLRequest = (
+  url: string,
+  operationName: string,
+  query: string,
+  { variables = {} }: { variables?: object } = {}
+) => {
+  return cy.api({
+    method: 'POST',
+    url,
+    body: {
+      operationName,
+      query,
+      variables
+    }
+  })
+}

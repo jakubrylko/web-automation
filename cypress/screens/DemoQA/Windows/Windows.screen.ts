@@ -1,13 +1,9 @@
 export const stubWindow = () => {
-  cy.window().then((window) => {
-    cy.stub(window, 'open').as('window')
-  })
+  cy.window().then((window) => cy.stub(window, 'open').as('window'))
 }
 
 export const navigateToNewWindow = () => {
-  cy.window().then((window) => {
-    window.location.href = '/sample'
-  })
+  cy.window().then((window) => (window.location.href = '/sample'))
 }
 
 export const handleMessageWindow = () => {
