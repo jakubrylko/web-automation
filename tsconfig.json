@@ -6,10 +6,11 @@
     "forceConsistentCasingInFileNames": true,
     "module": "CommonJS",
     "noEmit": true,
+    "paths": { "@common/*": ["common/*"] },
     "skipLibCheck": true,
     "strict": true,
     "target": "ES6",
-    "types": ["cypress-plugin-api", "node"]
+    "types": ["node"]
   },
-  "include": ["common", "cypress", "playwright", "types", "**/*.config.ts"]
+  "include": ["common/**/*"]
 }

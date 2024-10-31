@@ -1,6 +1,6 @@
-import { MESSAGE_TEXT, SAMPLE_PAGE } from 'common/test-data'
-import * as Home from 'cypress/screens/DemoQA/Homepage'
+import { MESSAGE_TEXT, SAMPLE_PAGE } from '@common/test-data'
 import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
+import * as Home from 'cypress/screens/DemoQA/Homepage'
 import * as Windows from 'cypress/screens/DemoQA/Windows'
 
 describe('Windows', () => {

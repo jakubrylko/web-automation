@@ -1,4 +1,4 @@
-import { SAMPLE_PAGE, MESSAGE_TEXT } from 'common/test-data'
+import { MESSAGE_TEXT, SAMPLE_PAGE } from '@common/test-data'
 import { test } from '@playwright/test'
 import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
 import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'

@@ -1,6 +1,6 @@
-import * as Home from 'cypress/screens/DemoQA/Homepage'
 import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
 import * as Alerts from 'cypress/screens/DemoQA/Alerts'
+import * as Home from 'cypress/screens/DemoQA/Homepage'
 
 describe('Alerts', () => {
   beforeEach(() => {

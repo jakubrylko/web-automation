@@ -1,6 +1,6 @@
-import { newBooking } from 'common/test-data'
-import { statusShouldBeOk } from 'cypress/api/utilities'
+import { newBooking } from '@common/test-data'
 import * as BookerAPI from 'cypress/api/Booker'
+import { statusShouldBeOk } from 'cypress/api/utilities'
 
 describe('Restful Booker API', () => {
   it('Should get bookings list', () => {

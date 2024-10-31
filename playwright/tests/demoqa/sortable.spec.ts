@@ -1,7 +1,7 @@
-import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
-import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
-import { SortableAssertion } from 'playwright/pages/DemoQA/Sortable/Sortable.assertion'
 import { test } from '@playwright/test'
+import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
+import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
+import { SortableAssertion } from 'playwright/pages/DemoQA/Sortable/Sortable.assertion'
 
 test.describe('Sortable', () => {
   let Home: HomePage

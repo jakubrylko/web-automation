@@ -1,19 +1,8 @@
-# Node modules
+# Dependencies
 node_modules
 
-# Envs
-.env
-
-# Allure artifacts
+# Reports
 allure
 
-# Cypress artifacts
-cypress/downloads
-cypress/report
-cypress/screenshots
-cypress/videos
-
-# Playwright artifacts
-playwright/report
-playwright/snapshots
-playwright/traces
+# Misc
+.env

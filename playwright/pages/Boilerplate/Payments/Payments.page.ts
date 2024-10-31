@@ -1,5 +1,5 @@
-import { PaymentsSelectors } from './Payments.selectors'
 import { Page } from '@playwright/test'
+import { PaymentsSelectors } from './Payments.selectors'
 
 export class PaymentsPage extends PaymentsSelectors {
   constructor(page: Page) {

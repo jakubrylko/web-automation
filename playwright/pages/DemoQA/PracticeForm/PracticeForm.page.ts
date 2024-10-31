@@ -1,6 +1,6 @@
+import { faker } from '@faker-js/faker'
 import { Page, expect } from '@playwright/test'
 import { PracticeFormSelectors } from './PracticeForm.selectors'
-import { faker } from '@faker-js/faker'
 
 const { int } = faker.number
 

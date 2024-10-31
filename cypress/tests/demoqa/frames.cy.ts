@@ -1,7 +1,7 @@
-import * as Home from 'cypress/screens/DemoQA/Homepage'
+import { SAMPLE_PAGE } from '@common/test-data'
 import * as LeftPanel from 'cypress/components/DemoQA/LeftPanel'
 import * as Frames from 'cypress/screens/DemoQA/Frames'
-import { SAMPLE_PAGE } from 'common/test-data'
+import * as Home from 'cypress/screens/DemoQA/Homepage'
 
 describe('Frames', () => {
   beforeEach(() => {

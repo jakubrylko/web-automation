@@ -1,11 +1,11 @@
+import { SAMPLE_PAGE } from '@common/test-data'
 import { expect } from '@playwright/test'
-import { test } from 'playwright/support/my-test'
 import { ai } from '@zerostep/playwright'
-import { SAMPLE_PAGE } from 'common/test-data'
-import { TextBoxAssertion } from 'playwright/pages/DemoQA/TextBox/TextBox.assertion'
-import { TablesPage } from 'playwright/pages/DemoQA/Tables/Tables.page'
-import { LinksAssertion } from 'playwright/pages/DemoQA/Links/Links.assertion'
 import { AlertsAssertion } from 'playwright/pages/DemoQA/Alerts/Alerts.assertion'
+import { LinksAssertion } from 'playwright/pages/DemoQA/Links/Links.assertion'
+import { TablesPage } from 'playwright/pages/DemoQA/Tables/Tables.page'
+import { TextBoxAssertion } from 'playwright/pages/DemoQA/TextBox/TextBox.assertion'
+import { test } from 'playwright/support/my-test'
 
 test.describe('ZeroStep AI', () => {
   test.beforeEach(async ({ page }) => {

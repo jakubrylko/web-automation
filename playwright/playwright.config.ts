@@ -1,15 +1,17 @@
+import { DeviceType, viewport } from '@common/helpers'
 import { defineConfig, devices } from '@playwright/test'
-import { DeviceType, viewport } from 'common/helpers'
-import 'dotenv/config'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: '../.env' })
 
 const { CI, DEVICE } = process.env
 
 const device = (DEVICE ?? 'MacBook') as DeviceType
 
 export default defineConfig({
-  testDir: 'playwright/tests',
-  outputDir: 'playwright/traces',
-  snapshotDir: 'playwright/snapshots',
+  testDir: 'tests',
+  outputDir: 'traces',
+  snapshotDir: 'snapshots',
 
   timeout: 30000,
   expect: { timeout: 5000, toHaveScreenshot: { threshold: 0.01 } },
@@ -20,8 +22,11 @@ export default defineConfig({
   workers: CI ? 5 : undefined,
 
   reporter: [
-    ['allure-playwright', { resultsDir: 'allure/allure-results/playwright' }],
-    ['html', { open: 'never', outputFolder: 'playwright/report' }],
+    [
+      'allure-playwright',
+      { resultsDir: '../allure/allure-results/playwright' }
+    ],
+    ['html', { open: 'never', outputFolder: 'report' }],
     ['list']
   ],
 

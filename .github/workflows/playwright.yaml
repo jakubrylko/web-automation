@@ -5,8 +5,8 @@ on:
   pull_request:
     paths:
       - .github/workflows/playwright.yaml
+      - common/**
       - playwright/**
-      - playwright.config.ts
   workflow_dispatch:
     inputs:
       device:
@@ -48,7 +48,7 @@ jobs:
       - name: Install Playwright browsers
         run: yarn playwright install --with-deps
       - name: Run Playwright tests
-        run: yarn playwright test demoqa --project=${{ env.BROWSER }}
+        run: yarn pw:test:ci --project=${{ env.BROWSER }}
         env:
           DEVICE: ${{ inputs.device || 'MacBook' }}
       - name: Upload report
