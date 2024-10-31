@@ -53,5 +53,5 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: cypress-videos
-          path: videos/
+          path: cypress/videos/
           retention-days: 15
