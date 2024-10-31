@@ -6,14 +6,11 @@
     "forceConsistentCasingInFileNames": true,
     "module": "CommonJS",
     "noEmit": true,
+    "paths": { "@common/*": ["common/*"] },
     "skipLibCheck": true,
     "strict": true,
     "target": "ES6",
-    "types": ["node"],
-    "paths": {
-      "@allure-results/*": ["allure/allure-results/*"],
-      "@common/*": ["common/*"]
-    }
+    "types": ["node"]
   },
   "include": ["common/**/*"]
 }
