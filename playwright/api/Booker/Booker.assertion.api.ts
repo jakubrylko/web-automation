@@ -7,8 +7,8 @@ export class BookerAPIAssertion extends BookerAPIPage {
   }
 
   async assertCreatedBooking(response: APIResponse) {
-    const responseJson = await response.json()
-    expect(responseJson).toMatchObject({
+    const responseJSON = await response.json()
+    expect(responseJSON).toMatchObject({
       bookingid: expect.any(Number),
       booking: expect.any(Object)
     })

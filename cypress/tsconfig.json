@@ -4,5 +4,5 @@
     "module": "Node16",
     "types": ["cypress-plugin-api", "cypress"]
   },
-  "include": ["../common/types/*.d.ts", "../cypress"]
+  "include": ["../common/types/*.d.ts", "../cypress", "../common/boilerplate/boilerplate.mutation.ts", "../common/boilerplate/boilerplate.query.ts"]
 }

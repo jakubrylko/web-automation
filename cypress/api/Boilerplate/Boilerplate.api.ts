@@ -1,15 +1,13 @@
-import { sendGraphQLRequest } from '../utilities'
 import {
   addItemMutation,
-  deleteItemMutation,
-  editItemMutation,
-  loginMutation
-} from './Boilerplate.mutation'
-import {
   allItemsQuery,
   currentUserQuery,
-  itemDetailsQuery
-} from './Boilerplate.query'
+  deleteItemMutation,
+  editItemMutation,
+  itemDetailsQuery,
+  loginMutation
+} from '@common/boilerplate'
+import { sendGraphQLRequest } from '../utilities'
 
 const { env } = Cypress
 const baseUrl = env('SAAS_API')
