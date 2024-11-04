@@ -16,4 +16,15 @@ export class Utilities {
   async sendPost(url: string, data?: object) {
     return await this.request.post(url, { data })
   }
+
+  async sendGraphQLRequest(
+    url: string,
+    operationName: string,
+    query: string,
+    { variables = {} }: { variables?: object } = {}
+  ) {
+    return await this.request.post(url, {
+      data: { operationName, query, variables }
+    })
+  }
 }

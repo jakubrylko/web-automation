@@ -1,6 +1,6 @@
 import { sendGet, sendPost } from '../utilities'
 
-const baseUrl = Cypress.env('BOOKER_URL')
+const baseUrl = Cypress.env('BOOKER_API')
 
 export const getBookings = () => {
   return sendGet(`${baseUrl}/booking`)

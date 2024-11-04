@@ -1,7 +1,7 @@
 import { APIRequestContext } from '@playwright/test'
 import { BaseClass } from '../BaseClass.api'
 
-const baseUrl = process.env.BOOKER_URL
+const baseUrl = process.env.BOOKER_API
 
 export class BookerAPIPage extends BaseClass {
   constructor(request: APIRequestContext) {
