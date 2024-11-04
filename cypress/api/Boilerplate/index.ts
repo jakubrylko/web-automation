@@ -1,5 +1,3 @@
-export * from '../../../common/boilerplate/boilerplate.mutation'
-export * from '../../../common/boilerplate/boilerplate.query'
 export * from './Boilerplate.api'
 export * from './Boilerplate.assertion.api'
 export * from './Boilerplate.helpers.api'
