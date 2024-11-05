@@ -7,13 +7,13 @@ export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
   }
 
   async getTenantId(response: APIResponse, { index = 0 } = {}) {
-    const responseJSON = await response.json()
-    return responseJSON.data.currentUser.tenants[index].id
+    const body = await response.json()
+    return body.data.currentUser.tenants[index].id
   }
 
   async getItemId(response: APIResponse) {
-    const responseJSON = await response.json()
-    return responseJSON.data.createCrudDemoItem.crudDemoItemEdge.node.id
+    const body = await response.json()
+    return body.data.createCrudDemoItem.crudDemoItemEdge.node.id
   }
 
   async deleteAllItems() {

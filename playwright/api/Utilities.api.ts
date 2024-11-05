@@ -1,7 +1,11 @@
-import { APIRequestContext, APIResponse, expect } from '@playwright/test'
+import { APIRequestContext, APIResponse, expect, Page } from '@playwright/test'
 
 export class Utilities {
-  constructor(private request: APIRequestContext) {
+  private page?: Page
+  private request: APIRequestContext
+
+  constructor(request: APIRequestContext, page?: Page) {
+    this.page = page
     this.request = request
   }
 
@@ -25,6 +29,12 @@ export class Utilities {
   ) {
     return await this.request.post(url, {
       data: { operationName, query, variables }
+    })
+  }
+
+  async mock(url: string, mock: object) {
+    await this.page?.route(url, async (route) => {
+      await route.fulfill({ json: mock })
     })
   }
 }

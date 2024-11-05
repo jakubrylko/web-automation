@@ -6,6 +6,7 @@ export class HomeSelectors extends BaseClass {
   readonly canvas: Locator
   readonly datepicker: Locator
   readonly organizationList: Locator
+  readonly projectsButton: Locator
 
   constructor(page: Page) {
     super(page)
@@ -14,5 +15,6 @@ export class HomeSelectors extends BaseClass {
     this.canvas = this.page.locator('canvas')
     this.datepicker = this.page.locator('[aria-label="Date"]')
     this.organizationList = this.page.locator('organization-list')
+    this.projectsButton = this.page.locator('button:has-text("Projects")')
   }
 }
