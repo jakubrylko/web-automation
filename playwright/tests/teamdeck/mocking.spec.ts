@@ -1,5 +1,11 @@
-import { emptyItemList } from '@common/teamdeck'
-import { APIRequestContext, BrowserContext, Page, test } from '@playwright/test'
+import { emptyItemList, mockedResourceList } from '@common/teamdeck'
+import {
+  APIRequestContext,
+  BrowserContext,
+  expect,
+  Page,
+  test
+} from '@playwright/test'
 import { TeamdeckAPIAssertion } from 'playwright/api/Teamdeck/Teamdeck.assertion.api'
 import { HomeSelectors } from 'playwright/pages/Teamdeck/Homepage/Home.selectors'
 import {
@@ -9,7 +15,7 @@ import {
 
 const { EMAIL, PASSWORD } = process.env
 
-const employeeListUrl = '**/calendar?dataTypes=1,2,3,4**page=1**'
+const resourceListUrl = '**/calendar?dataTypes=1,2,3,4**page=1**'
 const projectListUrl = '**/calendar?dataTypes=7,1,2,4**page=1**'
 
 test.describe('Mocking', () => {
@@ -34,8 +40,8 @@ test.describe('Mocking', () => {
     await Login.open()
     await Login.signIn({ email: EMAIL!, password: PASSWORD! })
 
-    const employeeList = await page.waitForResponse(employeeListUrl)
-    await TeamdeckAPI.assertItemList(employeeList)
+    const resourceList = await page.waitForResponse(resourceListUrl)
+    await TeamdeckAPI.assertItemList(resourceList)
 
     await Home.projectsButton.click()
     const projectList = await page.waitForResponse(projectListUrl)
@@ -43,17 +49,30 @@ test.describe('Mocking', () => {
   })
 
   test('Should intercept request and return empty list', async () => {
-    await TeamdeckAPI.utils.mock(employeeListUrl, emptyItemList)
+    await TeamdeckAPI.utils.mock(resourceListUrl, emptyItemList)
     await TeamdeckAPI.utils.mock(projectListUrl, emptyItemList)
 
     await Login.open()
     await Login.signIn({ email: EMAIL!, password: PASSWORD! })
 
-    const employeeList = await page.waitForResponse(employeeListUrl)
-    await TeamdeckAPI.assertItemList(employeeList, { isEmpty: true })
+    const resourceList = await page.waitForResponse(resourceListUrl)
+    await TeamdeckAPI.assertItemList(resourceList, { isEmpty: true })
 
     await Home.projectsButton.click()
     const projectList = await page.waitForResponse(projectListUrl)
     await TeamdeckAPI.assertItemList(projectList, { isEmpty: true })
+  })
+
+  test('Should intercept request and return static list', async () => {
+    await TeamdeckAPI.utils.mock(resourceListUrl, mockedResourceList)
+
+    await Login.open()
+    await Login.signIn({ email: EMAIL!, password: PASSWORD! })
+
+    const resourceList = await page.waitForResponse(resourceListUrl)
+    await TeamdeckAPI.assertItemList(resourceList)
+
+    const numOfResources = (await resourceList.json()).items.length
+    expect(numOfResources).toEqual(mockedResourceList.items.length)
   })
 })

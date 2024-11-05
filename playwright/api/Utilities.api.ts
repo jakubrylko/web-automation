@@ -1,12 +1,12 @@
 import { APIRequestContext, APIResponse, expect, Page } from '@playwright/test'
 
 export class Utilities {
-  private page?: Page
   private request: APIRequestContext
+  private page?: Page
 
   constructor(request: APIRequestContext, page?: Page) {
-    this.page = page
     this.request = request
+    this.page = page
   }
 
   statusShouldBeOk(response: APIResponse) {
