@@ -13,12 +13,15 @@ test.describe('Calendar', () => {
   let Login: LoginPage
   let Home: HomeAssertion
 
-  test.beforeEach(async ({ browser }) => {
+  test.beforeAll(async ({ browser }) => {
     context = await browser.newContext(BASIC_AUTH)
     page = await context.newPage()
     Login = new LoginPage(page)
     Home = new HomeAssertion(page)
+  })
 
+  test.beforeEach(async () => {
+    await context.clearCookies()
     await Login.open()
     await Login.signIn({ email: EMAIL!, password: PASSWORD! })
 

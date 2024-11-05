@@ -27,13 +27,16 @@ test.describe('Mocking', () => {
   let Home: HomeSelectors
   let TeamdeckAPI: TeamdeckAPIAssertion
 
-  test.beforeEach(async ({ browser }) => {
+  test.beforeAll(async ({ browser }) => {
     context = await browser.newContext(BASIC_AUTH)
     page = await context.newPage()
-
     Login = new LoginPage(page)
     Home = new HomeSelectors(page)
     TeamdeckAPI = new TeamdeckAPIAssertion(request, page)
+  })
+
+  test.beforeEach(async () => {
+    await context.clearCookies()
   })
 
   test('Should intercept request and assert that list is populated', async () => {

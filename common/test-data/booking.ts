@@ -5,7 +5,6 @@ const { commerce, datatype, date, helpers, person } = faker
 
 const checkinDate = date.soon({ days: 30 })
 const checkoutDate = date.soon({ days: 30, refDate: checkinDate })
-
 const additionalNeeds = helpers.arrayElement([
   'Breakfast',
   'Lunch',
