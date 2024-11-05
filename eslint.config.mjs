@@ -11,7 +11,6 @@ export default [
     languageOptions: { globals: globals.browser }
   },
   {
-    files: ['cypress/api/**'],
     rules: {
       '@typescript-eslint/no-unused-expressions': 'off'
     }

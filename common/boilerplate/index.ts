@@ -1,2 +1,2 @@
-export * from './boilerplate.mutation'
-export * from './boilerplate.query'
+export * from './mutation'
+export * from './query'

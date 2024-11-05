@@ -1,32 +1,28 @@
 import { BrowserContext, Page, test } from '@playwright/test'
 import { HomeAssertion } from 'playwright/pages/Teamdeck/Homepage/Home.assertion'
-import { LoginPage } from 'playwright/pages/Teamdeck/Login/Login.page'
+import {
+  BASIC_AUTH,
+  LoginPage
+} from 'playwright/pages/Teamdeck/Login/Login.page'
 
-const { TEAMDECK_URL, TEAMDECK_USERNAME, TEAMDECK_PASSWORD, EMAIL, PASSWORD } =
-  process.env
-
-const BASIC_AUTH = {
-  httpCredentials: {
-    username: TEAMDECK_USERNAME!,
-    password: TEAMDECK_PASSWORD!
-  }
-}
+const { EMAIL, PASSWORD } = process.env
 
 test.describe('Calendar', () => {
   let context: BrowserContext
   let page: Page
-  let Home: HomeAssertion
   let Login: LoginPage
+  let Home: HomeAssertion
 
   test.beforeAll(async ({ browser }) => {
     context = await browser.newContext(BASIC_AUTH)
     page = await context.newPage()
-    Home = new HomeAssertion(page)
     Login = new LoginPage(page)
+    Home = new HomeAssertion(page)
   })
 
   test.beforeEach(async () => {
-    await page.goto(TEAMDECK_URL!)
+    await context.clearCookies()
+    await Login.open()
     await Login.signIn({ email: EMAIL!, password: PASSWORD! })
 
     await Home.assertInputDate()
