@@ -52,7 +52,7 @@ jobs:
         run: yarn cy:run:ci --browser=${{ env.BROWSER }}
         env:
           DEVICE: ${{ inputs.device || 'MacBook' }}
-          SKIP_SPEC: 'tests/*.cy.ts'
+          SPEC: 'tests/demoqa/*.cy.ts'
           SPLIT_INDEX: ${{ strategy.job-index }}
           SPLIT: ${{ strategy.job-total }}
       - name: Upload videos
