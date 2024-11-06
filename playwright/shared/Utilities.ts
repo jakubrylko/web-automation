@@ -1,5 +1,4 @@
 import { Locator, Page, expect } from '@playwright/test'
-
 export class Utilities {
   constructor(private page: Page) {
     this.page = page

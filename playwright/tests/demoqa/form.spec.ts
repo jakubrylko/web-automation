@@ -26,7 +26,7 @@ test.describe('Practice form', () => {
     await PracticeForm.assertSubject('Computer Science')
     await PracticeForm.selectHobbies(['Sports', 'Music'])
 
-    const filePath = path.resolve(__dirname, 'common/assets/qa.jpg')
+    const filePath = path.resolve(process.cwd(), '../common/assets/qa.jpg')
     await PracticeForm.chooseFileButton.setInputFiles(filePath)
 
     await PracticeForm.currentAddress.fill('Gorecka 1,\nPoznan,\nPoland')
