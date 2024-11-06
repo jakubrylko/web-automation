@@ -23,7 +23,7 @@ describe('Practice form', () => {
       PracticeForm.currentAddress().type(data.address)
     })
 
-    const filePath = 'fixtures/form-data.json'
+    const filePath = '../common/assets/qa.jpg'
     PracticeForm.chooseFileButton().selectFile(filePath)
     PracticeForm.selectRandomState()
     PracticeForm.selectRandomCity()

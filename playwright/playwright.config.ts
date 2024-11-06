@@ -1,8 +1,9 @@
 import { DeviceType, viewport } from '@common/helpers'
 import { defineConfig, devices } from '@playwright/test'
 import dotenv from 'dotenv'
+import path from 'path'
 
-dotenv.config({ path: '../.env' })
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 const { CI, DEVICE } = process.env
 

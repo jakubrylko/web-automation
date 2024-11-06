@@ -48,7 +48,7 @@ jobs:
       - name: Install Playwright browsers
         run: yarn playwright install --with-deps
       - name: Run Playwright tests
-        run: yarn pw:test:ci --project=${{ env.BROWSER }}
+        run: yarn pw:run:ci --project=${{ env.BROWSER }}
         env:
           DEVICE: ${{ inputs.device || 'MacBook' }}
       - name: Upload report

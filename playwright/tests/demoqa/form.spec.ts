@@ -1,4 +1,5 @@
 import { test } from '@playwright/test'
+import path from 'path'
 import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
 import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
 import { PracticeFormAssertion } from 'playwright/pages/DemoQA/PracticeForm/PracticeForm.assertion'
@@ -24,6 +25,9 @@ test.describe('Practice form', () => {
     await PracticeForm.selectSubject('Computer')
     await PracticeForm.assertSubject('Computer Science')
     await PracticeForm.selectHobbies(['Sports', 'Music'])
+
+    const filePath = path.resolve(process.cwd(), '../common/assets/qa.jpg')
+    await PracticeForm.chooseFileButton.setInputFiles(filePath)
 
     await PracticeForm.currentAddress.fill('Gorecka 1,\nPoznan,\nPoland')
     await PracticeForm.selectRandomState()

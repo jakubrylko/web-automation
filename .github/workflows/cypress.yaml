@@ -45,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Run Cypress tests
-        run: yarn cy:test:ci --browser=${{ env.BROWSER }}
+        run: yarn cy:run:ci --browser=${{ env.BROWSER }}
         env:
           DEVICE: ${{ inputs.device || 'MacBook' }}
       - name: Upload videos

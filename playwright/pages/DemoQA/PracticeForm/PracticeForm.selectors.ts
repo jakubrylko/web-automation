@@ -2,6 +2,7 @@ import { Locator, Page } from '@playwright/test'
 import { BaseClass } from 'playwright/shared/BaseClass'
 
 export class PracticeFormSelectors extends BaseClass {
+  readonly chooseFileButton: Locator
   readonly cityOption: Locator
   readonly citySelect: Locator
   readonly closeButton: Locator
@@ -22,6 +23,7 @@ export class PracticeFormSelectors extends BaseClass {
   constructor(page: Page) {
     super(page)
 
+    this.chooseFileButton = page.locator('#uploadPicture')
     this.cityOption = page.locator('[id^="react-select-4"]')
     this.citySelect = page.locator('#city')
     this.closeButton = page.locator('#closeLargeModal')
