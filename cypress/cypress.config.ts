@@ -2,8 +2,9 @@ import { DeviceType, viewport } from '@common/helpers'
 import { allureCypress } from 'allure-cypress/reporter'
 import { defineConfig } from 'cypress'
 import dotenv from 'dotenv'
+import path from 'path'
 
-dotenv.config({ path: '../.env' })
+dotenv.config({ path: path.resolve(__dirname, '../.env') })
 
 const { CI, DEVICE } = process.env
 
