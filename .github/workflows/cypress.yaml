@@ -52,8 +52,9 @@ jobs:
         run: yarn cy:run:ci --browser=${{ env.BROWSER }}
         env:
           DEVICE: ${{ inputs.device || 'MacBook' }}
-          SPLIT: ${{ strategy.job-total }}
+          SKIP_SPEC: 'tests/**/*.js'
           SPLIT_INDEX: ${{ strategy.job-index }}
+          SPLIT: ${{ strategy.job-total }}
       - name: Upload videos
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
