@@ -9,12 +9,12 @@ describe('Alerts', () => {
     LeftPanel.clickOnMenuItem('Alerts')
   })
 
-  it('Should display alert', () => {
+  it('Should display an alert', () => {
     Alerts.alertButton().click()
     Alerts.assertAlertText('You clicked a button', { window: 'alert' })
   })
 
-  it('Should display alert with timer', () => {
+  it('Should display an alert with timer', () => {
     let startTime: number
 
     Alerts.stubAlert()
@@ -30,7 +30,7 @@ describe('Alerts', () => {
     )
   })
 
-  it('Should display confirm box', () => {
+  it('Should display a confirm box', () => {
     const window = 'confirm'
 
     Alerts.confirmBoxButton().click()
@@ -39,7 +39,7 @@ describe('Alerts', () => {
     Alerts.assertAlertResult('You selected Ok', { window })
   })
 
-  it('Should display prompt box', () => {
+  it('Should display a prompt box', () => {
     const text = 'Testing'
 
     Alerts.stubPromptBox(text)

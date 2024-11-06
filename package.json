@@ -19,6 +19,7 @@
     "cy:logs:on": "sed -i '' 's/log: false/log: true/' cypress/support/hooks.ts",
     "cy:open": "cd cypress && yarn cypress open",
     "cy:report:clean": "rm -rf cypress/report",
+    "cy:run:bdd": "cd cypress && yarn cypress run --spec cucumber/features",
     "cy:run:ci": "cd cypress && yarn cypress run --spec tests/demoqa",
     "cy:run:headed:spec": "cd cypress && yarn cypress run --headed --spec",
     "cy:run:spec": "cd cypress && yarn cypress run --spec",

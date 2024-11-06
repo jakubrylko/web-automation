@@ -22,12 +22,12 @@ test.describe('Alerts', () => {
     await Alerts.dismissAlert()
   })
 
-  test('Should display alert', async () => {
+  test('Should display an alert', async () => {
     await Alerts.alertButton.click()
     await Alerts.assertAlertMessage('You clicked a button')
   })
 
-  test('Should display alert with timer', async ({ page }) => {
+  test('Should display an alert with timer', async ({ page }) => {
     await Alerts.timerAlertButton.click()
     await page.waitForTimeout(5000)
     await Alerts.assertAlertMessage('This alert appeared after 5 seconds')
