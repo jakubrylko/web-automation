@@ -58,6 +58,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: cypress-videos-${{ strategy.job-index }}
+          name: cypress-videos-${{ matrix.containers }}
           path: cypress/videos/
           retention-days: 10
