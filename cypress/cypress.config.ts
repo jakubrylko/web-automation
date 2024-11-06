@@ -1,6 +1,7 @@
 import { DeviceType, viewport } from '@common/helpers'
 import { allureCypress } from 'allure-cypress/reporter'
 import { defineConfig } from 'cypress'
+import cypressSplit from 'cypress-split'
 import dotenv from 'dotenv'
 import path from 'path'
 
@@ -16,6 +17,8 @@ export default defineConfig({
       allureCypress(on, config, {
         resultsDir: '../allure/allure-results/cypress'
       })
+
+      cypressSplit(on, config)
 
       Object.assign(config.env, process.env)
       return config
