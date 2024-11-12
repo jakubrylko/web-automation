@@ -22,11 +22,10 @@ When('I click the {string} Click me button', (button: string) => {
       .then(() => (startTime = Date.now()))
 })
 
-When('I click {string} in the confirm box', (button: string) => {
-  const action = button === 'Ok' ? 'Approve' : 'Cancel'
+When('I click {string} in the confirm box', (button: Action) => {
   Alerts.confirmBoxButton().click()
   Alerts.assertAlertText('Do you confirm action?', { type: 'confirm' })
-  Alerts.handleConfirmBox(action)
+  Alerts.handleConfirmBox(button)
 })
 
 When('I type {string} in the prompt box', (text: string) => {
