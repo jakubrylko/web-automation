@@ -19,4 +19,4 @@ type SortableItem =
 
 type SortableTab = 'List' | 'Grid'
 
-type Windows = { window: 'alert' | 'confirm' | 'prompt' }
+type Alert = { type: 'alert' | 'confirm' | 'prompt' }

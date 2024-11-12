@@ -16,12 +16,12 @@ const device = (DEVICE ?? 'MacBook') as DeviceType
 export default defineConfig({
   e2e: {
     async setupNodeEvents(on, config) {
-      // Allure reporter
+      // Set up Allure Reporter
       allureCypress(on, config, {
         resultsDir: '../allure/allure-results/cypress'
       })
 
-      // Cucumber BDD
+      // Set up Cucumber BDD
       await addCucumberPreprocessorPlugin(on, config)
       on(
         'file:preprocessor',
@@ -30,7 +30,7 @@ export default defineConfig({
         })
       )
 
-      // Parallelization
+      // Enable parallelization
       cypressSplit(on, config)
 
       // Handle envs

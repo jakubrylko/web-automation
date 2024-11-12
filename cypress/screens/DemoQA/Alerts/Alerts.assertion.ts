@@ -6,14 +6,14 @@ export const assertAlertWasCalledWith = (text: string) => {
     .should('have.been.calledWith', text)
 }
 
-export const assertAlertText = (text: string, { window }: Windows) => {
-  cy.on(`window:${window}`, (string) => {
+export const assertAlertText = (text: string, { type }: Alert) => {
+  cy.on(`window:${type}`, (string) => {
     expect(string).to.equal(text)
   })
 }
 
-export const assertAlertResult = (text: string, { window }: Windows) => {
+export const assertAlertResult = (text: string, { type }: Alert) => {
   const selector =
-    window === 'confirm' ? Selectors.confirmResult() : Selectors.promptResult()
+    type === 'confirm' ? Selectors.confirmResult() : Selectors.promptResult()
   selector.shouldHaveText(text)
 }
