@@ -1,3 +1,7 @@
+type Action = 'Ok' | 'Cancel'
+
+type Alert = { type: 'alert' | 'confirm' | 'prompt' }
+
 type Gender = 'Male' | 'Female' | 'Other'
 
 type Hobby = 'Sports' | 'Reading' | 'Music'
@@ -18,5 +22,3 @@ type SortableItem =
   | 'Nine'
 
 type SortableTab = 'List' | 'Grid'
-
-type Windows = { window: 'alert' | 'confirm' | 'prompt' }

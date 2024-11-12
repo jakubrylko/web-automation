@@ -2,9 +2,9 @@ export const stubAlert = () => {
   cy.window().then((window) => cy.stub(window, 'alert').as('alert'))
 }
 
-export const handleConfirmBox = (action: 'Approve' | 'Deny') => {
+export const handleConfirmBox = (action: Action) => {
   cy.on('window:confirm', () => {
-    return action === 'Approve' ? true : false
+    return action === 'Ok' ? true : false
   })
 }
 

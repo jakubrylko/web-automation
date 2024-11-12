@@ -9,12 +9,12 @@ describe('Alerts', () => {
     LeftPanel.clickOnMenuItem('Alerts')
   })
 
-  it('Should display alert', () => {
+  it('Should display an alert', () => {
     Alerts.alertButton().click()
-    Alerts.assertAlertText('You clicked a button', { window: 'alert' })
+    Alerts.assertAlertText('You clicked a button', { type: 'alert' })
   })
 
-  it('Should display alert with timer', () => {
+  it('Should display an alert with timer', () => {
     let startTime: number
 
     Alerts.stubAlert()
@@ -30,20 +30,20 @@ describe('Alerts', () => {
     )
   })
 
-  it('Should display confirm box', () => {
-    const window = 'confirm'
+  it('Should display a confirm box', () => {
+    const type = 'confirm'
 
     Alerts.confirmBoxButton().click()
-    Alerts.assertAlertText('Do you confirm action?', { window })
-    Alerts.handleConfirmBox('Approve')
-    Alerts.assertAlertResult('You selected Ok', { window })
+    Alerts.assertAlertText('Do you confirm action?', { type })
+    Alerts.handleConfirmBox('Cancel')
+    Alerts.assertAlertResult('You selected Cancel', { type })
   })
 
-  it('Should display prompt box', () => {
+  it('Should display a prompt box', () => {
     const text = 'Testing'
 
     Alerts.stubPromptBox(text)
     Alerts.promptBoxButton().click()
-    Alerts.assertAlertResult(`You entered ${text}`, { window: 'prompt' })
+    Alerts.assertAlertResult(`You entered ${text}`, { type: 'prompt' })
   })
 })
