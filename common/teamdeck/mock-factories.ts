@@ -15,7 +15,7 @@ export const metaData = ({ totalCount }: { totalCount: number }) => {
 export const newResource = () => {
   const startDate = date.past({ years: 10 })
   const endDate = date.future({ years: 10 })
-  const roles = helpers.arrayElement([
+  const randomRole = helpers.arrayElement([
     'Backend Developer',
     'Frontend Developer',
     'Project Manager',
@@ -35,7 +35,7 @@ export const newResource = () => {
     linked_invitation: null,
     custom_fields: [],
     avatar: null,
-    role: roles,
+    role: randomRole,
     email: internet.email(),
     timeZone: 'Europe/Sarajevo',
     subrows: [

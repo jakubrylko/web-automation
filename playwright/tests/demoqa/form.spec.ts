@@ -17,9 +17,8 @@ test.describe('Practice form', () => {
     await PracticeForm.firstName.fill('John')
     await PracticeForm.lastName.fill('Doe')
     await PracticeForm.emailAddress.fill('test@example.com')
-    await PracticeForm.mobileNumber.fill('0123456789')
-
     await PracticeForm.selectGender('Male')
+    await PracticeForm.mobileNumber.fill('0123456789')
     await PracticeForm.selectDateOfBirth('1', 'August', '1990')
 
     await PracticeForm.selectSubject('Computer')

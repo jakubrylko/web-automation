@@ -5,7 +5,7 @@ const { commerce, datatype, date, helpers, person } = faker
 
 const checkinDate = date.soon({ days: 30 })
 const checkoutDate = date.soon({ days: 30, refDate: checkinDate })
-const additionalNeeds = helpers.arrayElement([
+const randomAdditionalNeed = helpers.arrayElement([
   'Breakfast',
   'Lunch',
   'Dinner',
@@ -22,5 +22,5 @@ export const newBooking = {
     checkin: dayjs(checkinDate).format('YYYY-MM-DD'),
     checkout: dayjs(checkoutDate).format('YYYY-MM-DD')
   },
-  additionalneeds: additionalNeeds
+  additionalneeds: randomAdditionalNeed
 }

@@ -12,9 +12,9 @@ describe('Practice form', () => {
       PracticeForm.firstName().type(data.firstName)
       PracticeForm.lastName().type(data.lastName)
       PracticeForm.emailAddress().type(data.email)
+      PracticeForm.selectGender(data.gender)
       PracticeForm.mobileNumber().type(data.mobile)
 
-      PracticeForm.selectGender(data.gender)
       const { day, month, year } = data.dateOfBirth
       PracticeForm.selectDateOfBirth(day, month, year)
 
