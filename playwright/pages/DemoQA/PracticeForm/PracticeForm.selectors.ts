@@ -18,6 +18,7 @@ export class PracticeFormSelectors extends BaseClass {
   readonly stateSelect: Locator
   readonly subjectsInput: Locator
   readonly submitButton: Locator
+  readonly valueCell: Locator
   readonly yearSelect: Locator
 
   constructor(page: Page) {
@@ -39,6 +40,7 @@ export class PracticeFormSelectors extends BaseClass {
     this.stateSelect = page.locator('#state')
     this.subjectsInput = page.locator('#subjectsInput')
     this.submitButton = page.locator('#submit')
+    this.valueCell = page.locator('td:nth-child(even)')
     this.yearSelect = page.locator('.react-datepicker__year-select')
   }
 }

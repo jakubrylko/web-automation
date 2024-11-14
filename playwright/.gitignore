@@ -2,6 +2,7 @@
 node_modules
 
 # Artifacts
+cucumber/report
 report
 snapshots
 traces

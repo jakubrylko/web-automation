@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import dayjs from 'dayjs'
 
-const { date, internet, helpers, number, person } = faker
+const { date, internet, helpers, person, string } = faker
 
 export const metaData = ({ totalCount }: { totalCount: number }) => {
   return {
@@ -15,7 +15,7 @@ export const metaData = ({ totalCount }: { totalCount: number }) => {
 export const newResource = () => {
   const startDate = date.past({ years: 10 })
   const endDate = date.future({ years: 10 })
-  const roles = helpers.arrayElement([
+  const randomRole = helpers.arrayElement([
     'Backend Developer',
     'Frontend Developer',
     'Project Manager',
@@ -23,7 +23,7 @@ export const newResource = () => {
   ])
 
   return {
-    id: number.int({ min: 1000000, max: 9999999 }),
+    id: Number(string.numeric(7)),
     name: person.fullName(),
     type: 1,
     is_part_time: 1,
@@ -35,7 +35,7 @@ export const newResource = () => {
     linked_invitation: null,
     custom_fields: [],
     avatar: null,
-    role: roles,
+    role: randomRole,
     email: internet.email(),
     timeZone: 'Europe/Sarajevo',
     subrows: [

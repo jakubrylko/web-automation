@@ -1,4 +1,11 @@
 {
-  "cucumberautocomplete.steps": ["cypress/cucumber/steps/**/*.steps.ts"],
-  "cucumberautocomplete.syncfeatures": "cypress/cucumber/features/**/*.feature"
+  "cucumber.features": [
+    "common/features/**/*.feature",
+    "cypress/cucumber/features/**/*.feature",
+    "playwright/cucumber/features/**/*.feature"
+  ],
+  "cucumber.glue": [
+    "cypress/cucumber/steps/**/*.steps.ts",
+    "playwright/cucumber/steps/**/*.steps.ts"
+  ]
 }

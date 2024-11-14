@@ -32,9 +32,14 @@ export class PracticeFormPage extends PracticeFormSelectors {
   }
 
   async selectHobbies(hobbies: Hobby | Hobby[]) {
-    for await (const hobby of hobbies) {
-      await this.page.getByText(hobby, { exact: true }).check()
-      await expect(this.page.getByText(hobby, { exact: true })).toBeChecked()
+    if (Array.isArray(hobbies)) {
+      for (const hobby of hobbies) {
+        await this.page.getByText(hobby, { exact: true }).check()
+        await expect(this.page.getByText(hobby, { exact: true })).toBeChecked()
+      }
+    } else {
+      await this.page.getByText(hobbies, { exact: true }).check()
+      await expect(this.page.getByText(hobbies, { exact: true })).toBeChecked()
     }
   }
 

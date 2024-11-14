@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test'
+import { expect, Page } from '@playwright/test'
 import { PracticeFormPage } from './PracticeForm.page'
 
 export class PracticeFormAssertion extends PracticeFormPage {
@@ -14,5 +14,13 @@ export class PracticeFormAssertion extends PracticeFormPage {
 
   async assertSubmissionTitle(title: string) {
     await this.assert.shouldBeVisible(this.page.getByText(title))
+  }
+
+  async assertSubmittedData() {
+    const cells = await this.valueCell.all()
+    for (const cell of cells) {
+      const text = await cell.textContent()
+      expect(text?.trim()).not.toBe('')
+    }
   }
 }

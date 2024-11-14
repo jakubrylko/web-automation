@@ -17,4 +17,9 @@ export class WindowsAssertion extends WindowsPage {
   async assertBrowserWindowsHeader() {
     await this.assert.shouldBeVisible(this.browserWindowsHeader)
   }
+
+  async assertNumOfPages(count: number) {
+    const pages = this.page.context().pages()
+    expect(pages.length).toEqual(count)
+  }
 }
