@@ -2,6 +2,8 @@ type Action = 'Ok' | 'Cancel'
 
 type Alert = { type: 'alert' | 'confirm' | 'prompt' }
 
+type ButtonIdentifier = 'first' | 'second' | 'third'
+
 type Gender = 'Male' | 'Female' | 'Other'
 
 type Hobby = 'Sports' | 'Reading' | 'Music'

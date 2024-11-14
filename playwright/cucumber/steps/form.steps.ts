@@ -1,36 +1,23 @@
-import { viewport } from '@common/helpers'
 import { formData } from '@common/test-data'
-import { After, Before, Given, Then, When } from '@cucumber/cucumber'
-import { Browser, BrowserContext, chromium, Page } from '@playwright/test'
+import { Before, Given, Then, When } from '@cucumber/cucumber'
 import path from 'path'
 import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
+import { fixture } from 'playwright/cucumber/hooks/fixture'
 import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
 import { PracticeFormAssertion } from 'playwright/pages/DemoQA/PracticeForm/PracticeForm.assertion'
-
-let browser: Browser
-let context: BrowserContext
-let page: Page
 
 let Home: HomePage
 let LeftPanel: LeftPanelPage
 let PracticeForm: PracticeFormAssertion
 
 Before(async () => {
-  browser = await chromium.launch({ headless: false })
-  context = await browser.newContext({ viewport: viewport.MacBook })
-  page = await context.newPage()
-
-  Home = new HomePage(page)
-  LeftPanel = new LeftPanelPage(page)
-  PracticeForm = new PracticeFormAssertion(page)
-})
-
-After(async () => {
-  await browser.close()
+  Home = new HomePage(fixture.page)
+  LeftPanel = new LeftPanelPage(fixture.page)
+  PracticeForm = new PracticeFormAssertion(fixture.page)
 })
 
 Given('I am on the practice form page', async () => {
-  await page.goto('https://demoqa.com')
+  await fixture.page.goto('https://demoqa.com')
   await Home.clickOnMenuCard('Forms')
   await LeftPanel.clickOnMenuItem('Practice Form')
 })

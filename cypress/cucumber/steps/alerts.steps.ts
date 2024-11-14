@@ -11,7 +11,7 @@ Given('I am on the alerts page', () => {
   LeftPanel.clickOnMenuItem('Alerts')
 })
 
-When('I click the {string} Click me button', (button: string) => {
+When('I click the {string} Click me button', (button: ButtonIdentifier) => {
   Alerts.stubAlert()
 
   button === 'first' && Alerts.alertButton().click()
