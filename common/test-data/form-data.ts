@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-const { date, helpers, internet, location, number, person } = faker
+const { date, helpers, internet, location, person, string } = faker
 
 const birthdate = date.birthdate({ min: 18, max: 65, mode: 'age' })
 const randomGender = helpers.arrayElement(['Male', 'Female', 'Other'])
@@ -18,7 +18,7 @@ export const formData = {
   firstName: person.firstName(),
   lastName: person.lastName(),
   email: internet.email(),
-  mobile: number.int({ min: 1000000000, max: 9999999999 }).toString(),
+  mobile: string.numeric(10),
   gender: randomGender,
   dateOfBirth: {
     day: birthdate.getDate().toString(),

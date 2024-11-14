@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import dayjs from 'dayjs'
 
-const { date, internet, helpers, number, person } = faker
+const { date, internet, helpers, person, string } = faker
 
 export const metaData = ({ totalCount }: { totalCount: number }) => {
   return {
@@ -23,7 +23,7 @@ export const newResource = () => {
   ])
 
   return {
-    id: number.int({ min: 1000000, max: 9999999 }),
+    id: Number(string.numeric(7)),
     name: person.fullName(),
     type: 1,
     is_part_time: 1,
