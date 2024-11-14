@@ -52,7 +52,7 @@ export default defineConfig({
     downloadsFolder: 'downloads',
     fixturesFolder: 'fixtures',
     screenshotsFolder: 'screenshots',
-    specPattern: '../**/*.{cy.ts,feature}',
+    specPattern: ['../common/features/*.feature', '**/*.{cy.ts,feature}'],
     supportFile: 'support/e2e.ts',
     videosFolder: 'videos'
   }

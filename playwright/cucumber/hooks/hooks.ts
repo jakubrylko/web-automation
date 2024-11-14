@@ -1,7 +1,7 @@
 import { viewport } from '@common/helpers'
 import { After, Before } from '@cucumber/cucumber'
 import { Browser, chromium } from '@playwright/test'
-import { fixture } from './fixture'
+import { fixture } from './fixtures'
 
 let browser: Browser
 

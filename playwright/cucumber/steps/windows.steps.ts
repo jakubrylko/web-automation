@@ -4,7 +4,7 @@ import { Page } from '@playwright/test'
 import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
 import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
 import { WindowsAssertion } from 'playwright/pages/DemoQA/Windows/Windows.assertion'
-import { fixture } from '../hooks/fixture'
+import { fixture } from '../hooks/fixtures'
 
 let Home: HomePage
 let LeftPanel: LeftPanelPage

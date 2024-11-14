@@ -2,7 +2,7 @@ import { formData } from '@common/test-data'
 import { Before, Given, Then, When } from '@cucumber/cucumber'
 import path from 'path'
 import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
-import { fixture } from 'playwright/cucumber/hooks/fixture'
+import { fixture } from 'playwright/cucumber/hooks/fixtures'
 import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
 import { PracticeFormAssertion } from 'playwright/pages/DemoQA/PracticeForm/PracticeForm.assertion'
 
