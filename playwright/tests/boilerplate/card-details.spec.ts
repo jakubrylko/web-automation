@@ -15,7 +15,7 @@ const BASIC_AUTH = {
 
 const { cardOwner, cardNumber, cardExpiry, cardCvc } = cardDetails
 
-test.describe('Saas Boilerplate', () => {
+test.describe('Boilerplate iframe', () => {
   test('Should fill card details in iframe', async ({ browser }) => {
     const context = await browser.newContext(BASIC_AUTH)
     const page = await context.newPage()
@@ -42,6 +42,6 @@ test.describe('Saas Boilerplate', () => {
     await Home.clickOnMenuTile('Payments')
 
     await Payments.assertAddedCard({ cardOwner })
-    await Payments.removeSavedCard({ cardOwner })
+    await Payments.removeAddedCard({ cardOwner })
   })
 })

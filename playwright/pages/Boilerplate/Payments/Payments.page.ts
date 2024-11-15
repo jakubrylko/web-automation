@@ -6,11 +6,11 @@ export class PaymentsPage extends PaymentsSelectors {
     super(page)
   }
 
-  async selectPaymentAmount(amount: '5' | '10' | '15') {
+  async selectPaymentAmount(amount: PaymentAmount) {
     await this.page.getByText(`$${amount}`).click({ force: true })
   }
 
-  async removeSavedCard({ cardOwner }: { cardOwner: string }) {
+  async removeAddedCard({ cardOwner }: { cardOwner: string }) {
     await this.trashIcon.click({ force: true })
     await this.assert.shouldBeHidden(this.page.getByText(cardOwner))
   }
