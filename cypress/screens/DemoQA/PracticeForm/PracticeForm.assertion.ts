@@ -6,6 +6,6 @@ export const assertSubmissionTitle = (title: string) => {
 
 export const assertSubmittedData = () => {
   Selectors.valueCell().each(($cell) => {
-    cy.wrap($cell).should('not.be.empty')
+    cy.wrap($cell).shouldNotBeEmpty()
   })
 }

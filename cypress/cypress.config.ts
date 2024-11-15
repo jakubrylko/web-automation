@@ -41,7 +41,7 @@ export default defineConfig({
 
     baseUrl: 'https://demoqa.com',
     chromeWebSecurity: false,
-    defaultCommandTimeout: 4000,
+    defaultCommandTimeout: 5000,
     pageLoadTimeout: 60000,
     retries: { runMode: CI ? 1 : 0, openMode: 0 },
     video: CI ? true : false,

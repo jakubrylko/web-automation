@@ -21,7 +21,7 @@ describe('Frames', () => {
   it('Should access small frame content', () => {
     Frames.smallFrame()
       .its('0.contentDocument.body')
-      .should('not.be.empty')
+      .shouldNotBeEmpty()
       .shouldHaveText(SAMPLE_PAGE)
   })
 })
