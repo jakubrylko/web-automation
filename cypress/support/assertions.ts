@@ -21,11 +21,3 @@ Cypress.Commands.add(
     cy.wrap(subject).should('have.text', text)
   }
 )
-
-Cypress.Commands.add(
-  'shouldNotBeEmpty',
-  { prevSubject: 'element' },
-  (subject) => {
-    cy.wrap(subject).should('not.be.empty')
-  }
-)

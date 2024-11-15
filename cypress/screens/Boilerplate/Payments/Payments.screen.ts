@@ -14,7 +14,7 @@ const fillIframeInput = ({
   Selectors.iframe()
     .eq(iframeIndex)
     .its('0.contentDocument.body')
-    .shouldNotBeEmpty()
+    .should('not.be.empty')
     .then(cy.wrap)
     .find('.InputElement')
     .type(data)

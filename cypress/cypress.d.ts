@@ -3,6 +3,5 @@ declare namespace Cypress {
     shouldBeChecked(): Chainable<Subject>
     shouldBeVisible(): Chainable<Subject>
     shouldHaveText(text: string): Chainable<Subject>
-    shouldNotBeEmpty(): Chainable<Subject>
   }
 }
