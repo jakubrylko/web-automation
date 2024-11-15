@@ -1,8 +1,8 @@
 Cypress.Commands.add(
   'shouldBeVisible',
   { prevSubject: 'element' },
-  (subject, timeout?) => {
-    cy.wrap(subject).should('be.visible', { timeout })
+  (subject) => {
+    cy.wrap(subject).should('be.visible')
   }
 )
 
@@ -19,5 +19,13 @@ Cypress.Commands.add(
   { prevSubject: 'element' },
   (subject, text) => {
     cy.wrap(subject).should('have.text', text)
+  }
+)
+
+Cypress.Commands.add(
+  'shouldNotBeEmpty',
+  { prevSubject: 'element' },
+  (subject) => {
+    cy.wrap(subject).should('not.be.empty')
   }
 )
