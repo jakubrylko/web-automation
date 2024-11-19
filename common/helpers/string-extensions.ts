@@ -3,7 +3,7 @@ String.prototype.removeChars = function (char: string) {
   return this.replace(regexp, ' ')
 }
 
-String.prototype.removeHttp = function () {
+String.prototype.removeUrlPrefix = function () {
   return this.replace(/^https?:\/\//, '')
 }
 

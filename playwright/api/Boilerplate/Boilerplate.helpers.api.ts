@@ -33,7 +33,7 @@ export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
 
   async getCookies(response: APIResponse) {
     const body = await response.json()
-    const domain = SAAS_URL?.removeHttp()
+    const domain = SAAS_URL?.removeUrlPrefix()
     return [
       {
         name: 'token',
@@ -41,7 +41,7 @@ export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
         domain,
         path: '/',
         httpOnly: true,
-        secure: true
+        secure: false
       },
       {
         name: 'refresh_token',
