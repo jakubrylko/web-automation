@@ -1,6 +1,10 @@
 import * as Home from '../Homepage'
 import * as Selectors from './Login.selectors'
 
+export const open = () => {
+  cy.visit(Cypress.env('SAAS_URL'))
+}
+
 export const authenticate = ({
   email,
   password
@@ -16,7 +20,7 @@ export const authenticate = ({
 export const createSession = (authData: SessionData) => {
   const { sessionId, email, password } = authData
   cy.session(sessionId, () => {
-    Home.open()
+    open()
     authenticate({ email, password })
     Home.assertWelcomeMessage()
   })

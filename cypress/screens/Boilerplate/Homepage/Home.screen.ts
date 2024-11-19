@@ -1,7 +1,3 @@
-export const open = () => {
-  cy.visit(Cypress.env('SAAS_URL'))
-}
-
 export const clickOnNavigationItem = (item: string) => {
   cy.get('nav').contains(item).click()
 }

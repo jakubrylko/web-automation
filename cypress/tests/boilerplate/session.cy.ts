@@ -12,7 +12,7 @@ const authData = {
 describe('Boilerplate session', () => {
   beforeEach(() => {
     Login.createSession(authData)
-    Home.open()
+    Login.open()
   })
 
   it('Should navigate to payments', () => {

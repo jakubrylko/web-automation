@@ -1,6 +1,7 @@
 import * as BoilerplateAPI from 'cypress/api/Boilerplate'
 import { statusShouldBeOk } from 'cypress/api/utilities'
 import * as Home from 'cypress/screens/Boilerplate/Homepage'
+import * as Login from 'cypress/screens/Boilerplate/Login'
 
 describe('Boilerplate login', () => {
   it('Should login to the app with cookies', () => {
@@ -12,7 +13,7 @@ describe('Boilerplate login', () => {
       cy.setCookie('refresh_token', tokenAuth.refresh)
     })
 
-    Home.open()
+    Login.open()
     Home.assertWelcomeMessage()
   })
 })
