@@ -4,14 +4,12 @@ import { statusShouldBeOk } from 'cypress/api/utilities'
 import * as Home from 'cypress/screens/Boilerplate/Homepage'
 import * as Payments from 'cypress/screens/Boilerplate/Payments'
 
-const { env } = Cypress
 const { cardOwner } = cardDetails
 
 describe('Boilerplate iframe', () => {
   it('Should fill card details in iframe', () => {
     BoilerplateAPI.login().then((response) => statusShouldBeOk(response))
-    cy.visit(env('SAAS_URL'))
-
+    Home.open()
     Home.clickOnNavigationItem('Payments')
 
     Payments.selectPaymentAmount('5')

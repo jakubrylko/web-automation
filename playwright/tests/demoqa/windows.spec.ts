@@ -1,4 +1,4 @@
-import { MESSAGE_TEXT, SAMPLE_PAGE } from '@common/test-data'
+import { MESSAGE_WINDOW, SAMPLE_PAGE } from '@common/test-data'
 import { test } from '@playwright/test'
 import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
 import { HomePage } from 'playwright/pages/DemoQA/Homepage/Home.page'
@@ -48,6 +48,6 @@ test.describe('Windows', () => {
     const newMsgWindow = await Windows.openNewWindow(msgWindowButton)
     await newMsgWindow.waitForLoadState()
 
-    await Windows.assertNewWindowBody(newMsgWindow, { text: MESSAGE_TEXT })
+    await Windows.assertNewWindowBody(newMsgWindow, { text: MESSAGE_WINDOW })
   })
 })

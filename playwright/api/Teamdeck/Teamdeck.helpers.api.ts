@@ -18,7 +18,7 @@ export class TeamdeckAPIHelpers extends TeamdeckAPIPage {
         name,
         value,
         path: (attrs.find((attr) => attr.includes('path')) || '').split('=')[1],
-        domain: TEAMDECK_URL!.replace('https://', ''),
+        domain: TEAMDECK_URL?.removeHttp(),
         httpOnly: attrs.some((attr) => attr.includes('HttpOnly')),
         secure: attrs.some((attr) => attr.includes('Secure')),
         sameSite: (attrs.find((attr) => attr.includes('SameSite')) || '').split(

@@ -1,4 +1,4 @@
-import { MESSAGE_TEXT, SAMPLE_PAGE } from '@common/test-data'
+import { MESSAGE_WINDOW, SAMPLE_PAGE } from '@common/test-data'
 import { Before, Given, Then, When } from '@cucumber/cucumber'
 import { Page } from '@playwright/test'
 import { LeftPanelPage } from 'playwright/components/DemoQA/LeftPanel/LeftPanel.page'
@@ -43,5 +43,5 @@ Then('I should see the heading text', async () => {
 })
 
 Then('I should see the message text', async () => {
-  await Windows.assertNewWindowBody(newWindow, { text: MESSAGE_TEXT })
+  await Windows.assertNewWindowBody(newWindow, { text: MESSAGE_WINDOW })
 })
