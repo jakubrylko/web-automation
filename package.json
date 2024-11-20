@@ -6,6 +6,7 @@
   "gh-pages": "https://jakubrylko.github.io/web-automation",
   "repository": "https://github.com/jakubrylko/web-automation",
   "scripts": {
+    "cleanup": "rm -rf allure/allure-results cypress/artifacts playwright/artifacts",
     "format": "prettier --write . --log-level error",
     "lint": "eslint .",
     "prepare": "husky",
@@ -18,21 +19,21 @@
     "cy:logs:off": "sed -i '' 's/log: true/log: false/' cypress/support/hooks.ts",
     "cy:logs:on": "sed -i '' 's/log: false/log: true/' cypress/support/hooks.ts",
     "cy:open": "cd cypress && yarn cypress open",
-    "cy:report:clean": "rm -rf cypress/report",
+    "cy:report:clean": "rm -rf cypress/artifacts/report",
     "cy:run:bdd": "cd cypress && yarn cypress run --spec '../common/features/**/*.feature,cucumber/features/**/*.feature'",
     "cy:run:ci": "cd cypress && yarn cypress run --spec tests/demoqa",
     "cy:run:headed:spec": "cd cypress && yarn cypress run --headed --spec",
     "cy:run:spec": "cd cypress && yarn cypress run --spec",
     "cy:run": "cd cypress && yarn cypress run",
     "pw:report:bdd": "cd playwright && open cucumber/report/cucumber-report.html",
-    "pw:report:clean": "rm -rf playwright/report",
-    "pw:report": "cd playwright && yarn playwright show-report report",
+    "pw:report:clean": "rm -rf playwright/artifacts/report",
+    "pw:report": "cd playwright && yarn playwright show-report artifacts/report",
     "pw:run:ci": "cd playwright && yarn playwright test demoqa",
     "pw:test:bdd": "cd playwright && TS_NODE_TRANSPILE_ONLY=true yarn cucumber-js test",
     "pw:test:headed": "cd playwright && yarn playwright test --headed --project=chromium",
     "pw:test:ui": "cd playwright && yarn playwright test --ui",
     "pw:test": "cd playwright && yarn playwright test --project=chromium",
-    "pw:traces:clean": "rm -rf playwright/traces"
+    "pw:traces:clean": "rm -rf playwright/artifacts/traces"
   },
   "devDependencies": {
     "@eslint/js": "^9.11.1",

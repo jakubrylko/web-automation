@@ -11,8 +11,8 @@ const device = (DEVICE ?? 'MacBook') as DeviceType
 
 export default defineConfig({
   testDir: 'tests',
-  outputDir: 'traces',
-  snapshotDir: 'snapshots',
+  outputDir: 'artifacts/traces',
+  snapshotDir: 'artifacts/snapshots',
 
   timeout: 30000,
   expect: { timeout: 5000, toHaveScreenshot: { threshold: 0.01 } },
@@ -27,7 +27,7 @@ export default defineConfig({
       'allure-playwright',
       { resultsDir: '../allure/allure-results/playwright' }
     ],
-    ['html', { open: 'never', outputFolder: 'report' }],
+    ['html', { open: 'never', outputFolder: 'artifacts/report' }],
     ['list']
   ],
 

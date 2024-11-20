@@ -2,7 +2,4 @@
 node_modules
 
 # Artifacts
-downloads
-report
-screenshots
-videos
+artifacts

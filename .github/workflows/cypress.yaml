@@ -60,5 +60,5 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: cypress-videos-${{ matrix.containers }}
-          path: cypress/videos/
+          path: cypress/artifacts/videos/
           retention-days: 10

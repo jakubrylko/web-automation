@@ -81,6 +81,6 @@ export const createCsvFromTable = () => {
 
       // Formatting content to CSV string
       const csvContent = data.map((row) => row.join(',')).join('\n')
-      cy.writeFile('downloads/answers.csv', csvContent)
+      cy.writeFile('artifacts/downloads/answers.csv', csvContent)
     })
 }
