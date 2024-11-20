@@ -1,6 +1,8 @@
 import { APIRequestContext, APIResponse } from '@playwright/test'
 import { BoilerplateAPIPage } from './Boilerplate.api'
 
+const { SAAS_URL } = process.env
+
 export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
   constructor(request: APIRequestContext) {
     super(request)
@@ -27,5 +29,28 @@ export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
     for (const id of itemIds) {
       await this.deleteItem({ itemId: id, tenantId })
     }
+  }
+
+  async getCookies(response: APIResponse) {
+    const body = await response.json()
+    const domain = SAAS_URL?.removeUrlPrefix()
+    return [
+      {
+        name: 'token',
+        value: body.data.tokenAuth.access,
+        domain,
+        path: '/',
+        httpOnly: true,
+        secure: false
+      },
+      {
+        name: 'refresh_token',
+        value: body.data.tokenAuth.refresh,
+        domain,
+        path: '/api/auth/token-refresh/',
+        httpOnly: true,
+        secure: false
+      }
+    ]
   }
 }

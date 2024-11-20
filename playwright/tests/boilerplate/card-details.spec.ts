@@ -1,30 +1,19 @@
 import { cardDetails } from '@common/test-data'
 import { test } from '@playwright/test'
 import { HomeAssertion } from 'playwright/pages/Boilerplate/Homepage/Home.assertion'
-import { LoginSelectors } from 'playwright/pages/Boilerplate/Login/Login.selectors'
+import { LoginPage } from 'playwright/pages/Boilerplate/Login/Login.page'
 import { PaymentsAssertion } from 'playwright/pages/Boilerplate/Payments/Payments.assertion'
 
-const { SAAS_URL, SAAS_USERNAME, SAAS_PASSWORD, EMAIL, PASSWORD } = process.env
-
-const BASIC_AUTH = {
-  httpCredentials: {
-    username: SAAS_USERNAME!,
-    password: SAAS_PASSWORD!
-  }
-}
-
+const { EMAIL, PASSWORD } = process.env
 const { cardOwner, cardNumber, cardExpiry, cardCvc } = cardDetails
 
 test.describe('Boilerplate iframe', () => {
-  test('Should fill card details in iframe', async ({ browser }) => {
-    const context = await browser.newContext(BASIC_AUTH)
-    const page = await context.newPage()
-
-    const Login = new LoginSelectors(page)
+  test('Should fill card details in iframe', async ({ page }) => {
+    const Login = new LoginPage(page)
     const Home = new HomeAssertion(page)
     const Payments = new PaymentsAssertion(page)
 
-    await page.goto(SAAS_URL!)
+    await Login.open()
     await Login.email.fill(EMAIL!)
     await Login.password.fill(PASSWORD!)
     await Login.loginButton.click()

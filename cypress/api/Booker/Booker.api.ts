@@ -1,6 +1,6 @@
 import { sendGet, sendPost } from '../utilities'
 
-const baseUrl = Cypress.env('BOOKER_API')
+const baseUrl = 'https://restful-booker.herokuapp.com'
 
 export const getBookings = () => {
   return sendGet(`${baseUrl}/booking`)
