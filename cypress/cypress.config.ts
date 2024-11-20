@@ -44,16 +44,18 @@ export default defineConfig({
     defaultCommandTimeout: 5000,
     pageLoadTimeout: 60000,
     retries: { runMode: CI ? 1 : 0, openMode: 0 },
-    video: CI ? true : false,
+    // video: CI ? true : false,
+    video: true,
     viewportHeight: viewport[device].height,
     viewportWidth: viewport[device].width,
     watchForFileChanges: false,
 
-    downloadsFolder: 'downloads',
+    downloadsFolder: 'artifacts/downloads',
     fixturesFolder: 'fixtures',
-    screenshotsFolder: 'screenshots',
+    reporterOptions: { outputDir: 'cypress/artifacts/reports' },
+    screenshotsFolder: 'artifacts/screenshots',
     specPattern: ['../common/features/*.feature', '**/*.{cy.ts,feature}'],
     supportFile: 'support/e2e.ts',
-    videosFolder: 'videos'
+    videosFolder: 'artifacts/videos'
   }
 })

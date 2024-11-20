@@ -16,6 +16,6 @@ export default [
     }
   },
   {
-    ignores: ['allure', 'playwright/report']
+    ignores: ['allure', 'cypress/artifacts', 'playwright/artifacts']
   }
 ]
