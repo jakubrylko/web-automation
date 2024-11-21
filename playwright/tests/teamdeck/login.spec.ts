@@ -7,6 +7,7 @@ import {
 } from 'playwright/pages/Teamdeck/Login/Login.page'
 
 const { EMAIL, PASSWORD } = process.env
+const credentials = { email: EMAIL!, password: PASSWORD! }
 
 test.describe('Teamdeck login', () => {
   let context: BrowserContext
@@ -23,7 +24,7 @@ test.describe('Teamdeck login', () => {
 
   test('Should login to the app with basic auth', async () => {
     await Login.open()
-    await Login.signIn({ email: EMAIL!, password: PASSWORD! })
+    await Login.signIn(credentials)
     await Home.assert.shouldBeVisible(Home.canvas)
   })
 

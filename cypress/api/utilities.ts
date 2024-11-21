@@ -28,3 +28,14 @@ export const sendGraphQLRequest = (
     }
   })
 }
+
+export const mockGraphQLRequest = (operationName: string, mock: object) => {
+  cy.intercept('POST', '**/api/graphql/', (request) => {
+    if (request.body.operationName === operationName) {
+      request.alias = operationName
+      request.reply((res) => {
+        res.body.data = mock
+      })
+    }
+  })
+}

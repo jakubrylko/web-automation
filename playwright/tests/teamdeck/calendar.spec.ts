@@ -6,6 +6,7 @@ import {
 } from 'playwright/pages/Teamdeck/Login/Login.page'
 
 const { EMAIL, PASSWORD } = process.env
+const credentials = { email: EMAIL!, password: PASSWORD! }
 
 test.describe('Calendar', () => {
   let context: BrowserContext
@@ -23,7 +24,7 @@ test.describe('Calendar', () => {
   test.beforeEach(async () => {
     await context.clearCookies()
     await Login.open()
-    await Login.signIn({ email: EMAIL!, password: PASSWORD! })
+    await Login.signIn(credentials)
 
     await Home.assertInputDate()
     await Home.datepicker.click()

@@ -9,3 +9,15 @@ export const assertToastMessage = () => {
 export const assertWelcomeMessage = () => {
   cy.contains(WELCOME_MESSAGE).shouldBeVisible()
 }
+
+export const assertNotificationList = ({ count }: { count: number }) => {
+  Selectors.notificationList().shouldBeVisible()
+  Selectors.notification().should('have.length', count)
+}
+
+export const allNotificationsShouldBeRead = () => {
+  Selectors.notification().each(($notification) =>
+    cy.wrap($notification).should('have.attr', 'data-status', 'read')
+  )
+  Selectors.bellWithDot().should('not.exist')
+}
