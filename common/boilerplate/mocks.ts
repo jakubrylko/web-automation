@@ -1,7 +1,7 @@
 import { encodeCursor } from '@common/helpers'
 import { newNodeItem, newNotification } from './mock-factories'
 
-const numOfItems = 3
+const numOfItems = 5
 export const allCrudDemoItems = {
   allCrudDemoItems: {
     edges: Array.from({ length: numOfItems }, () => newNodeItem()),
