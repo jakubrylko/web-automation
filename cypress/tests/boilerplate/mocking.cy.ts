@@ -8,7 +8,7 @@ const { env } = Cypress
 const credentials = { email: env('EMAIL'), password: env('PASSWORD') }
 
 describe('Boilerplate mocking', () => {
-  it('Should intercept CRUD item list', () => {
+  it('Should intercept CRUD items list', () => {
     mockGraphQLRequest('crudDemoItemListQuery', allCrudDemoItems)
 
     Login.open()
@@ -17,11 +17,11 @@ describe('Boilerplate mocking', () => {
     Home.clickOnNavigationItem('CRUD')
     cy.wait('@crudDemoItemListQuery').then((res) => {
       const itemsArr = res.response?.body.data.allCrudDemoItems.edges
-      expect(itemsArr).to.have.length(3)
+      expect(itemsArr).to.have.length(5)
     })
   })
 
-  it('Should intercept notification list', () => {
+  it('Should intercept notifications list', () => {
     mockGraphQLRequest('notificationsListQuery', notificationsList)
 
     Login.open()
