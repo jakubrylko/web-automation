@@ -5,7 +5,7 @@ export const open = () => {
   cy.visit(Cypress.env('SAAS_URL'))
 }
 
-export const authenticate = ({
+export const signIn = ({
   email,
   password
 }: {
@@ -21,7 +21,7 @@ export const createSession = (authData: SessionData) => {
   const { sessionId, email, password } = authData
   cy.session(sessionId, () => {
     open()
-    authenticate({ email, password })
+    signIn({ email, password })
     Home.assertWelcomeMessage()
   })
 }

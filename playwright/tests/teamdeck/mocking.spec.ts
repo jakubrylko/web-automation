@@ -14,6 +14,7 @@ import {
 } from 'playwright/pages/Teamdeck/Login/Login.page'
 
 const { EMAIL, PASSWORD } = process.env
+const credentials = { email: EMAIL!, password: PASSWORD! }
 
 const resourceListUrl = '**/calendar?dataTypes=1,2,3,4**page=1**'
 const projectListUrl = '**/calendar?dataTypes=7,1,2,4**page=1**'
@@ -41,7 +42,7 @@ test.describe('Mocking', () => {
 
   test('Should intercept request and assert that list is populated', async () => {
     await Login.open()
-    await Login.signIn({ email: EMAIL!, password: PASSWORD! })
+    await Login.signIn(credentials)
 
     const resourceList = await page.waitForResponse(resourceListUrl)
     await TeamdeckAPI.assertItemList(resourceList)
@@ -52,11 +53,11 @@ test.describe('Mocking', () => {
   })
 
   test('Should intercept request and return empty list', async () => {
-    await TeamdeckAPI.utils.mock(resourceListUrl, emptyItemList)
-    await TeamdeckAPI.utils.mock(projectListUrl, emptyItemList)
+    await TeamdeckAPI.utils.mockRequest(resourceListUrl, emptyItemList)
+    await TeamdeckAPI.utils.mockRequest(projectListUrl, emptyItemList)
 
     await Login.open()
-    await Login.signIn({ email: EMAIL!, password: PASSWORD! })
+    await Login.signIn(credentials)
 
     const resourceList = await page.waitForResponse(resourceListUrl)
     await TeamdeckAPI.assertItemList(resourceList, { isEmpty: true })
@@ -67,10 +68,10 @@ test.describe('Mocking', () => {
   })
 
   test('Should intercept request and return static list', async () => {
-    await TeamdeckAPI.utils.mock(resourceListUrl, mockedResourceList)
+    await TeamdeckAPI.utils.mockRequest(resourceListUrl, mockedResourceList)
 
     await Login.open()
-    await Login.signIn({ email: EMAIL!, password: PASSWORD! })
+    await Login.signIn(credentials)
 
     const resourceList = await page.waitForResponse(resourceListUrl)
     await TeamdeckAPI.assertItemList(resourceList)

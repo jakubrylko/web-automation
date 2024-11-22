@@ -11,4 +11,10 @@ export class LoginPage extends LoginSelectors {
   async open() {
     await this.page.goto(SAAS_URL!)
   }
+
+  async signIn({ email, password }: { email: string; password: string }) {
+    await this.email.fill(email)
+    await this.password.fill(password)
+    await this.loginButton.click()
+  }
 }

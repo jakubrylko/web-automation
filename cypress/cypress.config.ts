@@ -9,8 +9,8 @@ import dotenv from 'dotenv'
 import path from 'path'
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') })
-const { CI, DEVICE } = process.env
 
+const { CI, DEVICE } = process.env
 const device = (DEVICE ?? 'MacBook') as DeviceType
 
 export default defineConfig({
