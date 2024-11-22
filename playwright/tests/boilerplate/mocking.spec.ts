@@ -52,7 +52,7 @@ test.describe('Boilerplate mocking', () => {
 
     // Updating notificationsList mock to have all notifications read
     notificationsList.allNotifications.edges.forEach((edge) => {
-      ;(edge.node.readAt as null | string) = dayjs().toISOString()
+      ;(edge.node.readAt as NullableString) = dayjs().toISOString()
     })
     notificationsList.hasUnreadNotifications = false
 

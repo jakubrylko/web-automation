@@ -4,3 +4,5 @@ type CardDetails = {
   cardExpiry: string
   cardCvc: string
 }
+
+type NullableString = null | string
