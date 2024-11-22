@@ -6,6 +6,7 @@ import { PaymentsAssertion } from 'playwright/pages/Boilerplate/Payments/Payment
 
 const { EMAIL, PASSWORD } = process.env
 const { cardOwner, cardNumber, cardExpiry, cardCvc } = cardDetails
+const credentials = { email: EMAIL!, password: PASSWORD! }
 
 test.describe('Boilerplate iframe', () => {
   test('Should fill card details in iframe', async ({ page }) => {
@@ -14,10 +15,7 @@ test.describe('Boilerplate iframe', () => {
     const Payments = new PaymentsAssertion(page)
 
     await Login.open()
-    await Login.email.fill(EMAIL!)
-    await Login.password.fill(PASSWORD!)
-    await Login.loginButton.click()
-
+    await Login.signIn(credentials)
     await Home.clickOnNavigationItem('Payments')
 
     await Payments.selectPaymentAmount('5')

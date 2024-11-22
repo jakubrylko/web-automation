@@ -1,9 +1,9 @@
-import { APIRequestContext, APIResponse, expect } from '@playwright/test'
+import { APIRequestContext, APIResponse, expect, Page } from '@playwright/test'
 import { BoilerplateAPIHelpers } from './Boilerplate.helpers.api'
 
 export class BoilerplateAPIAssertion extends BoilerplateAPIHelpers {
-  constructor(request: APIRequestContext) {
-    super(request)
+  constructor(request: APIRequestContext, page?: Page) {
+    super(request, page)
   }
 
   async newItemShouldBeListed(response: APIResponse, { itemName }: ItemName) {

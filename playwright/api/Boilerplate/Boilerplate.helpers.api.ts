@@ -1,11 +1,11 @@
-import { APIRequestContext, APIResponse } from '@playwright/test'
+import { APIRequestContext, APIResponse, Page } from '@playwright/test'
 import { BoilerplateAPIPage } from './Boilerplate.api'
 
 const { SAAS_URL } = process.env
 
 export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
-  constructor(request: APIRequestContext) {
-    super(request)
+  constructor(request: APIRequestContext, page?: Page) {
+    super(request, page)
   }
 
   async getTenantId(response: APIResponse, { index = 0 } = {}) {

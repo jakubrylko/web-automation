@@ -12,7 +12,7 @@ describe('Boilerplate mocking', () => {
     mockGraphQLRequest('crudDemoItemListQuery', allCrudDemoItems)
 
     Login.open()
-    Login.authenticate(credentials)
+    Login.signIn(credentials)
 
     Home.clickOnNavigationItem('CRUD')
     cy.wait('@crudDemoItemListQuery').then((res) => {
@@ -25,7 +25,7 @@ describe('Boilerplate mocking', () => {
     mockGraphQLRequest('notificationsListQuery', notificationsList)
 
     Login.open()
-    Login.authenticate(credentials)
+    Login.signIn(credentials)
 
     Home.notificationBell().click()
     const numOfNotifications = notificationsList.allNotifications.edges.length
@@ -42,6 +42,6 @@ describe('Boilerplate mocking', () => {
 
     cy.reload()
     Home.notificationBell().click()
-    Home.allNotificationsShouldBeRead()
+    Home.assertAllNotificationsAreRead()
   })
 })

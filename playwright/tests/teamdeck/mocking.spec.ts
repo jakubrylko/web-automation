@@ -53,8 +53,8 @@ test.describe('Mocking', () => {
   })
 
   test('Should intercept request and return empty list', async () => {
-    await TeamdeckAPI.utils.mock(resourceListUrl, emptyItemList)
-    await TeamdeckAPI.utils.mock(projectListUrl, emptyItemList)
+    await TeamdeckAPI.utils.mockRequest(resourceListUrl, emptyItemList)
+    await TeamdeckAPI.utils.mockRequest(projectListUrl, emptyItemList)
 
     await Login.open()
     await Login.signIn(credentials)
@@ -68,7 +68,7 @@ test.describe('Mocking', () => {
   })
 
   test('Should intercept request and return static list', async () => {
-    await TeamdeckAPI.utils.mock(resourceListUrl, mockedResourceList)
+    await TeamdeckAPI.utils.mockRequest(resourceListUrl, mockedResourceList)
 
     await Login.open()
     await Login.signIn(credentials)

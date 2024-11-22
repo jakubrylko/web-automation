@@ -9,9 +9,8 @@ export class LinksAssertion extends LinksSelectors {
   async assertLinks() {
     const numOfLinks = await this.link.count()
     for (let i = 0; i < numOfLinks; i++) {
-      await this.assert.shouldBeVisible(this.link, { index: i })
-      await this.assert.shouldHaveAttribute(this.link, {
-        index: i,
+      await this.assert.shouldBeVisible(this.link.nth(i))
+      await this.assert.shouldHaveAttribute(this.link.nth(i), {
         attr: 'href'
       })
     }

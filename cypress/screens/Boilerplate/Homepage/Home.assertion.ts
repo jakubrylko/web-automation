@@ -15,7 +15,7 @@ export const assertNotificationList = ({ count }: { count: number }) => {
   Selectors.notification().should('have.length', count)
 }
 
-export const allNotificationsShouldBeRead = () => {
+export const assertAllNotificationsAreRead = () => {
   Selectors.notification().each(($notification) =>
     cy.wrap($notification).should('have.attr', 'data-status', 'read')
   )

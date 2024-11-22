@@ -3,45 +3,39 @@ import { expect, Locator } from '@playwright/test'
 type Elements = Locator | Locator[]
 
 export class Assertions {
-  async shouldBeVisible(elements: Elements, { index = 0 } = {}) {
+  async shouldBeVisible(elements: Elements) {
     if (Array.isArray(elements)) {
       for (const element of elements) {
         await expect(element).toBeVisible()
       }
     } else {
-      await expect(elements.nth(index)).toBeVisible()
+      await expect(elements).toBeVisible()
     }
   }
 
-  async shouldBeHidden(elements: Elements, { index = 0 } = {}) {
+  async shouldBeHidden(elements: Elements) {
     if (Array.isArray(elements)) {
       for (const element of elements) {
         await expect(element).toBeHidden()
       }
     } else {
-      await expect(elements.nth(index)).toBeHidden()
+      await expect(elements).toBeHidden()
     }
   }
 
   async shouldHaveAttribute(
     elements: Elements,
-    { attr, value, index = 0 }: { attr: string; value?: string; index?: number }
+    { attr, value }: { attr: string; value?: string }
   ) {
-    if (Array.isArray(elements)) {
-      for (const element of elements) {
-        if (value) {
-          await expect(element).toHaveAttribute(attr, value)
-        } else {
-          await expect(element).toHaveAttribute(attr)
-        }
-      }
-      return
-    }
+    const assertAttribute = async (element: Locator) =>
+      value
+        ? expect(element).toHaveAttribute(attr, value)
+        : expect(element).toHaveAttribute(attr)
 
-    if (value) {
-      await expect(elements.nth(index)).toHaveAttribute(attr, value)
+    if (Array.isArray(elements)) {
+      await Promise.all(elements.map(assertAttribute))
     } else {
-      await expect(elements.nth(index)).toHaveAttribute(attr)
+      await assertAttribute(elements)
     }
   }
 }

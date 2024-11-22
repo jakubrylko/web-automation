@@ -7,15 +7,15 @@ import {
   itemDetailsQuery,
   loginMutation
 } from '@common/boilerplate'
-import { APIRequestContext } from '@playwright/test'
+import { APIRequestContext, Page } from '@playwright/test'
 import { BaseClass } from '../BaseClass.api'
 
 const { SAAS_API, EMAIL, PASSWORD } = process.env
 const baseUrl = SAAS_API!
 
 export class BoilerplateAPIPage extends BaseClass {
-  constructor(request: APIRequestContext) {
-    super(request)
+  constructor(request: APIRequestContext, page?: Page) {
+    super(request, page)
   }
 
   async login() {

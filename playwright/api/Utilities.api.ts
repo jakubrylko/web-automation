@@ -32,9 +32,18 @@ export class Utilities {
     })
   }
 
-  async mock(url: string, mock: object) {
+  async mockRequest(url: string, mock: object) {
     await this.page?.route(url, async (route) => {
       await route.fulfill({ json: mock })
+    })
+  }
+
+  async mockGraphQLRequest(operationName: string, mock: object) {
+    await this.page?.route('**/api/graphql/', async (route) => {
+      const request = route.request().postDataJSON()
+      request.operationName === operationName
+        ? await route.fulfill({ json: { data: mock } })
+        : await route.continue()
     })
   }
 }
