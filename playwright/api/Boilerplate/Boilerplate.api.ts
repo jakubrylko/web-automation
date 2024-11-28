@@ -10,8 +10,8 @@ import {
 import { APIRequestContext, Page } from '@playwright/test'
 import { BaseClass } from '../BaseClass.api'
 
-const { SAAS_API, EMAIL, PASSWORD } = process.env
-const baseUrl = SAAS_API!
+const { SAAS_URL, EMAIL, PASSWORD } = process.env
+const baseUrl = `${SAAS_URL}/api/graphql/`
 
 export class BoilerplateAPIPage extends BaseClass {
   constructor(request: APIRequestContext, page?: Page) {

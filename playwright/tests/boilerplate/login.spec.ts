@@ -6,8 +6,8 @@ import { LoginPage } from 'playwright/pages/Boilerplate/Login/Login.page'
 test.describe('Boilerplate login', () => {
   test('Should login to the app with cookies', async ({ browser, request }) => {
     const BoilerplateAPI = new BoilerplateAPIAssertion(request)
-    const response = await BoilerplateAPI.login()
-    const cookies = await BoilerplateAPI.getCookies(response)
+    const loginData = await BoilerplateAPI.login()
+    const cookies = await BoilerplateAPI.getCookies(loginData)
 
     const context = await browser.newContext()
     await context.addCookies(cookies)

@@ -1,4 +1,6 @@
 import { APIRequestContext, APIResponse, Page } from '@playwright/test'
+import { writeFileSync } from 'fs'
+import { join } from 'path'
 import { TeamdeckAPIPage } from './Teamdeck.api'
 
 const { TEAMDECK_URL } = process.env
@@ -26,5 +28,16 @@ export class TeamdeckAPIHelpers extends TeamdeckAPIPage {
         )[1] as SameSite
       }
     })
+  }
+
+  async writeCookies(response: APIResponse) {
+    const cookie = response.headers()['set-cookie']
+    const cookiePath = join(__dirname, '../../artifacts/downloads/cookie.txt')
+    writeFileSync(cookiePath, cookie.removeChars('\n'))
+  }
+
+  async getWallId(response: APIResponse, { index = 0 } = {}) {
+    const body = await response.json()
+    return body.organizations[index].id
   }
 }

@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker'
 import dayjs from 'dayjs'
 
-const { date, internet, helpers, person, string } = faker
+const { date, hacker, internet, helpers, person, string } = faker
 
 export const metaData = ({ totalCount }: { totalCount: number }) => {
   return {
@@ -45,4 +45,13 @@ export const newResource = () => {
       { type: 4, blocks: [] }
     ]
   }
+}
+
+export const newProject = {
+  archived: false,
+  color: internet.color(),
+  custom_fields: [],
+  milestones: [],
+  name: `${hacker.adjective()} ${hacker.noun()}`,
+  tags: []
 }
