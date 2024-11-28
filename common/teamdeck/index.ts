@@ -1,2 +1,2 @@
-export * from './mock-factories'
+export * from './data-factories'
 export * from './mocks'

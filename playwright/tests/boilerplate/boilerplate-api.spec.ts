@@ -9,8 +9,8 @@ test.describe('Boilerplate GraphQL', () => {
 
   test.beforeEach(async ({ request }) => {
     BoilerplateAPI = new BoilerplateAPIAssertion(request)
-    const response = await BoilerplateAPI.login()
-    BoilerplateAPI.utils.statusShouldBeOk(response)
+    const loginData = await BoilerplateAPI.login()
+    BoilerplateAPI.utils.statusShouldBeOk(loginData)
   })
 
   test.afterAll(async ({ request }) => {

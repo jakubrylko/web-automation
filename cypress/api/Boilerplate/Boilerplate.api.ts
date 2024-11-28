@@ -10,7 +10,7 @@ import {
 import { sendGraphQLRequest } from '../utilities'
 
 const { env } = Cypress
-const baseUrl = env('SAAS_API')
+const baseUrl = `${env('SAAS_URL')}/api/graphql/`
 
 export const login = () => {
   return sendGraphQLRequest(baseUrl, 'loginFormMutation', loginMutation, {

@@ -13,14 +13,6 @@ export class Utilities {
     expect(response.ok()).toBe(true)
   }
 
-  async sendGet(url: string) {
-    return await this.request.get(url)
-  }
-
-  async sendPost(url: string, data?: object) {
-    return await this.request.post(url, { data })
-  }
-
   async sendGraphQLRequest(
     url: string,
     operationName: string,
