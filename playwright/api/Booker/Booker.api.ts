@@ -9,10 +9,10 @@ export class BookerAPIPage extends BaseClass {
   }
 
   async getBookings() {
-    return await this.utils.sendGet(`${baseUrl}/booking`)
+    return await this.request.get(`${baseUrl}/booking`)
   }
 
   async createBooking(data: object) {
-    return await this.utils.sendPost(`${baseUrl}/booking`, data)
+    return await this.request.post(`${baseUrl}/booking`, data)
   }
 }

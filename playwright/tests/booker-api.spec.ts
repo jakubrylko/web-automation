@@ -10,13 +10,13 @@ test.describe('Restful Booker API', () => {
   })
 
   test('Should get bookings list', async () => {
-    const response = await BookerAPI.getBookings()
-    BookerAPI.utils.statusShouldBeOk(response)
+    const bookings = await BookerAPI.getBookings()
+    BookerAPI.utils.statusShouldBeOk(bookings)
   })
 
   test('Should create new booking', async () => {
-    const response = await BookerAPI.createBooking(newBooking)
-    BookerAPI.utils.statusShouldBeOk(response)
-    await BookerAPI.assertCreatedBooking(response)
+    const booking = await BookerAPI.createBooking(newBooking)
+    BookerAPI.utils.statusShouldBeOk(booking)
+    await BookerAPI.assertCreatedBooking(booking)
   })
 })

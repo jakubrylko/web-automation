@@ -9,13 +9,13 @@ export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
   }
 
   async getTenantId(response: APIResponse, { index = 0 } = {}) {
-    const body = await response.json()
-    return body.data.currentUser.tenants[index].id
+    const currentUser = await response.json()
+    return currentUser.data.currentUser.tenants[index].id
   }
 
   async getItemId(response: APIResponse) {
-    const body = await response.json()
-    return body.data.createCrudDemoItem.crudDemoItemEdge.node.id
+    const item = await response.json()
+    return item.data.createCrudDemoItem.crudDemoItemEdge.node.id
   }
 
   async deleteAllItems() {
@@ -32,12 +32,12 @@ export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
   }
 
   async getCookies(response: APIResponse) {
-    const body = await response.json()
+    const loginData = await response.json()
     const domain = SAAS_URL?.removeUrlPrefix()
     return [
       {
         name: 'token',
-        value: body.data.tokenAuth.access,
+        value: loginData.data.tokenAuth.access,
         domain,
         path: '/',
         httpOnly: true,
@@ -45,7 +45,7 @@ export class BoilerplateAPIHelpers extends BoilerplateAPIPage {
       },
       {
         name: 'refresh_token',
-        value: body.data.tokenAuth.refresh,
+        value: loginData.data.tokenAuth.refresh,
         domain,
         path: '/api/auth/token-refresh/',
         httpOnly: true,

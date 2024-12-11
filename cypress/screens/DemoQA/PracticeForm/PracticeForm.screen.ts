@@ -64,19 +64,19 @@ export const createCsvFromTable = () => {
     .then(($rows) => {
       // Creating an array from table rows
       const data: [string, string][] = Array.from($rows).map((row) => {
-        const [key, value] = Array.from(row.children).map(
+        const [label, value] = Array.from(row.children).map(
           (cell) => cell.textContent?.trim().removeChars('\n') || ''
         )
 
         // Formatting answers
         const formattedValue =
-          key === 'Date of Birth'
-            ? value.removeChars(',')
-            : key === 'Hobbies' || key === 'Address'
+          label === 'Date of Birth'
+            ? value.replace(',', ' ')
+            : label === 'Hobbies' || label === 'Address'
               ? `"${value}"`
               : value
 
-        return [key, formattedValue]
+        return [label, formattedValue]
       })
 
       // Formatting content to CSV string

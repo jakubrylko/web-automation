@@ -31,8 +31,8 @@ test.describe('Teamdeck login', () => {
   test('Should login to the app using cookies', async ({ request }) => {
     const TeamdeckAPI = new TeamdeckAPIAssertion(request)
 
-    const response = await TeamdeckAPI.login()
-    const cookies = await TeamdeckAPI.getCookies(response)
+    const loginData = await TeamdeckAPI.login()
+    const cookies = await TeamdeckAPI.getCookies(loginData)
     await context.addCookies(cookies)
 
     await Login.open()
