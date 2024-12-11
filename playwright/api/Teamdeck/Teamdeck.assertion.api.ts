@@ -13,36 +13,56 @@ export class TeamdeckAPIAssertion extends TeamdeckAPIHelpers {
   }
 
   async assertItemList(response: Response, { isEmpty = false } = {}) {
-    const body = await response.json()
+    const list = await response.json()
     isEmpty
-      ? expect(body.items).toEqual([])
-      : expect(body.items).not.toEqual([])
+      ? expect(list.items).toEqual([])
+      : expect(list.items).not.toEqual([])
   }
 
-  async assertNewProject(response: APIResponse) {
-    const expectedProperties = [
+  async assertProperties(project: Record<string, unknown>) {
+    const projectProperties = [
       ['id', 'number'],
       ['name', 'string'],
       ['color', 'string'],
       ['archived', 'boolean']
     ]
 
-    const body = await response.json()
-    for (const [property, type] of expectedProperties) {
-      expect(body).toHaveProperty(property)
-      expect(typeof body[property]).toBe(type)
+    for (const [property, type] of projectProperties) {
+      expect(project).toHaveProperty(property)
+      expect(typeof project[property]).toBe(type)
     }
   }
 
-  async assertNewProjectOnTheList({
-    projectId,
-    wallId
-  }: { projectId: string } & WallId) {
-    const projects = await this.getProjects({ wallId })
-    const projectsJSON = await projects.json()
+  async assertProject(response: APIResponse) {
+    const project = await response.json()
+    await this.assertProperties(project)
+  }
 
-    expect(projectsJSON).toEqual(
+  async assertProjectList(response: APIResponse) {
+    const projects = await response.json()
+    for (const project of projects) {
+      await this.assertProperties(project)
+    }
+  }
+
+  async assertProjectOnTheList({ wallId, projectId }: WallId & ProjectId) {
+    const projects = await this.getProjects({ wallId })
+    const projectsBody = await projects.json()
+
+    expect(projectsBody).toEqual(
       expect.arrayContaining([expect.objectContaining({ id: projectId })])
+    )
+  }
+
+  async assertTimeEntryOnTheList({
+    wallId,
+    timeEntryId
+  }: WallId & { timeEntryId: number }) {
+    const timeEntries = await this.getTimeEntries({ wallId })
+    const timeEntriesBody = await timeEntries.json()
+
+    expect(timeEntriesBody).toEqual(
+      expect.arrayContaining([expect.objectContaining({ id: timeEntryId })])
     )
   }
 }

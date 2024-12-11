@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { metaData, newResource } from './data-factories'
+import { metaData, newResource } from './mock-factories'
 
 export const emptyItemList = {
   _meta: metaData({ totalCount: 0 }),

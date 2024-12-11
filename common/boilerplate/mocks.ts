@@ -1,5 +1,5 @@
 import { encodeCursor } from '@common/helpers'
-import { newNodeItem, newNotification } from './data-factories'
+import { newNodeItem, newNotification } from './mock-factories'
 
 const numOfItems = 5
 export const allCrudDemoItems = {

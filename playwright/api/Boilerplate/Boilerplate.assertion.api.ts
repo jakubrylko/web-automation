@@ -7,8 +7,8 @@ export class BoilerplateAPIAssertion extends BoilerplateAPIHelpers {
   }
 
   async newItemShouldBeListed(response: APIResponse, { itemName }: ItemName) {
-    const body = await response.json()
-    const newItem = body.data.allCrudDemoItems.edges.find(
+    const itemList = await response.json()
+    const newItem = itemList.data.allCrudDemoItems.edges.find(
       ({ node }: { node: { name: string } }) => node.name === itemName
     )
     expect(newItem.node.name).toEqual(itemName)
@@ -18,8 +18,8 @@ export class BoilerplateAPIAssertion extends BoilerplateAPIHelpers {
     const currentUser = await this.getCurrentUser()
     const tenantId = await this.getTenantId(currentUser)
 
-    const itemListRes = await (await this.getItemList({ tenantId })).json()
-    const itemList = itemListRes.data.allCrudDemoItems.edges
+    const itemListData = await (await this.getItemList({ tenantId })).json()
+    const itemList = itemListData.data.allCrudDemoItems.edges
     expect(itemList).toEqual([])
   }
 
@@ -27,8 +27,8 @@ export class BoilerplateAPIAssertion extends BoilerplateAPIHelpers {
     response: APIResponse,
     { itemId, itemName }: ItemId & ItemName
   ) {
-    const body = await response.json()
-    const { id, name } = body.data.crudDemoItem
+    const itemDetails = await response.json()
+    const { id, name } = itemDetails.data.crudDemoItem
     expect(id).toEqual(itemId)
     expect(name).toEqual(itemName)
   }
