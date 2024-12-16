@@ -1,5 +1,9 @@
+type ElementSelector<T extends HTMLElement = HTMLElement> = Cypress.Chainable<
+  JQuery<T>
+>
+
 export const isInViewport = <T extends HTMLElement | HTMLHeadingElement>(
-  selector: Cypress.Chainable<JQuery<T>>
+  selector: ElementSelector<T>
 ) => {
   cy.window().then((window) => {
     selector.then(($element) => {
@@ -13,7 +17,7 @@ export const isInViewport = <T extends HTMLElement | HTMLHeadingElement>(
 }
 
 export const isNotInViewport = <T extends HTMLElement | HTMLHeadingElement>(
-  selector: Cypress.Chainable<JQuery<T>>
+  selector: ElementSelector<T>
 ) => {
   cy.window().then((window) => {
     selector.then(($element) => {
