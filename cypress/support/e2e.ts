@@ -1,3 +1,4 @@
+import '@common/helpers'
 import 'allure-cypress'
 import 'cypress-plugin-api'
 import './assertions'
