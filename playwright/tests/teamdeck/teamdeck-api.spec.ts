@@ -43,17 +43,17 @@ test.describe('Teamdeck API', () => {
   })
 
   test('Should update existing project', async () => {
-    const project = await TeamdeckAPI.createProject({ wallId })
-    const projectBody = await project.json()
+    const projectData = await TeamdeckAPI.createProject({ wallId })
+    const project = await projectData.json()
 
-    const updatedProject = await TeamdeckAPI.updateProject({
+    const updatedProjectData = await TeamdeckAPI.updateProject({
       wallId,
-      projectId: projectBody.id
+      projectId: project.id
     })
-    const updatedProjectBody = await updatedProject.json()
+    const updatedProject = await updatedProjectData.json()
 
-    expect(projectBody.id).toEqual(updatedProjectBody.id)
-    expect(projectBody.name).not.toEqual(updatedProjectBody.name)
+    expect(project.id).toEqual(updatedProject.id)
+    expect(project.name).not.toEqual(updatedProject.name)
   })
 
   test('Should create new project, resource, booking and time entry', async () => {
